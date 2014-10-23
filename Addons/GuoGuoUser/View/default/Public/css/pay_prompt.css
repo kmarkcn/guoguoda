@@ -1,0 +1,102 @@
+@charset "utf-8";
+html,body{ height: 100%; position: relative;background:#f2f2f2;}
+.pay_prompt{
+    min-height: 100%;
+}
+.pp_head{
+    position: relative;
+    margin: 1.5rem auto;
+    height: 11rem;
+}
+.pp_user_img{
+    position: absolute;
+    left: 2rem;
+    top: 1.5rem;
+    height: 8rem;
+    width: 8rem;
+    border-radius: 50%;
+    box-shadow: 0 0 1rem #ccc;
+}
+
+
+
+*{
+    font-family: "微软雅黑", "黑体", "宋体";
+}
+.pp_content{
+    position: relative;
+    width: 86%;
+    margin: auto;
+    margin-top: 2rem;
+}
+.pp_ts_top{
+    display: none;
+    background-color: #ccc;
+    line-height: 4rem;
+    font-size: 2rem;
+    color: black;
+    letter-spacing: .3rem;
+    text-align: center;
+}
+.pp_ts_p{
+    padding:3rem 0 0 0;
+    letter-spacing: .2rem;
+    color: #666;
+    line-height: 3rem;
+    font-size: 1.6rem;
+    text-align: center;
+}
+.pp_right{
+    position: relative;
+    text-align:center;
+	top:8.2rem;
+}
+.pp_right span{
+    position: relative;
+    left: -.5rem;
+    top: -.8rem;
+    font-size: 2rem;
+}
+.pp_logo{
+
+    height: 2.5rem;
+}
+.pp_ul{
+    position: absolute;
+    top: 4rem;
+    left: 12rem;
+}
+.pp_ul li{
+    line-height: 3rem;
+}
+.pp_user{
+    font-size: 1.6rem;
+    letter-spacing: .2rem;
+    color: black;
+}
+
+.pp_red{
+    font-size: 2rem;
+    color: red;
+}
+.pp_ts_body{
+    position: relative;
+    box-shadow: inset 0 0 1rem #ccc;
+    background-color: white;
+    border-radius: 8%;
+    text-align: center;
+    padding-bottom: 3rem;
+}
+.pp_btn_pay{
+    display: inline-block;
+    margin: auto;
+    letter-spacing: .6rem;
+    background-color: red;
+    font-size: 2.2rem;
+    line-height: 3.6rem;
+    padding: 0 2.5rem;
+    color: white;
+    border-radius: 0;
+    box-shadow: 0 0 2px #ccc;
+    cursor: pointer;
+}

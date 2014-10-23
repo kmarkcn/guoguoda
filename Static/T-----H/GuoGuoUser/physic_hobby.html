@@ -1,0 +1,36 @@
+<extend name="Base/common" />
+<block name="body">
+  <div class="span9 page_message">
+    <section id="contents"> 
+      <include file="Addons/_nav" /> 
+      <!-- 数据列表 -->
+      <div class="data-table">
+        <div class="table-striped">
+          <table cellspacing="1">
+            <!-- 表头 -->
+            <thead>
+              <tr>
+               <th>用户名</th><th>体质</th><th>喜好</th><th>忌口</th><th>操作</th>
+              </tr>
+            </thead>
+            
+            <!-- 列表 -->
+            <tbody>
+					<tr>
+					<td>{$data.name}</td>
+					<td>{$data.physic}</td>
+					<td>{$data.like}</td>
+					<td>{$data.dislike}</td>
+					<td>
+					<a href="./index.php?s=/addon/GuoGuoUser/GuoGuoUser/edit_hobby/type/show/userid/{$userid}.html">编辑 </a>
+					</td>
+					</tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="page"> {$_page|default=''} </div>
+    </section>
+  </div>
+</block>
+

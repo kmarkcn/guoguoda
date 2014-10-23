@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!-- saved from url=(0071)http://wapshop.wugehuozhan.com:93/invitation?anchor=slide_first#slide_4 -->
+<html class="no-js ui-viewport-640" lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta charset="utf-8">
+    <meta name="keywords" content="果果哒">
+    <meta name="description" content="果果哒">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="cleartype" content="on">
+    <title>果果健康问卷调查</title>
+	<script>
+        var _global = {};
+	</script>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+    <!--
+    <meta name="viewport" content=" user-scalable=no, target-densitydpi=device-dpi">
+
+    <meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
+   -->
+    <link href="css/questionary/bootstrap1.css" rel="stylesheet">
+    <link href="css/questionary/2222.css" rel="stylesheet">
+    <link href="css/questionary/1111.css" rel="stylesheet"> 
+    <link href="css/phone/phone-public.css" rel="stylesheet">	
+    <link href="css/public.css" rel="stylesheet">
+    <link href="css/questionary.css" rel="stylesheet">
+    
+    
+	<style>
+    .goto_up{ 
+		width: 30%;
+		position: absolute;
+		left: 50%;
+		top: 75%;
+		margin: 0 -15%;
+		transition-timing-function: linear;
+		transition-property: all;
+		-webkit-transform: scale(1);
+		z-index: 100;
+		-webkit-animation: start 2.5s infinite ease-in-out;
+		-moz-animation: start 2.5s infinite ease-in-out;
+	}
+	.gotopage{
+		width: 30%;
+		position: absolute;
+		left: 50%;
+		top: 75%;
+		margin: 0 -15%;
+		z-index: 100;
+
+	}
+    </style>
+</head>
+
+<body>
+
+<div class="container ">
+    <div class="content js-mini-height">
+        <div class="content-body">
+            <div class="ui-loading" id="js-loading" style="display: none;">
+                <div class="loading-animate"></div>
+            </div>
+            <div class="tpl-scroll js-tpl-scroll-container" style="background-image:url(undefined);-webkit-background-size: initial;-moz-background-size: initial;background-size: initial; background-color: #fff; visibility: visible;">
+                <div class="swiper-container js-tpl-scroll" data-loop="false">
+                    <div class="swiper-wrapper">
+                    	<!--以下为主要内容-->
+
+                        <div class="swiper-slide" data-hash="slide_first">
+                           <img src="img/questionary/goto_01.gif" width="100%" height="100%">
+                           <img class="goto_up" src="img/questionary/goto_up.png">
+                        </div>
+                        
+                        <div class="swiper-slide" data-hash="slide_2">
+                           <img src="img/questionary/goto_02.gif" width="100%" height="100%">
+                           <img class="goto_up" src="img/questionary/goto_up.png">
+                        </div>
+                        
+                        <div id="goto_lastpage" class="swiper-slide" data-hash="slide_3">
+                        	<img class="goto_up" src="img/questionary/goto_up.png">
+                            <img  src="img/questionary/goto_03.gif" width="100%" height="100%">
+
+                        </div>
+                        
+                        <!--以上为主要内容-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="js-fuck-taobao" class="fullscreen-guide fuck-taobao hide">
+        <span class="js-close-taobao guide-close">×</span>
+        <span class="guide-arrow"></span>
+        <div class="guide-inner">
+            <div class="step step-1"></div>
+            <div class="js-step-2 step"></div>
+        </div>
+    </div>
+</div>
+
+<script src="js/questionary/jquery-2.0.3.min.js" onerror="_cdnFallback(this)"></script>
+<script src="js/questionary/idangerous.swiper.2.6.1.min.js" onerror="_cdnFallback(this)"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/questionary/scroll_99ac61944f.js" onerror="_cdnFallback(this)"></script>
+
+
+<!--
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+-->
+<script type="text/javascript">
+$(function(){
+	/*
+	function gotoquestionary(){
+		window.location="questionary.html";   
+	}
+
+	function lastpage(){
+		var getclass = $('.swiper-wrapper').children().last().attr('class'),
+		className = 'swiper-slide';
+		if(getclass == className){
+			
+		}
+		else{
+			setTimeout(gotoquestionary,1000)
+			//window.location="questionary.html";  
+		}
+	}
+	setInterval(lastpage,1000)
+	*/
+	function touchEnd(e){
+		window.location="questionary.html"; 
+	}
+	document.getElementById("goto_lastpage").addEventListener('touchend', touchEnd,false);  
+})
+</script>
+</body></html>

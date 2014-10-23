@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+
+    <link href="{:ADDON_PUBLIC_PATH}/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="{:ADDON_PUBLIC_PATH}/css/public.css"  rel="stylesheet" type="text/css" />
+    <link href="{:ADDON_PUBLIC_PATH}/favicon.ico" rel="Shortcut  Icon"  />
+    <link href="{:ADDON_PUBLIC_PATH}/css/pay_prompt.css"  rel="stylesheet" type="text/css" />
+    <link href="{:ADDON_PUBLIC_PATH}/css/membercenter.css" rel="stylesheet" type="text/css"  />
+    <link href="{:ADDON_PUBLIC_PATH}/css/ymd.css" rel="stylesheet" type="text/css">
+
+
+    <script src="{:ADDON_PUBLIC_PATH}/js/jquery.min.js" type="text/javascript" ></script>
+    <script src="{:ADDON_PUBLIC_PATH}/js/jquery.cookie.js" type="text/javascript" ></script>
+    <script src="{:ADDON_PUBLIC_PATH}/js/public.js" type="text/javascript"></script>
+    <script src="{:ADDON_PUBLIC_PATH}/js/membercenter.js" type="text/javascript"></script>
+    <script src="{:ADDON_PUBLIC_PATH}/jqtransformplugin/jquery.jqtransform.js" type="text/javascript"  ></script>
+    <title>支付确认</title>
+</head>
+<body class="bn">
+
+    <div class="pay_prompt">
+        <div class="pp_head">
+            <img class="pp_user_img" src="{:ADDON_PUBLIC_PATH}/img/membercenter/user_img.jpg">
+            <ul class="pp_ul">
+                <li><span class="pp_user">你大哥</span></li>
+                <!--
+                <li></li>
+                -->
+            </ul>
+        </div>
+        <div class="pp_body"></div>
+
+        <div class="pp_content">
+            <div class="pp_ts_top">
+                支付确认
+            </div>
+            <div class="pp_ts_body">
+                <p class="pp_ts_p">
+                    本次交易金额:<br/>
+                    <span class="pp_red">{$money}</span>元，是否确认支付?
+                </p>
+                <div class="pp_btn_pay" onclick='callpay()'>支付</div>
+            </div>
+        </div>
+
+        <div class="pp_right"><span>_____</span><img class="pp_logo" src="{:ADDON_PUBLIC_PATH}/img/membercenter/logo.png" ></div>
+    </div>
+
+
+   
+
+
+</body>
+</html>
+
+<script>
+function callpay()
+{
+	WeixinJSBridge.invoke('getBrandWCPayRequest',{$str1},function(res){
+			/* if(res.err_msg=='get_brand_wcpay_request:ok'){
+				//window.location="http://www.kmark.cn/we_scbridge/index.php?act=module&name=scbridge&do=payresult&payway={$payway}";
+			}else{
+				//alert('系统繁忙,支付失败!');
+				//window.location="http://www.kmark.cn/we_scbridge/index.php?act=module&name=scbridge&do=member_center";
+			} */
+		alert(res.err_code+res.err_desc+res.err_msg);
+	}); 
+}
+</script> 

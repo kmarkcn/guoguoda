@@ -1,0 +1,106 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	background-color: #f2f2f2;
+}
+.goto_table td
+,.goto_btn_q
+,body input{
+    font-family:HanWangYenThin-Gb571063;
+}
+.goto{
+	min-height: 100%;
+	background-color: white;
+    box-shadow: inset  0 0 15px gray;
+	
+}
+.goto .goto_p1{
+    font-size: 1.3rem;
+    line-height: 2rem;
+    padding-right: 4rem;
+}
+.goto_head
+,.goto_foot{
+    width: 100%;
+}
+.goto_table{
+	margin: auto;
+	margin-top: -10%;
+	width: 90%;
+}
+.goto_table td{
+	position: relative;
+	line-height: 4rem;
+	height: 4rem;
+
+	/*font-family:"微软雅黑", "黑体", "宋体";*/
+}
+.goto_td_01{
+	width: 10%;
+	text-align: right;
+	
+}
+.goto_td_02{
+    width: 90%;
+	padding-left: 2%;
+    font-size: 2rem;
+	text-align: left;
+
+}
+.goto_td_03{
+	text-align:center;
+}
+.goto_btn_q{
+	display: inline-block;
+	padding: 5% 10%;
+    width: 80%;
+	text-align: center;
+    letter-spacing: .3rem;
+    color: white;
+	background-color: #d4036a;
+	font-size: 2rem;
+	line-height: 2rem;
+	border: 2px solid #d4036a;
+	border-radius: 5%;
+	box-shadow: 0 0 5px #d4036a;
+	cursor: pointer;
+	text-decoration: none;
+	
+}
+.goto_input{
+	text-align: left;
+	width: 80%;
+	font-size: 2rem;
+	color: #ccc;
+}
+.goto_td_04{
+    text-align: left;
+    font-size: 1.4rem;
+}
+.goto_ts{
+    height: 3rem;
+    padding-left: 4.5rem;
+    text-align: left;
+	color: red;
+    line-height: 3rem;
+	font-size: 1.2rem;
+    background-image: url("../img/questionary/expression.png");
+    background-position: 1rem 3rem;
+    background-repeat: no-repeat;
+    background-size: 3rem;
+
+}
+.goto_ts_01{
+    background-position: 1rem -3rem;
+}
+.goto_ts_02{
+    background-position: 1rem 0;
+}
+.goto_ts_03{
+    background-position: 1rem -6rem;
+}
+.goto_ts_04{
+    background-position: 1rem -15rem;
+}
+

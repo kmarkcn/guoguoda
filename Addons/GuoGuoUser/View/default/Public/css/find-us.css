@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* CSS Document */
+
+.fu{
+	background-image: url(../img/company-introduce/company-introduce_07.png);
+	background-size: cover;
+	padding-bottom: 20px;
+}
+.fu_top{
+	position: relative;
+	
+}
+.fu_top_img
+,.fu_c_img{ width: 100%;}
+.fu_top_return{
+	position: absolute;
+	top: 20%;
+	left: 2%;
+	width: 5%;
+}
+

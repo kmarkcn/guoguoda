@@ -1,0 +1,56 @@
+<extend name="Base/common" />
+<block name="body">
+  <script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+  <!-- 标签页导航 -->
+  <div class="span9 page_message">
+    <section id="contents">
+      <include file="Addons/_nav" />
+      <div class="tab-content" style='text-align:left;'> 
+        <!-- 表单 -->
+        <form id="form" action="./index.php?s=/addon/GuoGuoUser/GuoGuoUser/edit_hobby/type/edit.html" method="post" class="form-horizontal form-center">
+        	
+        	<!--  
+        		2014-10-13 by terry
+        		修改数据form表单的重写
+        	-->
+
+        	<input type="hidden" name="userid" value="{$userid}"/><br/>
+        	用户名:<a style='color:red;'>(当前页面用户名不能修改)</a><br/>
+         	<input type='text' class="text input-large" name='name' value='{$data.name}' disabled='disabled'><br/>
+         	体质:<br/><br/>
+         	<select name='physic' value='{$data.physic}'>
+         		<option value='1' <if condition="$data.physic eq 1"> selected="selected"</if>>
+         			寒性
+         		</option>
+         		<option value='2' <if condition="$data.physic eq 2"> selected="selected"</if>>
+         			平和
+         		</option>
+         		<option value='3' <if condition="$data.physic eq 3"> selected="selected"</if>>
+         			热性
+         		</option>
+         		<option value='4' <if condition="$data.physic eq 4"> selected="selected"</if>>
+         			未测试
+         		</option>
+         	</select>
+ 			<br/>
+         	喜好:<br/><br/>
+         	<textarea name="like" class="textarea input-large">{$data.like}</textarea><br/>
+         	忌口:<br/><br/>
+         	<textarea name="dislike" class="textarea input-large">{$data.dislike}</textarea><br/>
+         	
+         	
+         	<br/>
+            <button class="btn submit-btn " id="submit" type="submit" >确 定</button>
+          </div>
+        </form>
+      
+        
+        
+        
+        <include file="Addons/weixinPreview"/>
+      </div>
+    </section>
+  </div>
+  </div>
+</block>
+

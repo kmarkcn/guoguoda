@@ -1,0 +1,15 @@
+@charset "utf-8";
+/* CSS Document */
+
+.mc_li_shadow{
+    z-index: 5;
+    box-shadow: -6px 0 0 white, 6px 0 0 white,0 2px 4px #5e97e3,0 -2px 4px #5e97e3;
+    -webkit-box-shadow: -6px 0 0 white, 6px 0 0 white,0 2px 4px #5e97e3,0 -2px 4px #5e97e3;
+    -moz-box-shadow: -6px 0 0 white, 6px 0 0 white,0 2px 4px #5e97e3,0 -2px 4px #5e97e3;
+}
+.mc_li_inset{
+    z-index: 10;
+    box-shadow:inset 0 2px 4px #5e97e3,inset 0 -2px 4px #5e97e3;
+    -webkit-box-shadow:inset 0 2px 4px #5e97e3,inset 0 -2px 4px #5e97e3;
+    -moz-box-shadow:inset 0 2px 4px #5e97e3,inset 0 -2px 4px #5e97e3;
+}

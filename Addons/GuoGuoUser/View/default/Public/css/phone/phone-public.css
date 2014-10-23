@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* CSS Document */
+body,html{
+}
+
+/*公用底部*/
+.public_foot{
+	display: block;
+	margin:auto;
+	height:62px;
+	width:100%;
+	z-index: 9999;
+	background-color: #cfd7cc;
+	
+}
+.p_f_head{
+	position: relative;	
+	height: 50px;
+	width: 100%;
+	
+}
+.p_f_head img{
+	position: absolute;
+	top: 0;
+	width: 54px;
+	height: 50px;
+	margin: 0 -27px;
+}
+.p_f_img_01{ left: 20%;}
+.p_f_img_02{ left: 50%;}
+.p_f_img_03{ left: 80%;}
+.p_f_foot{
+	box-shadow: 0  -1px  2px gray; 
+	width: 100%;
+	height: 12px;
+	
+	
+}

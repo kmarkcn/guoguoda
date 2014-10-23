@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html class="wd">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+<link href="css/bootstrap.min.css" rel="stylesheet"/>
+<link href="css/public.css" rel="stylesheet" type="text/css"  />
+<link href="jqtransformplugin/jqtransform.css" rel="stylesheet"  type="text/css" media="all" />
+<link href="css/membercenter.css" rel="stylesheet" type="text/css"  />
+<link href="favicon.ico" rel="Shortcut  Icon" />
+<link href="css/write_data.css" rel="stylesheet" />
+
+<script src="js/jquery.min.js" type="text/javascript" ></script>
+<script src="js/jquery.cookie.js" type="text/javascript" ></script>
+<script src="jqtransformplugin/jquery.jqtransform.js" type="text/javascript"  ></script>
+<script src="js/public.js" type="text/javascript"></script>
+<script src="js/membercenter.js" type="text/javascript"></script>
+<script src="js/write_data.js" type="text/javascript"></script>
+
+    <title>果果哒用户信息确认</title>
+</head>
+<body class="wd">
+    <!--以下是必要信息提示界面-->
+    <div class="wd_ts_required">
+        <p class="wd_td_p">
+            小主，<span class="wd_required">*</span>为必填项哦，请您务必填写，臣妾在此拜谢！
+        </p>
+        <div class="wd_btn wd_btn_over">确定</div>
+
+    </div>
+    <!--以上是必要信息提示界面-->
+    <!--以下是个人信息修改遮罩层-->
+    <div class="mc_modify">
+        <div class="modify_top">个人信息修改</div>
+        <table class="modify_table">
+            <form action="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/update/" method="post">
+                <tr>
+                    <td class="modify_td_01 modify_03"></td>
+                    <td class="modify_td_02">
+                        <p class="modify_ts">
+                            <span class="span_user"></span>
+                            <span class="span_email"></span>
+                            <span class="span_phone"></span>
+                            <span class="span_address"></span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="modify_td_01"><span>姓<b class="transparat">透明</b>名</span>：</td>
+                    <td class="modify_td_02"><input class="modify_input input_user" type="text"  name="name"/></td>
+                </tr>
+                <tr>
+                    <td class="modify_td_01">性<b class="transparat">透明</b>别：</td>
+                    <td class="modify_td_02">
+
+                        <input class="input_radio"  name="modify_sex" type="radio"  value="1" /><label class="modify_label">&nbsp;&nbsp;男</label>
+                        <input class="input_radio"  name="modify_sex" type="radio" value="2" /><label class="modify_label">&nbsp;&nbsp;女</label>
+
+                    </td>
+                </tr>
+                <!--
+                <tr>
+                    <td class="modify_td_01"><span>邮箱</span>：</td>
+                    <td class="modify_td_02"><input class="modify_input input_email" type="text" value="{$userData.email}" /></td>
+                </tr>
+                 -->
+                <tr>
+                    <td class="modify_td_01"><span>电<b class="transparat">透明</b>话</span>：</td>
+                    <td class="modify_td_02"><input class="modify_input input_phone" name="mobile" type="text"/></td>
+                </tr>
+                <tr>
+                    <td class="modify_td_01 modify_03" id="address"><span>地<b class="transparat">透明</b>址</span>：</td>
+                    <td class="modify_td_02"><textarea class="modify_input modify_02 input_address" name="address" ></textarea></td>
+                </tr>
+                <tr>
+                    <td class="modify_td_01 modify_03"><span>喜好水果</span>：</td>
+                    <td class="modify_td_02"><textarea class=" modify_02 " name="like" ></textarea></td>
+                </tr>
+                <tr>
+                    <td class="modify_td_01 modify_03"><span>忌口水果</span>：</td>
+                    <td class="modify_td_02"><textarea class=" modify_02 " name="dislike"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="mc_td_08" colspan="2"  >
+                        <button type="button" class="modify_btn_false modify_toggle" >取消</button>
+                        <button type="submit" class="modify_btn_true "  id="submit_true" >确定</button>
+                    </td>
+                </tr>
+            </form>
+        </table>
+
+
+    </div>
+
+    <!--以上是个人信息修改遮罩层-->
+
+
+    <!--信息-->
+
+    <div class=" wd_page">
+        <img class="wd_img" src="img/membercenter/write_data_01.gif">
+        <table class="mc_table">
+            <tr>
+                <td class="mc_td_01"></td>
+                <td class="mc_td_02"></td>
+            </tr>
+            <tr>
+                <td class="mc_td_01"><span class="wd_required">*</span> 姓名：</td>
+                <td class="mc_td_02"><span>果果哒</span></td>
+            </tr>
+            <tr>
+                <td class="mc_td_01"><span class="wd_required">*</span> 性别：</td>
+                <td class="mc_td_02"><span>男</span></td>
+            </tr>
+            <tr>
+                <td class="mc_td_01"><span class="wd_required">*</span> 电话：</td>
+                <td class="mc_td_02"><span class="mc_span_01">18380419339</span></td>
+            </tr>
+            <tr>
+                <td class="mc_td_01"><span class="wd_required">*</span> 地址：</td>
+                <td class="mc_td_02"><span class="mc_span_02">成都高新区益州大道北段布鲁明顿广场B座1025</span></td>
+            </tr>
+            <tr>
+                <td class="mc_td_01">偏好：</td>
+                <td class="mc_td_02"><span class="mc_span_01">菠萝西瓜</span></td>
+            </tr>
+            <tr>
+                <td class="mc_td_01">忌口：</td>
+                <td class="mc_td_02"><span class="mc_span_01">苹果</span></td>
+            </tr>
+            <!--
+            <tr>
+                <td class="mc_td_01">邮箱：</td>
+                <td class="mc_td_02"><span class="mc_span_01">648267773@qq.com</span></td>
+            </tr>
+            <tr>
+                <td class="mc_td_01">剩余时间：</td>
+                <td class="mc_td_02">60天</td>
+            </tr>
+            -->
+            <tr>
+                <td class="mc_td_04" colspan="2">
+                    <div class="wd_btn_true wd_btn">确定</div>
+                    <div class="mc_btn_change wd_btn modify_toggle">修改</div>
+                    <!--
+                    <img class="mc_btn_change modify_toggle"  src="img/membercenter/membercenter-personal_01.png">
+                    -->
+                </td>
+            </tr>
+
+        </table>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+@charset "utf-8";
+/* CSS Document */
+.habitus_top{
+    position: relative;
+    width: 100%;
+}
+.h_t_img{
+    width: 100%;
+}
+.q-top-return{
+    position: absolute;
+    top: 1.2%;
+    left: 2%;
+    width: 4.5%;
+    height: 33%;
+    cursor: pointer;
+}
+.habitus{
+	background-color: white;
+	min-height: 100%;
+}
+.h_head{
+	width: 100%;
+}
+.mc_logo{
+	width: 20%;
+}
+.mc_02_span{
+
+    /*position: relative;
+    font-size: 2rem;
+    top: 1rem;
+    */
+    display:inline-block;
+    height:2px;
+    width:15%;
+    border: 1px solid #ccc;
+}
+.mc_02_p3{
+	margin: 0;
+	text-align: right;
+	line-height: 3rem;
+}
+.mc_foot_02{
+	margin-top: -10%;
+    padding-left:5%;
+    padding-right:5%;
+	padding-bottom: 10%;
+
+}
+.mc_foot_02{
+    padding-left:5%;
+    padding-right:5%;
+
+}
+.mc_02_h1{
+    margin: 0;
+    padding: 7% 0;
+    color: #333;
+    font-size: 2rem;
+    line-height: 3rem;
+    letter-spacing: 0.2rem;
+    text-align: left;
+}
+
+.mc_02_h2{
+    text-align: right;
+}
+.mc_02_color_01{
+    color: #d30469;
+}
+
+.mc_02_p1
+,.mc_02_p2{
+    padding: 0;
+    color: #000;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    text-indent: 3.2rem;
+    letter-spacing: 0.2rem;
+    text-align: left;
+}
+.mc_02_p2{
+	margin: 0;
+}
+.mc_foot_02 *{
+	font-family:HanWangYenThin-Gb573851;
+}

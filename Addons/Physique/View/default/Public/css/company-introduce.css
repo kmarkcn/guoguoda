@@ -1,0 +1,113 @@
+@charset "utf-8";
+/* CSS Document */
+
+html,body{
+
+}
+.content{
+	background-image: url(../img/company-introduce/company-introduce_07.png);
+	background-size: cover;
+	
+}
+.ci{
+	
+	padding-bottom: 20px;
+}
+.ci_top{
+	position: relative;
+	
+}
+.ci_top_img{ width: 100%;}
+.ci_top_return{
+	position: absolute;
+	top: 10%;
+	left: 2%;
+	width: 5%;
+}
+.ci_p_01{
+	text-indent: 2em;
+	padding: 0% 2% 2% 2%; 
+	font-family: "微软雅黑";
+	font-size: 1.4rem;
+	line-height: 2rem;
+	letter-spacing: 0.3rem;
+	color: #93ab99;
+	transform: rotate(5deg); 
+}
+
+.ci_date{
+	position: relative;
+}
+.ci_round{
+	margin: auto;
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	background-color: #93ab99;
+}
+.ci_time{
+	position: relative;
+}
+.ci_time_center{
+	position: absolute;
+	top: 0%;
+	left: 50%;
+	margin: 0 -2px;
+	width: 4px;
+	height: 100%;
+	background-color: #93ab99;
+}
+.ci_time_year{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -10px -22px;
+	width: 44px;
+	height: 20px;
+	text-align: center;
+	font-family: "微软雅黑";
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 20px;
+	color: white;
+	background-color: #93ab99;
+}
+
+.ci_time_left
+,.ci_time_right
+{
+
+	padding: 20px 5% 10px 5%;
+	width: 46%;
+	
+}
+.ci_time_left>h1
+,.ci_time_right>h1{
+	font-size: 2.2rem;
+	line-height: 3rem;
+	font-family: "微软雅黑";
+	border-bottom: 2px solid #93ab99;
+	color: #93ab99;
+}
+.ci_time_left>p
+,.ci_time_right>p{
+	margin: 0;
+	font-size: 1.2rem;
+	line-height: 2rem;
+	color: #93ab99;
+}
+.ci_time_left li
+,.ci_time_right li{
+	margin-left: 10%;
+	list-style:circle;
+	font-size: 1.2rem;
+	line-height: 2rem;
+	color: #93ab99;
+	
+}
+.ci_time_right{
+	position: relative;
+	left: 54%;
+}
+
+

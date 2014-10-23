@@ -1,0 +1,40 @@
+<extend name="Base/common" />
+<block name="body">
+  <div class="span9 page_message">
+    <section id="contents"> 
+      <include file="Addons/_nav" /> 
+      <!-- 数据列表 -->
+      <div class="data-table">
+        <div class="table-striped">
+        	<div class="fl">
+          <empty name="model.extend">
+			
+          </empty>
+        </div>
+        	<br/><br/><br/><p style='font-size:20px;margin-bottom:50px;'>用户:{$data.name}</p>
+          <table cellspacing="1" style='width:400px;'>
+            <!-- 表头 -->
+            <thead>
+              <tr>
+               <th>订购时间</th><th>订购数量</th>
+              </tr>
+            </thead>
+            
+            <!-- 列表 -->
+            <tbody>
+					<volist name="data.list_data" id="vo">
+						<tr>
+						<td>{$vo.start_date}</td>
+						<td>{$vo.quantity}天</td>
+						</tr>
+ 					</volist>
+					
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="page"> {$_page|default=''} </div>
+    </section>
+  </div>
+</block>
+

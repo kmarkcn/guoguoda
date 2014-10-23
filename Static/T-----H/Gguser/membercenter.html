@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html class="htmlbody">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+<link href="{:ADDON_PUBLIC_PATH}/css/public.css" type="text/css" rel="stylesheet" />
+<link href="{:ADDON_PUBLIC_PATH}/css/membercenter.css" type="text/css" rel="stylesheet" />
+<link href="{:ADDON_PUBLIC_PATH}/css/ymd.css" type="text/css" rel="stylesheet" />    
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/js/jquery.min.js"></script>
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/js/jquery.cookie.js"></script>
+<script src="{:ADDON_PUBLIC_PATH}/js/public.js" type="text/javascript"></script>
+<script src="{:ADDON_PUBLIC_PATH}/js/ymd.js" type="text/javascript"></script>
+<script src="{:ADDON_PUBLIC_PATH}/js/membercenter.js" type="text/javascript"></script>
+
+
+    <title>会员中心</title>
+</head>
+<body class="htmlbody">
+    <!--以下是个人体质遮罩层-->
+    <div class="mc_habitus">
+        <div class="habitus_top">
+            <img class="q-top-return habitus_toggle" src="{:ADDON_PUBLIC_PATH}/img/questionary/questionary_04.png">
+            <img class="h_t_img" src="{:ADDON_PUBLIC_PATH}/img/questionary/questionary_01.png">
+        </div>
+        <div class="mc_foot_02">
+            <input class="mc_02_val" type="hidden" value="{$userData.physic}" id="physicval">
+            <h1 class="mc_02_h1">您的体质为<span class="mc_02_color mc_02_color_01"></span></h1>
+            <p class="mc_02_p1"></p>
+            <p class="mc_02_p2"></p>
+            <p class="mc_02_p3"><span class="mc_02_span"></span>&nbsp;<img class="mc_logo" src="{:ADDON_PUBLIC_PATH}/img/membercenter/logo.png"/></p>
+        </div>
+        <div class="habitus_foot"><img src="{:ADDON_PUBLIC_PATH}/img/questionary/questionary_02.png"></div>
+    </div>
+
+    <!--以上是个人体质遮罩层-->
+    <!--以下是个人信息修改遮罩层-->
+     <div class="mc_modify">
+        <div class="modify_top">个人信息修改</div>
+        <table class="modify_table">
+        <form action="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/update/" method="post">
+            <tr>
+                <td class="modify_td_01 modify_03"></td>
+                <td class="modify_td_02">
+                    <p class="modify_ts">
+                        <span class="span_user"></span>
+                        <span class="span_email"></span>
+                        <span class="span_phone"></span>
+                        <span class="span_address"></span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td class="modify_td_01"><span>姓<b class="transparat">透明</b>名</span>：</td>
+                <td class="modify_td_02"><input class="modify_input input_user" type="text" value="{$userData.name}" name="name"/></td>
+            </tr>
+            <tr>
+                <td class="modify_td_01">性<b class="transparat">透明</b>别：</td>
+                <td class="modify_td_02">
+             	
+                    <input class="input_radio"  name="modify_sex" type="radio"  value="1" <if  condition="$userData.gender eq 1">checked="checked"</if>/><label class="modify_label">&nbsp;&nbsp;男</label>
+                    <input class="input_radio"  name="modify_sex" type="radio" value="2" <if  condition="$userData.gender eq 2">checked="checked"</if>/><label class="modify_label">&nbsp;&nbsp;女</label>
+                
+                </td>
+            </tr>
+            <!-- 
+            <tr>
+                <td class="modify_td_01"><span>邮箱</span>：</td>
+                <td class="modify_td_02"><input class="modify_input input_email" type="text" value="{$userData.email}" /></td>
+            </tr>
+             --> 
+            <tr>
+                <td class="modify_td_01"><span>电<b class="transparat">透明</b>话</span>：</td>
+                <td class="modify_td_02"><input class="modify_input input_phone" name="mobile" type="text" value="{$userData.mobile}"/></td>
+            </tr>
+            <tr>
+                <td class="modify_td_01 modify_03" id="address"><span>地<b class="transparat">透明</b>址</span>：</td>
+                <td class="modify_td_02"><textarea class="modify_input modify_02 input_address" name="address" >{$userData.address}</textarea></td>
+            </tr>
+            <tr>
+                <td class="modify_td_01 modify_03"><span>喜好水果</span>：</td>
+                <td class="modify_td_02"><textarea class=" modify_02 " name="like" >{$userData.like}</textarea></td>
+            </tr>
+            <tr>
+                <td class="modify_td_01 modify_03"><span>忌口水果</span>：</td>
+                <td class="modify_td_02"><textarea class=" modify_02 " name="dislike">{$userData.dislike}</textarea></td>
+            </tr>
+            <tr>
+            	<td class="mc_td_08" colspan="2"  >
+            		<button type="button" class="modify_btn_false modify_toggle" >取消</button>
+            		<button type="submit" class="modify_btn_true "  id="submit_true" >确定</button>
+            	</td>
+            </tr>
+		 </form>
+        </table>
+       
+        
+    </div>
+
+    <!--以上是个人信息修改遮罩层-->
+    <div class="mc">
+    
+        <!--以下头部-->
+        <div class="mc_head">
+            <div class="mc_head_top">
+                <a href="questionary.html"><img class="mc_top_left left" src="{:ADDON_PUBLIC_PATH}/img/membercenter/membercenter_01.png"></a>
+                <img class="mc_top_bg"  src="{:ADDON_PUBLIC_PATH}/img/membercenter/membercenter_03.png">
+                <a href="#"><img class="mc_top_right right" src="{:ADDON_PUBLIC_PATH}/img/membercenter/membercenter_02.png"></a>
+            </div>
+            <img class="mc_head_bg" src="{:ADDON_PUBLIC_PATH}/img/membercenter/membercenter_04.png">
+            <img class="mc_user_img" src="{$_SESSION['gguser_head_img']}">
+            <div class="mc_user_img_bg"></div>
+            <img class="mc_head_health" src="{:ADDON_PUBLIC_PATH}/img/membercenter/membercenter_05.png">
+
+            <!-- <div class="mc_head_left">
+                <span><span>0</span>天</span>
+                <br>
+                已食用
+            </div> -->
+           <!--  <div class="mc_head_right">
+                <span><span>0</span>天</span>
+                <br>
+                还剩余
+            </div> -->
+            <!--
+                class="mc_user_man" 表示为男性
+                class="mc_user_woman" 表示为女性
+            -->
+            <div class="mc_user_sex" >{$_SESSION['gguser_nickname']}</div>
+            <div class="mc_btn_habitus habitus_toggle">
+                <h1><span class="mc_02_color" ></span>体质</h1>
+            </div>
+        </div>
+        <!--以上头部-->
+        <div class="mc_middle">
+            <ul class="mc_middle_ul">
+                <li class="mc_middle_li mc_li_inset">
+                    <h1>购买记录</h1>
+                    日期
+                </li>
+                <li class="mc_middle_li mc_li_shadow">
+                    <h1>个人信息</h1>
+                    关于您
+                </li>
+                <li class="mc_middle_li mc_li_shadow">
+                    <h1>
+                    <if condition="$userData['logistic'] gt 0">
+                    	续费
+                    <else/>
+                    	购买
+                    </if>
+                    </h1>
+                    充值
+                </li>
+
+
+            </ul>
+            <div class="clear"></div>
+        </div>
+
+        <!--以下底部-->
+        <div class="mc_foot">
+            <!--默认-->
+            <div class="mc_foot_01">
+
+                <div class="mc_foot_list" style="padding-top: 5%; padding-bottom: 5%;">
+                    <ul class="mc_list_ul">
+                    	
+                      <if condition="$userData['orderCount'] eq 0">
+                       	<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;小主，你暂无订购记录哟
+                      <else/>
+                       	<li class="mc_li_08">
+                       		<div class="mc_last_day">剩余天数: <span class="mc_span_red" id="mc_send_num">{$userData['logistic']}</span> 天</div>
+                    		<if condition="$userData['status'] eq 1">
+                    			<div class='mc_btn_stop mc_btn_send' id="mc_btn_stop">暂停配送</div>
+                    		<else/>
+                    			<div class='mc_btn_star mc_btn_send' id="mc_btn_star">恢复配送</div>
+                    		</if>
+                    	</li>
+                       	<volist name="userData['order']" id='vo'>
+                       		<li>
+                            <img  src="{:ADDON_PUBLIC_PATH}/img/membercenter/membercenter_08.png">
+                            <h2>您于<span>{$vo.start_date}</span>订购了{$vo.quantity}天的果果哒</h2>
+                            <!-- <p>时间<span>2014年10月26日</span>至<span>2014年11月26日</span></p> -->
+                            <div class="clear"></div>
+                        </li> 
+                       	</volist>
+                      </if>  
+                      
+                      
+                      
+                      
+    <!--以下是配送暂停提示层-->
+    <div class="mc_send_father">
+        <div class="mc_send_body">
+            <div class="mc_send">
+                <p class="mc_send_p" style="font-size:1.6rem;line-height:3.2rem;"></p>
+                <div  class="btn_send_false">取消</div> 
+                <a href="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/changeStatus/">
+                	<div  class="btn_send_true">确定</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                        
+                    
+                 	
+                    </ul>
+                </div>
+            </div>
+           
+            <div class="mc_foot_03">
+                <table class="mc_table">
+                    <tr>
+                        <td class="mc_td_01">姓名：</td>
+                        <td class="mc_td_02"><span>{$userData.name}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="mc_td_01">性别：</td>
+                        <td class="mc_td_02"><span>{$userData.gender1}</span></td>
+                    </tr>
+                    <!-- <tr>
+                        <td class="mc_td_01">邮箱：</td>
+                        <td class="mc_td_02"><span class="mc_span_01">{$userData.email}</span></td>
+                    </tr> -->
+                    <tr>
+                        <td class="mc_td_01">电话：</td>
+                        <td class="mc_td_02"><span class="mc_span_01">{$userData.mobile}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="mc_td_01">地址：</td>
+                        <td class="mc_td_02"><span class="mc_span_02">{$userData.address}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="mc_td_01">喜好：</td>
+                        <td class="mc_td_02"><span class="mc_span_02">{$userData.like}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="mc_td_01">忌口：</td>
+                        <td class="mc_td_02"><span class="mc_span_02">{$userData.dislike}</span></td>
+                    </tr>
+                    
+                    
+                    
+            
+                    
+                    
+                    
+                    <tr>
+                        <td class="mc_td_01"></td>
+                        <td class="mc_td_02">
+                        	<!-- <img class="mc_btn_change modify_toggle"  src="{:ADDON_PUBLIC_PATH}/img/membercenter/membercenter-personal_01.png"> -->
+                        	<div class="mc_btn_change modify_toggle">修改</div>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+            <!--充值-->
+            
+            <div class="mc_foot_04">
+            <form action="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/pay_true/" method="post">
+          
+                <h1 class="mc_04_h1"><span class="mc_04_num">49</span>元</h1>
+
+                <p class="mc_04_p1">
+                    开始时间：
+                    <span class="zzq_time_toggle start_time">
+					
+                    </span>
+                </p>
+                <!--
+                <p class="mc_04_p2">至：<span>2014</span>年<span>12</span>月<span>30</span>日</p>
+                -->
+                <p class="mc_04_p3">
+                    购买数量
+                    <input type="hidden"  id="start_date" name="start_date">
+                    <select class="buy_number buy_change" name="number">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    个
+                    <select class="buy_unit buy_change" name="times">
+                        <option value="49">周</option>
+                        <option value="199">月</option>
+                    </select>
+                </p>
+                <!--
+                <a href="#"><img class="mc_btn_buy" src="img/membercenter/membercenter-pay_02.png"></a>
+            	-->
+            	<button type="submit" class="bn_btn_buy tu_toggle "  id="buy_submit" style="display:block;">立即购买</button>
+                <!-- <div class="bn_btn_buy tu_toggle" id="buy_submit">立即购买</div> -->
+            </form>
+            </div>
+            
+            
+            
+            
+            
+             
+            
+            
+        </div>
+        <!--以上底部-->
+    </div>
+
+
+ <!--以下是日期选择-->
+    <div class="zzq_time_ymd  zzq_time_move">
+        <div class="zzq_time_head ">
+            <div class="zzq_time_top">
+                <h1>选择日期</h1>
+                <div class="zzq_time_return"></div>
+                <ul class="zzq_time_ul_01">
+                    <li>日</li>
+                    <li>一</li>
+                    <li>二</li>
+                    <li>三</li>
+                    <li>四</li>
+                    <li>五</li>
+                    <li>六</li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+
+        </div>
+        <div class="zzq_time_body">
+            <div class="zzq_time_date" >
+                <div class="zzq_time_ym"></div>
+                <ul class="zzq_time_ul_02"></ul>
+                <div class="clear"></div>
+            </div>
+            <div class="zzq_time_date" >
+                <div class="zzq_time_ym"></div>
+                <ul class="zzq_time_ul_02"></ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <!--以上是日期选择-->
+
+
+
+</body>
+</html>
+
+
+<script>
+
+</script>

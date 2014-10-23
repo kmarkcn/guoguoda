@@ -1,0 +1,51 @@
+@charset "utf-8";
+/* CSS Document */
+.ui-viewport-640 body{
+	overflow:scroll;
+}
+.swiper-wrapper .q-content{
+    height:auto;
+	margin-bottom:5%;
+}
+.tpl-scroll .swiper-container{
+	height: auto;
+}
+.container{
+}
+.q-top{ height:auto;}
+.q-foot{ height:auto;}
+.q-top-img{
+    height: auto;
+
+
+}
+
+.p-h1{
+	margin: 0;
+    padding: 7% 0;
+	color: #333;
+	font-size: 2rem;
+	line-height: 3rem;
+	letter-spacing: 0.2rem;
+	text-align: left;
+}
+
+.p-h2{
+	text-align: right;
+}
+.p-color{
+	color: #d30469;
+}
+.q-time{
+	display: none;
+}
+.p-p1
+,.p-p2{
+    padding: 0;
+	color: #000;
+	font-size: 1.4rem;
+	line-height: 2rem;
+	text-indent: 3.2rem;
+	letter-spacing: 0.2rem;
+	text-align: left;
+}

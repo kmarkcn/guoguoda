@@ -1,0 +1,36 @@
+<extend name="Base/common" />
+<block name="body">
+  <script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+  <!-- 标签页导航 -->
+  <div class="span9 page_message">
+    <section id="contents">
+      <include file="Addons/_nav" />
+      <div class="tab-content" style='text-align:left;'> 
+        <!-- 表单 -->
+        <form id="form" action="./index.php?s=/addon/Ordering/Ordering/adddo/" method="post" class="form-horizontal form-center">
+        	
+        	<!--  
+        		2014-10-13 by terry
+        		修改数据form表单的重写
+        	-->
+
+        	<p style="color:red;">订单添加只针对于线下用户</p><br/>
+		用户名:<br/><input type="text" name='name'><br/>
+		<p style="color:red;">注意时间格式:2014-10-01</p><br/>
+		订购时间:<br/><input type="text" name="orderTime"><br/>
+		订购数量:<br/><input type="text" name='quantity'><br/>
+         	<br/>
+            <button class="btn submit-btn " id="submit" type="submit" >确 定</button>
+          </div>
+        </form>
+      
+        
+        
+        
+        <include file="Addons/weixinPreview"/>
+      </div>
+    </section>
+  </div>
+  </div>
+</block>
+

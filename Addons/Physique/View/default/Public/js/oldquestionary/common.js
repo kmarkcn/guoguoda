@@ -1,0 +1,1 @@
+_WXShare('http://cdwanhua.zhixun.in/14lufun/Public/img/share.jpg','100','100','听说成都人都是艺术家！点击亮出你的生活艺术','2014麓FUN微信艺术节人人都是艺术家，到麓湖一起来体验艺术生活吧！','http://cdwanhua.zhixun.in/14lufun/');

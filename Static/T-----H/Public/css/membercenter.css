@@ -1,0 +1,899 @@
+@charset "utf-8";
+
+
+
+/*配送状态*/
+.mc_send_father{
+    display: none;
+    position: absolute;
+    z-index: 2000;
+}
+.mc_send_body{
+    position: relative;
+    width: 100%;
+
+
+}
+.mc_send_p{
+    font-family: "微软雅黑", "黑体", "宋体";
+    text-align: left;
+    letter-spacing: .3rem;
+    font-size: 20px;
+    line-height: 5rem;
+    text-indent: 2em;
+    padding: 5%;
+	color:red;
+}
+.mc_send{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin:  -10rem -45%;
+    width: 90%;
+    background-color: white;
+    text-align: center;
+    border-radius: 8%;
+    box-shadow: 0 0 1rem #ccc;
+}
+.mc_send .btn_send_false
+,.mc_send .btn_send_true{
+    display: inline-block;
+    width: 36%;
+    margin: 1rem;
+}
+/*配送状态*/
+
+/*联系方式*/
+.touch_us{
+    position: absolute;
+    z-index: 2000;
+    display: none;
+}
+.touch_us_01{
+    position: relative;
+    width: 100%;
+}
+.tu_font {
+    font-family: "微软雅黑", "黑体", "宋体";
+    background-color: white;
+    /*
+    height: 16rem;
+    */
+    left: 50%;
+    margin: -6rem -40%;
+    position: absolute;
+
+    top: 50%;
+    width: 80%;
+    line-height: 3rem;
+    font-size: 1.6rem;
+    text-indent: 2em;
+    padding: 5%;
+    border-radius: 5%;
+    box-shadow: 0 0 15px #333;
+    letter-spacing: 0.2rem;
+
+}
+.tu_font a {
+    color: #00bfff;
+}
+.tu_01{
+    line-height: 6rem;
+    text-align: center;
+    text-indent: 0;
+}
+.tu_02{
+    display: inline-block;
+    /*width: 10rem ;*/
+    line-height: 3rem;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    border-radius: 5%;
+    letter-spacing: .5rem;
+    text-align: center;
+    text-indent: 0;
+    margin: 0 1rem;
+    padding: 0 2rem;
+}
+
+
+
+
+/*联系方式*/
+
+/*测试*/
+
+
+
+
+.q-top-return{
+    position: absolute;
+    top: 1.2%;
+    left: 2%;
+    width: 4.5%;
+    height: 33%;
+    cursor: pointer;
+}
+.habitus_top{
+    position: relative;
+    width: 100%;
+}
+.h_t_img{
+    width: 100%;
+}
+.htmlbody{
+    position: relative;
+	height: auto;
+	overflow: auto;
+	background-color:#fff;
+}
+.htmlbody_bg{ background-color: #fff;}
+.mc_modify
+,.mc_habitus{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    background-color: white ;
+    box-shadow: inset 0 0 .5rem #ccc;
+}
+.mc_modify{
+    padding-top: 0rem;
+	padding-bottom: 1rem;
+}
+.mc_modify *{
+    font-family: "微软雅黑", "黑体", "宋体";
+}
+.modify_top{
+	display:none;
+    width: 100%;
+    text-align: center;
+    line-height: 6rem;
+	letter-spacing: .3rem;
+    font-size: 2rem;
+    font-family: "微软雅黑", "黑体", "宋体";
+    color: white;
+}
+.modify_table{
+    width: 100%;
+}
+.modify_table td{
+    position: relative;
+    line-height:  4.2rem;
+    font-size: 1.6rem;
+    font-family: "微软雅黑", "黑体", "宋体";
+    color: #666;
+}
+.mc_td_08{
+	padding-top: .5rem;
+	padding-left:  8%;
+	padding-right: 8%;
+}
+.mc_span_red{
+	display:inline-block;
+	color: red;
+	font-size: 2.6rem;
+}
+.mc_last_day{
+	display: inline-block;
+	font-family: "微软雅黑", "黑体", "宋体";
+	font-size: 1.8rem;
+	line-height: 6rem;
+	
+}
+
+.mc_list_ul .mc_btn_star
+,.mc_list_ul .mc_btn_stop{
+	font-size: 1.6rem;
+    height: 3.2rem;
+    letter-spacing: 0.2rem;
+    line-height: 3.2rem;
+    position: absolute;
+    right: 2rem;
+    top: 1.4rem;
+    width: 32%;
+	
+}
+.mc_list_ul .mc_li_08{
+    height: 6rem;
+	padding: 0 2rem;
+	
+}
+.mc_btn_stop{
+	
+}
+.mc_list_ul .mc_btn_star{
+
+	background-color:red;
+	
+}
+.modify_02
+,.modify_input{
+	
+	border: 1px solid #ccc;
+    margin: 0;
+    width: 90%;
+    height: 3.2rem;
+    font-size: 1.4rem;
+}
+.modify_02{
+    margin-top: 1rem;
+    height: 7.2rem;
+    line-height: 1.8rem;
+}
+.modify_03{
+    vertical-align: top;
+}
+.modify_td_01{
+    padding-right: 5%;
+    width: 35%;
+    text-align: right;
+}
+.modify_td_02{
+    width: 65%;
+    text-align: left;
+
+}
+.modify_label{
+    margin: 0;
+	font-size: 1.6rem;
+    width: 20%;
+    text-align: left;
+}
+.mc_modify .modify_border{
+    border-color: red ;
+    box-shadow: 0 0 .3rem red;
+}
+.modify_ts{
+    font-size: 1.4rem;
+    line-height: 2rem;
+}
+.modify_btn_true
+,.modify_btn_false
+,.habitus_btn_return
+,.mc_btn_star
+,.mc_btn_stop
+,.btn_send_false
+,.btn_send_true
+,.mc_btn_change
+,.wd_btn{
+    display: inline-block;
+    padding: 0 1rem;
+    width: 40%;
+    height: 4rem;
+    line-height: 4rem;
+    text-align: center;
+    font-size: 2rem;
+    font-family: "微软雅黑", "黑体", "宋体";
+    letter-spacing: .5rem;
+    border: none;
+    color: white;
+    box-shadow: 0 0 .5rem #ccc;
+    cursor: pointer;
+	border-radius:8%;
+}
+.modify_btn_true
+,.modify_btn_false
+,.habitus_btn_return
+,.mc_btn_star
+,.mc_btn_stop
+,.modify_top
+,.btn_send_false
+,.btn_send_true
+,.mc_btn_change
+,.wd_btn{
+	background-color: #00b7ee;
+}
+.mc_btn_change{
+	display:inline-block;
+}
+
+.habitus_btn_return{
+    margin: auto;
+}
+.modify_btn_true{ float: right;}
+.modify_btn_false{ float: left;}
+.modify_foot{
+    padding: 3rem 0;
+    margin: auto;
+    width: 80%;
+}
+
+.habitus_foot
+,.habitus_foot img{
+    width: 100%;
+}
+.input_radio{
+
+}
+.jqTransformRadioWrapper{
+	position: relative;
+	top: 1.3rem;
+}
+
+/*以下是提示模板*/
+
+.input_ts_father{
+    position: absolute;
+    z-index: 999;
+    bottom: -5rem;
+}
+.input_ts{
+    position: relative;
+    text-align: center;
+    /*
+    border: 1px solid red;
+    */
+}
+.ts_content{
+    height: 4rem;
+    line-height: 4rem;
+    font-size: 1.2rem;
+    border-radius: 6%;
+    padding: 0 1.2rem 0 4rem;;
+    color: red;
+    display: inline-block;
+    border: 1px solid gray;
+    box-shadow: 0 0 5px gray;
+    background-color: white;
+}
+.ts_expression{
+    display: inline-block;
+    position: absolute;
+    top:.8rem;
+    left: .6rem;
+    width: 3rem;
+    height: 3rem;
+    background-image: url("../img/questionary/expression.png");
+    background-repeat: no-repeat;
+    background-position: 0 -3rem;
+    background-size: 3rem;
+}
+/*.ts_guide{
+    position: absolute;
+    top: 4.5rem;
+    left: 45%;
+    border-top: .8rem solid gray;
+    border-left: .8rem solid transparent;
+    border-right: .8rem solid transparent;
+    border-bottom: none;
+}*/
+.ts_guide{
+    position: absolute;
+    top: -.6rem;
+    left: 45%;
+    border-bottom: .8rem solid gray;
+    border-left: .8rem solid transparent;
+    border-right: .8rem solid transparent;
+    border-top: none;
+}
+/*以上是提示模板*/
+.mc_foot .mc_foot_01
+,.mc_foot .mc_foot_03
+,.mc_foot .mc_foot_04{
+	display:none;
+}
+.mc_foot .mc_foot_01{
+	display:block;
+}
+
+
+
+
+
+
+.mc{
+    position: relative;
+    min-height: 100%;
+    background-color: white;
+}
+.mc_head{
+    position: relative;
+}
+.mc_head_top{
+    position: relative;
+    z-index: -1;
+}
+.mc_top_bg{
+    width: 100%;
+}
+.mc_top_left{
+    position: absolute;
+    top: 10%;
+    left: 0;
+    width: 10%;
+
+}
+.mc_top_right{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 8%;
+}
+.mc_head_bg{
+    position: relative;
+    margin-top: -11%;
+    width: 100%;
+
+    z-index: 0;
+}
+
+
+.mc_user_img{
+    position: absolute;
+    top: 68%;
+    left: 53%;
+    margin: 0 -13%;
+    width: 26%;
+    border-radius: 50%;
+    z-index: 2;
+	box-shadow: 0 0 10px gray;
+
+
+}
+
+/*
+.mc_user_img {
+    border-radius: 50%;
+    box-shadow: 0 0 10px gray;
+    height: 50%;
+    left: 60%;
+    margin: 0 -16.4%;
+    position: absolute;
+    top: 75%;
+    width: 20.8%;
+    z-index: 2;
+}
+*/
+.mc_user_img_bg{
+	display: none;
+    position: absolute;
+    top: 59%;
+    left: 53%;
+    margin: 0 -17.4%;
+    height: 83%;
+    width: 34.8%;
+    border-radius: 50%;
+    z-index: 1;
+    background-color: white;
+    /*border: 2px solid white;*/
+}
+.mc_head_health{
+    position: absolute;
+    top: 15%;
+    left: 53%;
+    margin: 0 -20%;
+    width: 40%;
+}
+.mc_head_left
+,.mc_head_right{
+    position: absolute;
+    top: 70%;
+    width: 20%;
+    color: white;
+    font-size: 1rem;
+    line-height: 1.6rem;
+    text-align: center;
+    font-weight: 500;
+}
+.mc_head_left{
+    left: 0;
+}
+.mc_head_right{
+    right: 0;
+}
+.mc_head_left span
+,.mc_head_right span{
+    font-family: "微软雅黑", "黑体", "宋体";
+    font-size: 1.6rem;
+
+}
+
+.mc_user_sex{
+    position: absolute;
+    left: 70%;
+    top: 120%;
+    font-family: "微软雅黑", "黑体", "宋体";
+    font-weight: bold;
+    font-size: 1.6rem;
+    color: #333;
+    letter-spacing: 0.2rem;
+    padding-right: 5%;
+
+    background-position: right 50%;
+    background-repeat: no-repeat;
+    background-size: 19% 53%;
+}
+.mc_user_man{
+    background-image: url("../img/membercenter/membercenter_10.png");
+}.mc_user_woman{
+     background-image: url("../img/membercenter/membercenter_11.png");
+ }
+
+.mc_middle{
+    margin-top: 22%;
+    /*margin-bottom: 5%;*/
+
+}
+.mc_middle_ul{
+
+}
+.mc_middle_ul li{
+    position:  relative;
+    padding: 2% 0;
+    float: left;
+    width: 33.33%;
+    text-align: center;
+    cursor: pointer;
+    border-left: 1px solid #999;
+    border-radius: 1%;
+
+
+}
+
+.mc_middle_ul .mc_li_inset h1{
+    color: #ccc;
+}
+.mc_middle_ul>li:first-child{
+    border: none;
+}
+.mc_middle_ul h1{
+    margin: 0;
+    /*
+	font-family: "微软雅黑", "黑体", "宋体";
+    */
+	font-size: 1.6rem;
+    color: black;
+    line-height: 2.5rem;
+    font-weight: bold;
+}
+.mc_middle_li{
+    font-weight: bold;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    color: #ccc;
+
+}
+.mc_foot_head{
+    position:  relative;
+}
+.mc_foot_img{
+    width: 100%;
+}
+.mc_foot_head>h1{
+    position: absolute;
+    left: 52%;
+    top: 35%;
+    margin: 0;
+    font-family: "微软雅黑", "黑体", "宋体";
+    font-size: 2.2rem;
+    color: #666;
+
+}
+.mc_li_shadow{
+    z-index: 5;
+    box-shadow: -6px 0 0 white, 6px 0 0 white,0 2px 4px #ccc,0 -2px 4px #ccc;
+    -webkit-box-shadow: -6px 0 0 white, 6px 0 0 white,0 2px 4px #ccc,0 -2px 4px #ccc;
+    -moz-box-shadow: -6px 0 0 white, 6px 0 0 white,0 2px 4px #ccc,0 -2px 4px #ccc;
+}
+.mc_li_inset{
+    z-index: 10;
+    box-shadow:inset 0 2px 4px #ccc,inset 0 -2px 4px #ccc;
+    -webkit-box-shadow:inset 0 2px 4px #ccc,inset 0 -2px 4px #ccc;
+    -moz-box-shadow:inset 0 2px 4px #ccc,inset 0 -2px 4px #ccc;
+}
+.mc_list_ul li{
+	position:relative;
+    margin: auto;
+    width: 96%;
+    border-bottom: 1px solid #ccc;
+    height: 4.6rem;
+
+}
+
+/*
+.mc_list_ul li:last-child{
+    border: none;
+    padding-bottom: 5%;
+}
+*/
+.mc_list_ul img{
+    float: left;
+    margin-top: .5rem;
+    margin-right: 2%;
+    width: 10%;
+}
+.mc_list_ul h2{
+    float: left;
+    margin: 4% 0 1% 0;
+    font-family: "微软雅黑", "黑体", "宋体";
+    font-size: 1.4rem;
+    line-height: 2rem;
+    color: #333;
+}
+.mc_list_ul p{
+    float: left;
+    font-family: "微软雅黑", "黑体", "宋体";
+    font-size: 1rem;
+    line-height: 1.4rem;
+    color: #999;
+}
+
+
+.mc_foot_03
+,.mc_foot_04{
+    display: none;
+}
+
+.mc_foot_03
+,.mc_foot_04{
+    padding-bottom: 8%;
+}
+/*体质*/
+.mc_foot_02{
+    margin-top: -12%;
+    padding-left:5%;
+    padding-right:5%;
+
+}
+.mc_02_h1{
+    margin: 0;
+    padding: 7% 0;
+    color: #333;
+    font-size: 2rem;
+    line-height: 3rem;
+    letter-spacing: 0.2rem;
+    text-align: left;
+}
+
+.mc_02_h2{
+    text-align: right;
+}
+.mc_02_color_01{
+    color: #d30469;
+}
+
+.mc_02_p1
+,.mc_02_p2{
+    padding: 0;
+    color: #000;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    text-indent: 3.2rem;
+    letter-spacing: 0.2rem;
+    text-align: left;
+}
+.mc_02_p2{
+	margin: 0;
+}
+/*信息*/
+.mc_foot_03{
+}
+
+.mc_table{
+    margin: 2% auto;
+    width: 100%;
+
+
+}
+.mc_table td{
+    line-height:  4rem;
+    font-size: 1.6rem;
+    font-family: "微软雅黑", "黑体", "宋体";
+    color: #666;
+    border-bottom: 1px solid #ccc;
+}
+.mc_td_01{
+    width: 27%;
+    text-align: right;
+}
+.mc_td_02{
+    width: 73%;
+    text-align: right;
+    padding-right: 5%;
+}
+
+.mc_btn_change{
+    cursor: pointer;
+}
+.mc_span_01{
+    font-size: 1.4rem;
+}
+.mc_span_02{
+    display: block;
+    font-size: 1rem;
+    line-height: 1.4rem;
+
+}
+
+/*充值*/
+.mc_foot_04{
+
+}
+.mc_foot_04 p {
+	padding:.8rem 0;
+}
+.mc_04_h1{
+    margin: 5% 0;
+    text-align: center;
+    font-size: 2.5rem;
+    line-height: 5rem;
+    color: #ee0000;
+    font-weight: bold;
+	background-image:url(../img/membercenter/membercenter-pay_01.png);
+	background-repeat: no-repeat;
+	background-position: center 80%;
+	background-size: 50%;
+}
+.mc_04_num{
+	font-family: "微软雅黑", "黑体", "宋体";
+    font-size: 4rem;
+	letter-spacing: .4rem;
+	text-shadow: 2px 2px #ccc;
+}
+.mc_04_p1
+,.mc_04_p2{
+	text-align: center;
+	padding-right: 10%;
+	
+}
+.mc_04_p1{
+    
+    font-size: 1.4rem;
+    color: #000;
+}
+.mc_04_p2{
+    font-size: 1.2rem;
+    color: #999;
+}
+.mc_04_p3{
+    text-align: center;
+    font-size: 1.2rem;
+    color: #999;
+}
+.mc_04_p3 select{
+    text-align: center;
+    padding: .4rem 1rem;
+}
+.mc_btn_buy{
+    position: relative;
+    left: 50%;
+    margin: 8% -28%;
+    width: 56%;
+}
+#cal1{
+	margin: 0;
+	width: 55%;
+    font-size: 1.8rem;
+	text-align: center;
+	color: #999;
+	box-shadow: inset 0 0 2px #ccc;
+}
+
+.mc_logo{
+	width: 20%;
+}
+.mc_02_p3{
+	margin: 0;
+	text-align: right;
+	line-height: 3rem;
+}
+.mc_02_span{
+
+    /*position: relative;
+    font-size: 2rem;
+    top: 1rem;
+    */
+    display:inline-block;
+    height:2px;
+    width:15%;
+    border: 1px solid #ccc;
+}
+
+.mc_middle *
+,.mc_foot_02 *{
+    /*
+	font-family: font_01;
+    */
+    /*
+	font-family:HanWangYenThin-Gb573851;
+	*/
+}
+.mc_foot_02 *{
+	font-weight: 500;
+}
+.mc_btn_habitus h1{
+    margin: 0;
+    /*
+	font-family: "微软雅黑", "黑体", "宋体";
+    */
+    font-size: 1.6rem;
+    color: black;
+    line-height: 2.5rem;
+    font-weight: bold;
+}
+
+.mc_btn_habitus{
+    position: absolute;
+    top: 120%;
+    left: 10%;
+    cursor: pointer;
+}
+.mc_btn_habitus .mc_02_color{
+    color: #d30469;
+}
+
+.transparat{
+    color: transparent;
+}
+
+/* buy_now*/
+
+
+.bn .mc_middle_ul,
+.bn .mc_head_right,
+.bn .mc_head_left{
+	display: none;
+}
+.bn .mc_foot_04{
+	display: block;
+}
+.bn_img{
+	width: 100%;
+}
+.bn .mc_middle{
+	margin: 0;
+}
+.bn .mc_user_sex{
+	position: absolute;
+	top: 80%;
+	left: 75%;
+}
+#bn_html
+,#bn_body{
+	height:100%;
+	min-height:100%;
+}
+
+.bn_btn_buy{
+	position: relative;
+	top: 1rem;
+	margin: auto;
+	width: 50%;
+	background-color: #ee0000;
+	letter-spacing: .4rem;
+	line-height: 4.2rem;
+	font-size: 2.5rem;
+	color: white;
+	text-align: center;
+	border-radius: 5%;
+    font-family: "微软雅黑", "黑体", "宋体";
+}
+
+
+.append_div{
+    display: none;
+    position: absolute;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .5;
+    background-color: gray;
+}
+
+
+
+
+
+
+
+
+
+
+
+
