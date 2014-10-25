@@ -44,7 +44,7 @@ $(function(){
 		t_body = $('.q-time-body'),					            //进度条中间
 		t_bottom = $('.q-time-bottom'),				            //进度条底部
 		color_bg = 'white',										//背景颜色
-		color_show = '#d30469';									//填充颜色
+		color_show = '#44d5b1';									//填充颜色
 
 	$('.q-time').css('color','red');
 	t_top.css('background-color',color_bg);

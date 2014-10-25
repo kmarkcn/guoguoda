@@ -32,6 +32,7 @@ body{
 	height: 100%;
 }
 .q-top-return{
+	display:none;
 	position: absolute;
 	top: 1.2%;
 	left: 2%;
@@ -62,7 +63,7 @@ body{
 }
 span{
     /*font-family:minijianyaya67562;*/
-	font-family: font_01;
+	font-family:HanWangYenThin-Gb571063;
 }
 .q-u{
 	width: 100%;
@@ -128,7 +129,7 @@ span{
 
 .q-time p{
 	
-	color: #d30469;
+	color: #44d5b1;
 	font-size: 1rem;
 	text-align: center;
 	white-space: nowrap;
