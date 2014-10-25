@@ -35,7 +35,7 @@ class WeixinAddonModel extends WeixinModel{
 		
 		$gguser = M('gguser');
 		$data1 = array(
-			'name' => '',
+			'name' => $_SESSION['gguser_nickname'],
 			'gender'=>'',
 			'mobile'=>'',
 			'address'=>'',

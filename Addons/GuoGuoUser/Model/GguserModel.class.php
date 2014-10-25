@@ -209,7 +209,7 @@ class GguserModel extends Model{
     	//增加用户表
     	$gguser = M('gguser');
     	$data1 = array(
-    			'name' => '',
+    			'name' => $_SESSION['gguser_nickname'],
     			'gender'=>'',
     			'mobile'=>'',
     			'address'=>'',
