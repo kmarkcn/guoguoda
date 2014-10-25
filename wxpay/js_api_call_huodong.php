@@ -1,7 +1,4 @@
 <?php
-session_start();
-$money = $_SESSION['gguser_money'];
-$newMoney = $_SESSION['gguser_money']*100;
 /**
  * JS_API支付demo
  * ====================================================
@@ -11,7 +8,7 @@ $newMoney = $_SESSION['gguser_money']*100;
  * 步骤2：使用统一支付接口，获取prepay_id
  * 步骤3：使用jsapi调起支付
 */
-	include_once("./WxPayPubHelper/WxPayPubHelper.php");
+	include_once("./WxPayPubHelper1/WxPayPubHelper.php");
 	
 	//使用jsapi接口
 	$jsApi = new JsApi_pub();
@@ -48,7 +45,7 @@ $newMoney = $_SESSION['gguser_money']*100;
 	$timeStamp = time();
 	$out_trade_no = WxPayConf_pub::APPID."$timeStamp";
 	$unifiedOrder->setParameter("out_trade_no","$out_trade_no");//商户订单号 
-	$unifiedOrder->setParameter("total_fee","1");//总金额
+	$unifiedOrder->setParameter("total_fee","990");//总金额
 	$unifiedOrder->setParameter("notify_url",WxPayConf_pub::NOTIFY_URL);//通知地址 
 	$unifiedOrder->setParameter("trade_type","JSAPI");//交易类型
 	//非必填参数，商户可根据实际情况选填
@@ -70,62 +67,93 @@ $newMoney = $_SESSION['gguser_money']*100;
 ?>
 
 
+<!doctype html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
-	<link href="css/public.css"  rel="stylesheet" type="text/css" />
-    <link href="css/pay_prompt.css"  rel="stylesheet" type="text/css" />
-	<title>微信安全支付</title>
+	<meta charset="UTF-8">
+	<title>果果哒</title>
+	<meta content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body class="bn">
-	<div class="web-header">
-			<div class="top-back"><a href="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/membercenter/"></a></div>
-			<div class="top-title">果果哒订购</div>
-	</div>
-    <div class="pay_prompt">
-        <div class="pp_head">
-            <img class="pp_user_img" src="<?php echo($_SESSION['gguser_head_img']); ?>">
-            <ul class="pp_ul">
-                <li><span class="pp_user"><?php echo($_SESSION['gguser_nickname']); ?></span></li>
-                
-            </ul>
-        </div>
-        <div class="pp_body"></div>
-
-        <div class="pp_content">
-            <div class="pp_ts_top">
-                支付确认
+<body>
+ <!--以下是支付提示层-->
+    <div class="touch_us">
+        <div class="touch_us_01">
+            <div class="tu_font">
+                在线支付功能正在紧急调试中，您还可以选择电话预订  
+               
             </div>
-            <div class="pp_ts_body">
-                <p class="pp_ts_p">
-                    本次交易金额:<br/>
-                    <span class="pp_red"><?php echo($money); ?></span>元,是否确认支付?
-                </p>
-                <div class="pp_btn_pay" onclick="callpay();" style="background: url(./images/bg_top.png);">支付</div>
-            </div>
-        </div>
-
-		<div style="margin-top:2.5rem;width:100%;text-align:center;font-size:.8rem;">
-			<span><input type="checkbox" checked="checked" disabled="disabled" style="height:1.2rem;position:relative;top:-0.1rem;left:1.4rem;"></span>
-			同意微信支付条款
-		</div>	
-			
-        <div class="pp_right">
-        <span>果果哒,最懂你的鲜果定制专家</span>
         </div>
     </div>
-
-
-   
-
-
-</body>
-</html>
+  <!--以上是支付提示层-->
+<div class="web-main">
+	<div class="web-content">
+		<div class="bgpic99">
+			<img src="images/bg_99.gif" alt="" style="margin:-10% 0 ;">
+		</div>
+		<div class="bgbtn99 text-center">
+			<img src="images/bg_btn99.gif" alt="" class="active_btn" onclick="check();" style="position:relative;top:5px;width:80%;">
+			<input id="active_ts" type="hidden" value="1"/>
+			
+		</div>
+		<div class="bgdes99">
+			<h2><b>活动规则</b></h2>
+			<div class="height_10"></div>
+			<div>
+				<p>1. 果果哒精品鲜果订制套餐单次9.9元包邮（送货上门）。购买此单次套餐的用户，可享次日订购半价5元。</p>
+				<p>2. 没有微信的就可以给现金，有微信没有绑定银行卡的就必须关注果果哒微信填写用户信息才有资格购买。也可以微信支付。</p>
+				<p>3. 每个微信ID限量购买一次，半价5元套餐仅限次日购买，逾期无效。</p>
+				<p>4. 购买成功后次日配送，半价套餐隔日配送，且不得修改地址。</p>
+				<p>5. 此次活动仅限布鲁明顿广场写字楼用户，其他用户暂不参与此次活动。</p>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="js/jquery-2.0.3.min.js"></script>
 
 
 <script type="text/javascript">
+		function check(){
+			$.ajax({
+	             type: "GET",
+	             url: "http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/huodongCheck/",
+	             dataType: "json",
+	             success: function(data){
+	            	 switch(parseInt(data))
+		     			{
+		     				case 1:
+		     					callpay();
+		     					break;
+		     				case 2:
+			     				$('.tu_font').text('小主，活动还没开始!');
+			     				ab();setTimeout(abcd,2000);
+			     				break;
+		     				case 3:
+			     				$('.tu_font').text('小主，活动过期!');
+			     				ab();setTimeout(abcd,2000);
+			     				break;
+		     				case 4:
+			     				$('.tu_font').text('小主，你参加过啦!');
+			     				ab();setTimeout(abcd,2000);
+			     				break;
+		     		   }
+	             }
+	         })
+		}
 
+
+function abcd(){
+	$('.touch_us').hide();
+	$('.append_div').hide();
+}
+function ab(){
+	$('.touch_us').show();
+	$('.append_div').show();
+}
+	
+
+
+		
 		//调用微信JS api 支付
 		function jsApiCall()
 		{
@@ -136,7 +164,7 @@ $newMoney = $_SESSION['gguser_money']*100;
 					//WeixinJSBridge.log(res.err_msg);
 					//alert(res.err_code+res.err_desc+res.err_msg);
 					if(res.err_msg=='get_brand_wcpay_request:ok'){
-						window.location="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/payResult/result/1";
+						window.location="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/payResult/result/2";
 					}else{
 						alert('系统繁忙,支付失败!');
 						window.location="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/membercenter/";
@@ -159,40 +187,5 @@ $newMoney = $_SESSION['gguser_money']*100;
 			}
 		}
 	</script>
-
-
-
-
-<style>
-.web-header { position: relative; padding: 0 50px; height: 46px; background: url(./images/bg_top.png) #EAEAE8 no-repeat; background-size: 100%;}
-.web-header .top-back { position: absolute; left: 0; top: 0; width: 50px; height: 46px; background: url(./images/icon_back.png) center center no-repeat; background-size: 11px; }
-.web-header .top-back a { display: block; width: 100%; height: 100%}
-.web-header .top-title { line-height: 46px; text-align: center; color: #fff;font-size:16px;}
-</style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</body>
+</html>

@@ -338,7 +338,7 @@ class UnifiedOrder_pub extends Wxpay_client_pub
 				throw new SDKRuntimeException("缺少统一支付接口必填参数trade_type！"."<br>");
 			}elseif ($this->parameters["trade_type"] == "JSAPI" &&
 				$this->parameters["openid"] == NULL){
-				throw new SDKRuntimeException("系统繁忙!"."<br>");
+				throw new SDKRuntimeException("系统繁忙！"."<br>");
 				//header("location:http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/membercenter/");
 					
 			}

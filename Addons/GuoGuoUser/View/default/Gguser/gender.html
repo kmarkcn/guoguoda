@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>果果哒</title>
+	<meta content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+	<link rel="stylesheet" type="text/css" href="{:ADDON_PUBLIC_PATH}/new/css/style.css">
+</head>
+<body>
+<div class="web-main">
+	<div class="web-content">
+		<div class="web-header">
+			<div class="top-title">性别</div>
+		</div>
+		<div class="height_10"></div>
+		<form action="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/genderDo/" method="post">
+			<div class="b-box form">
+				<div class="form-item">
+					<label for="input-name" class="input-label dark fl">男</label>
+					<div class="text-right gray">
+						<span class="check-box"></span>
+					</div>
+					<input type="checkbox" value="1" class="checkbox-input" name="gender">
+				</div>
+				<div class="form-item">
+					<label for="" class="input-label dark fl">女</label>
+					<div class="text-right gray">
+						<span class="check-box"></span>
+					</div>
+					<input type="checkbox" value="2" class="checkbox-input" name="gender">
+				</div>
+			</div>
+		
+			<div class="button-bar">
+				<a href="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/membermsg/">
+				<button type="button" class="b-button">取 消</button>
+				</a>
+				<button class="b-button">确 定</button>
+			</div>
+			<input type="hidden" id="gender" value="{$userData['gender1']}">
+		</form>	
+	</div>
+</div>
+<script src="{:ADDON_PUBLIC_PATH}/new/js/jquery-2.0.3.min.js"></script>
+<script>
+	$(function(){
+		var gender=$('#gender').val();
+			$(".form-item").each(function(){
+				var objthis = $(this);
+				if($(this).children('.input-label').html()==gender){
+					$(this).addClass("on");
+					$(this).find(".checkbox-input").attr("checked","checked")
+				}
+			})
+		  
+		
+		
+		$(".form-item").on("click",function(){
+			$(".form-item").find(".checkbox-input").removeAttr("checked");
+			$(".form-item").removeClass("on");
+			if($(this).hasClass("on")){
+				$(this).removeClass("on");
+				$(this).find(".checkbox-input").removeAttr("checked")
+			}else{
+				$(this).addClass("on");
+				$(this).find(".checkbox-input").attr("checked","checked")
+			}
+		})
+	})
+</script>
+</body>
+</html>

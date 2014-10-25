@@ -17,6 +17,7 @@ class LogisticController extends AddonsController{
 			}else{
 				$list_data['list_data'][$key]['status'] = '暂停配送';
 			}
+			$list_data['list_data'][$key]['address'] = LogisticModel::getAddress($val['id']);
 		}
 		$this->assign ( $list_data );
 		$this->display ( $model ['template_list'] );

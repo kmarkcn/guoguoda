@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>果果哒</title>
+	<meta content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+	<link rel="stylesheet" type="text/css" href="{:ADDON_PUBLIC_PATH}/new/css/style.css">
+</head>
+<body>
+<div class="web-main">
+	<div class="web-content">
+		<div class="web-header">
+			<div class="top-title">姓名</div>
+		</div>
+		<div class="height_10"></div>
+		<form action="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/nameDo/" method="post">
+			<div class="b-box form">
+				<div class="form-item long">
+					<label for="input-name" class="input-label fl"></label>
+					<input type="text" placeholder="" value="{$userData['name']}" id="name" class=" submit_input input-noborder text-left fr" name="name" >
+				</div>
+			</div>
+		
+			<div class="button-bar">
+				<a href="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/membermsg/"><button type="button" class="b-button">取 消</button></a>
+				<button class="b-button" type="submit" id="b-submit">确 定</button>
+			</div>
+		</form>	
+	</div>
+</div>
+<script src="{:ADDON_PUBLIC_PATH}/new/js/jquery-2.0.3.min.js"></script>
+<script src="{:ADDON_PUBLIC_PATH}/new/js/verification.js"></script>
+</body>
+</html>

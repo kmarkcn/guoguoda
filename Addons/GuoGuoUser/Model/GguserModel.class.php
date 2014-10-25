@@ -71,11 +71,12 @@ class GguserModel extends Model{
     	$userData1 = $gguser->where("id = '{$userid}'")->select();
     	$userData = $userData1[0];
     	$userData['gender1'] = GguserModel::gender_check($userData['gender']);
-    	
+    	$userData['userType'] = GguserModel::typeCheck($userData['type']);
+    	$userData['address'] = trim($userData['address']);
     	
     	//然后获取用户体质
     	$physicque = $physic->where("userid = '{$userid}'")->select();
-    	$userData['physic'] = $physicque[0]['physicque'];
+    	$userData['physic'] = GguserModel::physicque_check($physicque[0]['physicque']);
 
     	
     	//获取用户喜好
@@ -93,6 +94,10 @@ class GguserModel extends Model{
     	$orderRe = $order->where("userid = '{$userid}'")->select();
     	$userData['order'] = $orderRe;
     	$userData['orderCount'] = count($orderRe); 
+    	$userData['accountQuantity'] = 0;
+    	foreach ($orderRe as $key =>$val){
+    		$userData['accountQuantity']+=$val['quantity'];
+    	}
     	
     	//针对订购时间的处理
     	foreach($userData['order'] as $key=>$val){
@@ -100,6 +105,27 @@ class GguserModel extends Model{
     	}
     	return $userData;
     }
+    
+    
+    /*
+     * 2014-10-23 by terry
+     * 匹配用户类型
+     */
+    function typeCheck($type){
+    	switch($type){
+    		case 1:
+    			return 'VIP会员';
+    			break;
+    		case 2:
+    			return '普通会员';
+    			break;
+    		case 3:
+    			return '线下用户';
+    			break;
+    	}
+    }
+    
+    
     
     
     /*
@@ -345,10 +371,23 @@ class GguserModel extends Model{
    		$data = array(
    			'userid' => GguserModel::getUidByOpenid(),
    			'start_date'=>time(),
-			'money'=>$_SESSION['order_money'],
-   			'quantity'=>$_SESSION['order_quantity'],
+			'money'=>$_SESSION['gguser_money'],
+   			'quantity'=>GguserModel::moneyCheck($_SESSION['gguser_money']),
    		);
    		return $data;
+   }
+   
+   
+   
+   function moneyCheck($money){
+	   	switch ($money){
+	   		case 49:
+	   			return '5';break;
+	   		case 199:
+	   			return '22';break;
+	   		case 589:
+	   			return '66';break;
+	   	}
    }
    
    
@@ -376,16 +415,25 @@ class GguserModel extends Model{
     * 将订单写入数据库
     */
    
-   function restorePayData(){
-   			session_start();
-   			$data = GguserModel::getPayData();
-   			$order = M('gguser_order');
-   			if(GguserModel::isWeixinUser()){
-   				$data['lastupdate']  = time();
-   				if(isset($_SESSION['order_start_date'])){
-   					$order->add($data);
-   					unset($_SESSION['order_start_date']);
+   function restorePayData($a){
+   			if(empty($a)){
+   				session_start();
+   				$data = GguserModel::getPayData();
+   				$order = M('gguser_order');
+   				if(GguserModel::isWeixinUser()){
+   					if(isset($_SESSION['gguser_money'])){
+   						$order->add($data);
+   					}
    				}
+   			}else if($a=='huodong'){
+   				$order = M('gguser_order');
+   				$data = array(
+   					'userid' => GguserModel::getUidByOpenid(),
+   					'start_date'=>time(),
+   					'money'=>10,
+   					'quantity'=>1,
+   				);
+   				$order->add($data);
    			}
    }
    
@@ -401,11 +449,7 @@ class GguserModel extends Model{
    		$logistic = M('gguser_logistics');
    		$re = $logistic->where("userid = {$userid}")->select();
    		if(count($re)>0){
-   			if($re[0]['quantity']>=1){
-   				return 1;
-   			}else{
-   				return 2;
-   			}
+   			return 1;
    		}else{
    			return 0;
    		}
@@ -435,28 +479,57 @@ class GguserModel extends Model{
    		$userid = GguserModel::getUidByOpenid();
    		$logistic = M('gguser_logistics');
    		if($type=='1'){
-   			//物流表不为空并且剩余天数为0
-   			$data1 = array(
-   				'start_date' => GguserModel::timeChange(),
-   				'quantity'   => $data['quantity']
-   			);
-   			$logistic->where("userid = {$userid}")->save($data1);
-   		}else if($type=='2'){
-   			//物流表不为空并且剩余天数不为0
    			$re = GguserModel::returnLogisticData();
+   			if($re['quantity']==0){
+   				$data1 = array(
+   						'start_date' => GguserModel::timeChange(),
+   						'quantity'   => $data['quantity']
+   				);
+   				//echo "数据存在1";
+   				$logistic->where("userid = {$userid}")->save($data1);
+   			}else{
+   				$re = GguserModel::returnLogisticData();
+   				$data1 = array(
+   						'quantity'=> $data['quantity']+$re['quantity']
+   				);
+   				//print_r($data);
+   				$logistic->where("userid = {$userid}")->save($data1);
+   			} 
+   			
+   		}else if($type=='2'){
+   			//echo "数据不存在";
    			$data1 = array(
-   				'quantity'   => $data['quantity']+$re['quantity']
+   					'userid'=>$userid,
+   					'start_date' => GguserModel::timeChange(),
+   					'quantity'   => $data['quantity']
    			);
-   			$logistic->where("userid = {$userid}")->save($data1);
-   		}else if($type=='3'){
-   			//数据为空
+   			$logistic->add($data1); 
+   		}else if($type=="3"){
+   			$re = GguserModel::returnLogisticData();
+   			if($re['quantity']==0){
+   				$data1 = array(
+   						'start_date' => GguserModel::timeChange(),
+   						'quantity'   => 1
+   				);
+   				//echo "数据存在1";
+   				$logistic->where("userid = {$userid}")->save($data1);
+   			}else{
+   				$re = GguserModel::returnLogisticData();
+   				$data1 = array(
+   						'quantity'=> 1+$re['quantity']
+   				);
+   				//print_r($data);
+   				$logistic->where("userid = {$userid}")->save($data1);
+   			}
+   		}else if($type=="4"){
    			$data1 = array(
-   				'userid'=>$userid,
-   				'start_date' => GguserModel::timeChange(),
-   				'quantity'   => $data['quantity']
+   					'userid'=>$userid,
+   					'start_date' => GguserModel::timeChange(),
+   					'quantity'   => 1
    			);
    			$logistic->add($data1);
    		}
+   		
    }
    
    
@@ -466,19 +539,19 @@ class GguserModel extends Model{
     * 2014-10-21 by terry
     * 订单过后要处理物流表，完成物流系统
     */
-   function restoreLogistic(){
-   		if(GguserModel::logisticExist()){
-   			//判断剩余天数是不是为0
-   			if(GguserModel::logisticExist()== '2'){
-   				//物流表不为空并且剩余天数为0
+   function restoreLogistic($a){
+   		if(empty($a)){
+   			if(GguserModel::logisticExist()){
    				GguserModel::changeLogistic('1');
    			}else{
-   				//物流表不为空并且剩余天数不为0
    				GguserModel::changeLogistic('2');
    			}
-   		}else{
-   			//物流不存在
-   			GguserModel::changeLogistic('3');
+   		}else if($a=='huodong'){
+   			if(GguserModel::logisticExist()){
+   				GguserModel::changeLogistic('3');
+   			}else{
+   				GguserModel::changeLogistic('4');
+   			}
    		}
    }
    
@@ -502,7 +575,41 @@ class GguserModel extends Model{
    }
    
    
+   function huodongExist(){
+   		$userid = GguserModel::getUidByOpenid();
+   		$huodong = M('gg_huodong');
+   		$re = $huodong->where("userid = {$userid}")->select();
+   		if(count($re)>0){
+   			return $re[0];
+   		}else{
+   			return 0;
+   		}
+   }
    
-   
+   /*
+    * 2014-10-24 by terry
+    * 添加本人到活动表
+    */
+   function restoreHuodong(){
+   		$huodong = M('gg_huodong');
+   		if(GguserModel::huodongExist()){
+   			$userid = GguserModel::getUidByOpenid();
+   			$re = GguserModel::huodongExist();
+   			$data = array(
+   					'times'=>$re['times']+1,
+   					'lastupdate'=>time()
+   			);
+   			$huodong->where("userid = {$userid}")->save($data);
+   		}else{
+   			$userid = GguserModel::getUidByOpenid();
+   			$data = array(
+   					'userid'=> $userid,
+   					'times'=>1,
+   					'lastupdate'=>time()
+   			);
+   			$huodong->add($data);
+   		}
+   		
+   }
    
 }

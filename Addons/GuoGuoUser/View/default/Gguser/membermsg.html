@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>果果哒</title>
+	<meta content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+	<link rel="stylesheet" type="text/css" href="{:ADDON_PUBLIC_PATH}/new/css/style.css">
+</head>
+<body>
+<div class="web-main">
+	<div class="web-content">
+		<div class="web-header">
+			<div class="top-back"><a href="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/membercenter/"></a></div>
+			<div class="top-title">个人信息</div>
+		</div>
+		<div class="height_10"></div>
+		<div class="b-box form">
+			<a class="alink" href="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/name/">
+				<div class="form-item">
+					<label for="input-name" class="input-label dark fl">姓名</label>
+					<div class="text-right gray">
+						{$userData['name']}
+					</div>
+				
+			</div>
+			</a>
+			<a class="alink" href="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/gender/">
+				<div class="form-item">
+				<label for="" class="input-label dark fl">性别</label>
+					<div class="text-right gray">
+						{$userData['gender1']}
+					</div>
+				
+			</div>
+			</a>
+			<a class="alink" href="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/mobile/">
+				<div class="form-item">
+				<label for="" class="input-label dark fl">电话</label>
+					<div class="text-right gray">
+						{$userData['mobile']}
+					</div>
+				
+			</div>
+			</a>
+			<a class="alink" href="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/address/">
+				<div class="form-item no-border">
+				<label for="input-name" class="input-label dark fl">地址</label>
+					<div class="text-right gray">
+						{$userData['address']}
+					</div>
+				
+			</div>
+			</a>
+		</div>
+		<div class="height_20"></div>
+		<div class="b-box form">
+			<div class="form-item">
+				<label for="input-name" class="input-label dark fl">体质</label>
+				<div class="text-right gray">
+					{$userData['physic']}
+				</div>
+			</div>
+			<a class="alink" href="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/dislike/">
+			<div class="form-item">
+				<label for="input-name" class="input-label dark fl">忌口</label>
+					<div class="text-right gray">
+						{$userData['dislike']}
+					</div>
+			</div>
+			</a>
+			<a class="alink" href="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/like/">
+			<div class="form-item">
+				<label for="input-name" class="input-label dark fl">喜好</label>
+					<div class="text-right gray">
+						{$userData['like']}
+					</div>
+				
+			</div>
+			</a>
+		</div>
+	</div>
+</div>
+<script src="{:ADDON_PUBLIC_PATH}/new/js/jquery-2.0.3.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>果果哒</title>
+	<meta content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+	<link rel="stylesheet" type="text/css" href="{:ADDON_PUBLIC_PATH}/new/css/style.css">
+</head>
+<body>
+<div class="web-main">
+	<div class="web-content">
+		<div class="web-header">
+			<div class="top-back"><a href="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/membercenter/"></a></div>
+			<div class="top-title">开通服务</div>
+		</div>
+		<div class="order-box">
+			<form action="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/buyDo/" method="post">
+				<div class="identity">
+					<p><span class="gray">续费账号：</span><span>{$_SESSION['gguser_nickname']}</span></p>
+					<p><span class="gray">当前身份：</span><span>{$userData['userType']}</span></p>
+				</div>
+				<div class="open-time clearfix">
+					<p class="gray">开通时间：</p>
+					<div class="height_8"></div>
+					<span data-time="1" data-amount="49" class="time-b on">一星期<i class="hot">HOT</i></span>
+					<span data-time="2" data-amount="199" class="time-b">一个月</span>
+					<span data-time="3" data-amount="589" class="time-b">三个月</span>
+					<input id="input-time" type="hidden" value="1" name="time">
+				</div>
+				<div class="paly-amount gray">
+					应付金额：<span class="amount">49</span> 元
+					<input id="input-amount" type="hidden" value="49" name="money">
+				</div>
+				<div class="btn-bar">
+					<button class="open-btn" type="submit">立即开通</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<script src="{:ADDON_PUBLIC_PATH}/new/js/jquery-2.0.3.min.js"></script>
+<script>
+	$(function(){
+		$("#input-time").val('1');
+		$("#input-amount").val('49');
+		$(".time-b").on("click",function(){
+				$(".time-b").removeClass("on");
+				$(this).addClass("on");
+				var _time = $(this).attr("data-time"),
+					_amount = $(this).attr("data-amount")
+				$("#input-time").val(_time);
+				$("#input-amount").val(_amount);
+				$(".amount").text(_amount);
+		})
+	})
+</script>
+</body>
+</html>

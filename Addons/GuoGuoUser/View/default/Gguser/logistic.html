@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>果果哒</title>
+	<meta content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+	<link rel="stylesheet" type="text/css" href="{:ADDON_PUBLIC_PATH}/new/css/style.css">
+</head>
+<body>
+<div class="web-main">
+	<div class="web-content">
+		<div class="web-header">
+			<div class="top-title">我的订单</div>
+		</div>
+		<div class="height_10"></div>
+		<div class="b-box form">
+			<div class="form-item">
+				<label for="input-name" class="input-label dark fl">已使用次数</label>
+				<div class="text-right gray">
+					{$userData['accountQuantity']}天
+				</div>
+			</div>
+			<div class="form-item">
+				<label for="" class="input-label dark fl">剩余次数</label>
+				<div class="text-right gray">
+					{$userData['logistic']}天
+				</div>
+			</div>
+		</div>
+		<div class="button-bar">
+			<a class="b-button" href="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/membercenter/">确 定</a>
+		</div>
+	</div>
+</div>
+<script src="{:ADDON_PUBLIC_PATH}/new/js/jquery-2.0.3.min.js"></script>
+
+</body>
+</html>

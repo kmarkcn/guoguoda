@@ -26,11 +26,13 @@ if (isset($_GET['code'])){
 	//$_SESSION['gguser_info']=$res;
 	//页面跳转
 	if($_GET['state']=='1'){
-		header('location:http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/questionary');
+		header('location:http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/questionary/');
 	}else if($_GET['state']=='2'){
-		header('location:http://www.kmark.cn/gogoda/Static/survey/buy_now.html');
+		header('location:http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/buy/');
 	}else if($_GET['state']=='3'){
-		header('location:http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/membercenter');
+		header('location:http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/membercenter/');
+	}else if($_GET['state']=='4'){
+		header("location:http://www.kmark.cn/gogoda/wxpay/js_api_call_huodong.php");
 	}
 	
 	

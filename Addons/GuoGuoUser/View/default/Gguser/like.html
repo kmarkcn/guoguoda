@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>果果哒</title>
+	<meta content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+	<link rel="stylesheet" type="text/css" href="{:ADDON_PUBLIC_PATH}/new/css/style.css">
+</head>
+<body>
+<div class="web-main">
+	<div class="web-content">
+		<div class="web-header">
+			<div class="top-title">忌口</div>
+		</div>
+		<div class="height_10"></div>
+		<form action="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/likeDo/" method="post">
+			<div class="b-box form">
+				<div class="form-item">
+					<label for="input-name" class="input-label dark fl">榴莲</label>
+					<div class="text-right gray">
+						<span class="check-box"></span>
+					</div>
+					<input type="checkbox" value="榴莲" class="checkbox-input" name="like[]">
+				</div>
+				<div class="form-item">
+					<label for="input-name" class="input-label dark fl">苹果</label>
+					<div class="text-right gray">
+						<span class="check-box"></span>
+					</div>
+					<input type="checkbox" value="苹果" class="checkbox-input" name="like[]">
+				</div>
+				<div class="form-item">
+					<label for="input-name" class="input-label dark fl">梨</label>
+					<div class="text-right gray">
+						<span class="check-box"></span>
+					</div>
+					<input type="checkbox" value="梨" class="checkbox-input" name="like[]">
+				</div>
+				<div class="form-item">
+					<label for="input-name" class="input-label dark fl">西瓜</label>
+					<div class="text-right gray">
+						<span class="check-box"></span>
+					</div>
+					<input type="checkbox" value="西瓜" class="checkbox-input" name="like[]">
+				</div>
+				<div class="form-item">
+					<label for="input-name" class="input-label dark fl">火龙果</label>
+					<div class="text-right gray">
+						<span class="check-box"></span>
+					</div>
+					<input type="checkbox"  value="火龙果" class="checkbox-input" name="like[]">
+				</div>
+				<div class="form-item">
+					<label for="input-name" class="input-label dark fl">香蕉</label>
+					<div class="text-right gray">
+						<span class="check-box"></span>
+					</div>
+					<input type="checkbox" value="香蕉" class="checkbox-input" name="like[]">
+				</div>
+				<div class="form-item">
+					<label for="input-name" class="input-label dark fl">圣女果</label>
+					<div class="text-right gray">
+						<span class="check-box"></span>
+					</div>
+					<input type="checkbox" value="圣女果" class="checkbox-input" name="like[]">
+				</div>
+				<div class="form-item">
+					<label for="input-name" class="input-label dark fl">石榴</label>
+					<div class="text-right gray">
+						<span class="check-box"></span>
+					</div>
+					<input type="checkbox" value="石榴" class="checkbox-input" name="like[]">
+				</div>
+				<div class="form-item">
+					<label for="input-name" class="input-label dark fl">芒果</label>
+					<div class="text-right gray">
+						<span class="check-box"></span>
+					</div>
+					<input type="checkbox" value="芒果" class="checkbox-input" name="like[]">
+				</div>
+				<div class="form-item">
+					<label for="input-name" class="input-label dark fl">桂圆</label>
+					<div class="text-right gray">
+						<span class="check-box"></span>
+					</div>
+					<input type="checkbox" value="桂圆" class="checkbox-input" name="like[]">
+				</div>
+			</div>
+			<div class="height_20"></div>
+			<div class="b-box form">
+				<div class="form-item long">
+					<label for="input-name" class="input-label fl"></label>
+					<input type="text" placeholder="请您填写其他不喜欢或忌口的水果" class="input-noborder fr" name="likeOther" id="likeOther" style="text-align:left;">
+				</div>
+			</div>
+		
+			<div class="button-bar">
+				<a href="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/membermsg/">
+				<button type="button" class="b-button">取 消</button>
+				</a>
+				<button class="b-button" type="submit">确 定</button>
+			</div>
+		</form>	
+	</div>
+	<input type="hidden" id="like" value="{$userData['like']}">
+</div>
+<script src="{:ADDON_PUBLIC_PATH}/new/js/jquery-2.0.3.min.js"></script>
+<script>
+	$(function(){
+		var like=$('#like').val();
+		var newlike1 = like.split("+");
+		var newD1 = newlike1[0];
+		var newD2 = newlike1[1];
+		$('#likeOther').val(newD2);
+		var newA1 = newD1.split('/');
+		for (i=0;i<newA1.length;i++) 
+		{ 	
+			$(".form-item").each(function(){
+				var objthis = $(this);
+				if($(this).children('.input-label').html()==newA1[i]){
+					$(this).addClass("on");
+					$(this).find(".checkbox-input").attr("checked","checked")
+				}
+			})
+		}   
+		
+		$(".form-item").on("click",function(){
+			if($(this).hasClass("on")){
+				$(this).removeClass("on");
+				$(this).find(".checkbox-input").removeAttr("checked")
+			}else{
+				$(this).addClass("on");
+				$(this).find(".checkbox-input").attr("checked","checked")
+			}
+		})
+	})
+</script>
+</body>
+</html>
