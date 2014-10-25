@@ -532,8 +532,19 @@ class GguserModel extends Model{
    		
    }
    
+   /*
+    * 2014-10-25 by terry
+    * 改变用户type
+    */
    
-   
+   function changeType(){
+   		$userid = GguserModel::getUidByOpenid();
+   		$data = array(
+   			'type'=>1
+   		);
+   		$user = M('gguser');
+   		$user->where("id = {$userid}")->save($data);
+   }
    
    /*
     * 2014-10-21 by terry

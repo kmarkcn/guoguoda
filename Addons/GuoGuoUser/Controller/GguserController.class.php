@@ -201,6 +201,9 @@ class GguserController extends AddonsController{
 			GguserModel::restoreLogistic("huodong");
 			GguserModel::restoreHuodong();
 		};
+		//改变用户type
+		GguserModel::changeType();
+		
 		//调出物流信息页面
 		$userData = GguserModel::getMemberMsg();
 		$this->assign('userData',$userData);
