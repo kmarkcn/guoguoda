@@ -226,12 +226,12 @@ $(function(){
 		$(this).removeClass('modify_border').siblings('.input_ts_father').remove();
 	});
 	//参数设置
-	var user_ts = '小主，昵称不能为空哦！',
-		email_ts = '小主，邮箱不能为空哦！',
-		phone_ts = '小主，电话号码不能为空哦！',
-		address_ts = '小主，地址不能为空哦！',
-		phone_false = '小主，电话号码格式有误哦！',
-		email_false = '小主，邮箱格式有误哦！';
+	var user_ts = '亲，昵称不能为空哦！',
+		email_ts = '亲，邮箱不能为空哦！',
+		phone_ts = '亲，电话号码不能为空哦！',
+		address_ts = '亲，地址不能为空哦！',
+		phone_false = '亲，电话号码格式有误哦！',
+		email_false = '亲，邮箱格式有误哦！';
 	//验证input输入,table纵向添加判断
 	$('.modify_input').blur(function(){
 		var modify_input_val = $(this).val();
@@ -244,7 +244,7 @@ $(function(){
 			email_val = $.trim($(".input_email").val());
 
 		//var down_ts = $('<tr><td class="down_ts" colspan="'+ td_number +'"></td></tr>');
-		var up_ts = $('<div class="input_ts_father"><div class="input_ts"><div class="ts_content"><div class="ts_expression"></div><span class="ts_text">小主，有错误哦</span></div><br /><span class="ts_guide"></span></div></div>');
+		var up_ts = $('<div class="input_ts_father"><div class="input_ts"><div class="ts_content"><div class="ts_expression"></div><span class="ts_text">亲，有错误哦</span></div><br /><span class="ts_guide"></span></div></div>');
 		$(this).addClass('modify_border').parent().append(up_ts);
 		var ts_text = this_class.siblings('.input_ts_father').find('.ts_text');
 		//首先判断是否为空
@@ -293,18 +293,18 @@ $(function(){
 			if(mc_send_num == 0)
 			{
 				$('.btn_send_true').hide();
-				$('.mc_send_p').text('小主,剩余天数不足1天,不能暂停配送哦')
+				$('.mc_send_p').text('亲,剩余天数不足1天,不能暂停配送哦')
 
 			}
 			if(mc_send_num >0)
 			{
 				$('.btn_send_true').show();
-				$('.mc_send_p').text('小主,您正在暂停配送操作,明天开始将暂停配送,是否真的需要暂停吗?');
+				$('.mc_send_p').text('亲,您正在暂停配送操作,明天开始将暂停配送,是否真的需要暂停吗?');
 			}
 		}
 		else if(this_id == 'mc_btn_star'){
 
-			$('.mc_send_p').text('小主,您正在恢复配送,我们明天将开始配送水果,真的需要恢复吗?');
+			$('.mc_send_p').text('亲,您正在恢复配送,我们明天将开始配送水果,真的需要恢复吗?');
 		}
 
 		//定义高度和宽度
@@ -363,7 +363,7 @@ $(function(){
 				email_val = $.trim($(".input_email").val());
 
 			//var down_ts = $('<tr><td class="down_ts" colspan="'+ td_number +'"></td></tr>');
-			var up_ts = $('<div class="input_ts_father"><div class="input_ts"><div class="ts_content"><div class="ts_expression"></div><span class="ts_text">小主，有错误哦</span></div><br /><span class="ts_guide"></span></div></div>');
+			var up_ts = $('<div class="input_ts_father"><div class="input_ts"><div class="ts_content"><div class="ts_expression"></div><span class="ts_text">亲，有错误哦</span></div><br /><span class="ts_guide"></span></div></div>');
 			$(this).addClass('modify_border').parent().append(up_ts);
 			var ts_text = this_class.siblings('.input_ts_father').find('.ts_text');
 			//首先判断是否为空

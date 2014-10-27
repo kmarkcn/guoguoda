@@ -219,6 +219,5 @@ class GuoGuoUserModel extends Model{
 		}
 	}
 	
-
 	
 }

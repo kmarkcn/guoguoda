@@ -48,7 +48,7 @@ $newMoney = $_SESSION['gguser_money']*100;
 	$timeStamp = time();
 	$out_trade_no = WxPayConf_pub::APPID."$timeStamp";
 	$unifiedOrder->setParameter("out_trade_no","$out_trade_no");//商户订单号 
-	$unifiedOrder->setParameter("total_fee","{$newMoney}");//总金额
+	$unifiedOrder->setParameter("total_fee","$newMoney");//总金额
 	$unifiedOrder->setParameter("notify_url",WxPayConf_pub::NOTIFY_URL);//通知地址 
 	$unifiedOrder->setParameter("trade_type","JSAPI");//交易类型
 	//非必填参数，商户可根据实际情况选填
@@ -102,7 +102,7 @@ $newMoney = $_SESSION['gguser_money']*100;
                     本次交易金额:<br/>
                     <span class="pp_red"><?php echo($money); ?></span>元,是否确认支付?
                 </p>
-                <div class="pp_btn_pay" onclick="callpay();" style="background: url(./images/bg_top.png);">支付</div>
+                <div class="pp_btn_pay" onclick="callpay();" style="background: url(./images/bg_top.png);padding:.5rem 3rem;">支付</div>
             </div>
         </div>
 

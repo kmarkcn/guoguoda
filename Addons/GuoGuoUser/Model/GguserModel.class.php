@@ -76,6 +76,7 @@ class GguserModel extends Model{
     	
     	//然后获取用户体质
     	$physicque = $physic->where("userid = '{$userid}'")->select();
+    	$userData['physic1']=$physicque[0]['physicque']; 
     	$userData['physic'] = GguserModel::physicque_check($physicque[0]['physicque']);
 
     	
@@ -98,7 +99,7 @@ class GguserModel extends Model{
     	foreach ($orderRe as $key =>$val){
     		$userData['accountQuantity']+=$val['quantity'];
     	}
-    	
+    	$userData['accountQuantity'] -= $userData['logistic'];
     	//针对订购时间的处理
     	foreach($userData['order'] as $key=>$val){
     		$userData['order'][$key]['start_date'] = date("Y-m-d",$val['start_date']);
@@ -384,9 +385,9 @@ class GguserModel extends Model{
 	   		case 49:
 	   			return '5';break;
 	   		case 199:
-	   			return '22';break;
-	   		case 589:
-	   			return '66';break;
+	   			return '21';break;
+	   		case 570:
+	   			return '63';break;
 	   	}
    }
    
@@ -403,7 +404,7 @@ class GguserModel extends Model{
    		if($arr['times'] == 49){
    			$arr['times'] = 5;
    		}else if($arr['times'] == 199){
-   			$arr['times'] = 22;
+   			$arr['times'] = 21;
    		}
    		return $arr;
    }

@@ -54,12 +54,26 @@
 		</div>
 		<div class="height_20"></div>
 		<div class="b-box form">
+			
+			
+		<if condition="$userData['physic1'] eq 4">
+			<a class="alink" href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx84ecbf099434ca1d&redirect_uri=http%3A%2F%2Fwww.kmark.cn%2Foauth0.php&response_type=code&scope=snsapi_base&state=1#wechat_redirect">
 			<div class="form-item">
+				<label for="input-name" class="input-label dark fl">体质</label>
+				<div class="text-right gray">
+					去测试
+				</div>
+			</div>
+			</a>
+ 		<else/> 
+ 			<div class="form-item">
 				<label for="input-name" class="input-label dark fl">体质</label>
 				<div class="text-right gray">
 					{$userData['physic']}
 				</div>
 			</div>
+ 		</if>
+			
 			<a class="alink" href="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/dislike/">
 			<div class="form-item">
 				<label for="input-name" class="input-label dark fl">忌口</label>

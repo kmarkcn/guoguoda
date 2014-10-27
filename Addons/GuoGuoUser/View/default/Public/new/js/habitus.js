@@ -1,6 +1,7 @@
 // JavaScript Document
 
 $(function(){
+	alert(1)
 	//体质传值
 	$('.mc_02_val').val($.cookie('p_scores'));
 
@@ -29,15 +30,15 @@ $(function(){
 		{
 			case 1:
 				p_color.text(p_one);
-				h_img.attr('src','img/questionary/h_img_01.png');
+				h_img.attr('src','images/h_img_01.png');
 				break;
 			case 2:
 				p_color.text(p_two);
-				h_img.attr('src','img/questionary/h_img_02.png');
+				h_img.attr('src','images/h_img_02.png');
 				break;
 			case 3:
 				p_color.text(p_three);
-				h_img.attr('src','img/questionary/h_img_03.png');
+				h_img.attr('src','images/h_img_03.png');
 				break;
 
 		}

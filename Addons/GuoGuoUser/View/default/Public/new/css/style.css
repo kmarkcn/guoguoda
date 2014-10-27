@@ -89,7 +89,7 @@ a.button {line-height: 30px;}
 .form-item.long { padding: 12px 15px 10px 15px; }
 .form-item .input-label { position: absolute; left: 15px; top: 11px;}
 .form-item .input-noborder { width: 100%; text-align: right}
-.form-item .logistic{border:1px solid #ccc; height:32px; line-height:32px; box-shadow:none; width:85%;padding:0 10px; text-align:left;}
+.form-item .logistic{border-radius:0;border:1px solid #ccc; height:36px; line-height:36px; box-shadow:none; width:90%;padding:0 10px; text-align:left;}
 .form-des { font-size: 14px; color: #999}
 .form-item .input-date { padding-right: 20px; background: url(../images/icon_arr_right.png) right 6px no-repeat; background-size: 8px}
 .form-item .f-text { line-height: 16px;}

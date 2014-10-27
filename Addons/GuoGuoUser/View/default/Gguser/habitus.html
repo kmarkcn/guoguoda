@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+<!--<link href="css/bootstrap.min.css" rel="stylesheet"/>-->
+<link href="{:ADDON_PUBLIC_PATH}/css/public.css" type="text/css" rel="stylesheet" />
+<link href="{:ADDON_PUBLIC_PATH}/new/css/habitus.css" rel="stylesheet">
+
+
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/js/jquery.min.js"></script>
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/js/jquery.cookie.js"></script>
+
+<!--
+    <link href='http://www.youziku.com/webfont/CSS/a552f22956cec9fccd18ffa5e4510d04' rel='stylesheet' type='text/css'/>
+-->
+<title>果果哒个人体质</title>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+    <div class="habitus">
+        <div class="habitus_top">
+           您的体质
+        </div>
+    	<div class="mc_foot_02">
+                <input class="mc_02_val" type="hidden" >
+                <h1 class="mc_02_h1">您的体质: <span class="mc_02_color mc_02_color_01"></span>体质</h1>
+                <p class="mc_02_p1">根据您的体质，果果哒建议你多吃以下水果。</p>
+                <img class="h_img" style="width: 100%;" >
+                <div class="h_btn">
+                    <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx84ecbf099434ca1d&redirect_uri=http%3A%2F%2Fwww.kmark.cn%2Foauth0.php&response_type=code&scope=snsapi_base&state=2#wechat_redirect">
+                    <button class="h_btn_buy">立即开通</button></a>
+                    <a href="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/membercenter/"><button class="h_btn_ok">确<span style="color:transparent">定</span>定</button></a>
+                </div>
+
+        </div>
+
+	</div>
+
+
+
+</body>
+</html>
+<script>
+$(function(){
+	//体质传值
+	$('.mc_02_val').val($.cookie('p_scores'));
+
+	/*
+	alert($.cookie('p_scores'))
+	//传值姓名和电话
+	alert($.cookie('gg_user'));
+	alert($.cookie('gg_phone'));
+	*/
+	
+	var	p_val = parseInt($('.mc_02_val').val()),
+		p_color = $('.mc_02_color'),
+		p_p1 = $('.mc_02_p1'),
+		p_p2 = $('.mc_02_p2'),
+		p_one = '寒性',
+		p_two = '平和',
+		p_three = '热性',
+		h_img = $('.h_img');
+	//添加默认显示平和体质，防止cookie传值错误
+	p_color.text(p_two);
+
+
+	function p_text(){
+
+		switch(p_val)
+		{
+			case 1:
+				p_color.text(p_one);
+				h_img.attr('src','{:ADDON_PUBLIC_PATH}/new/images/h_img_01.png');
+				break;
+			case 2:
+				p_color.text(p_two);
+				h_img.attr('src','{:ADDON_PUBLIC_PATH}/new/images/h_img_02.png');
+				break;
+			case 3:
+				p_color.text(p_three);
+				h_img.attr('src','{:ADDON_PUBLIC_PATH}/new/images/h_img_03.png');
+				break;
+
+		}
+
+	}
+	p_text();
+	
+});
+</script>

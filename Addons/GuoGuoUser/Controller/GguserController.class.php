@@ -284,10 +284,12 @@ class GguserController extends AddonsController{
 		if(!GguserModel::checkOpenidExist()){
 			GguserModel::likeSubscribe();
 		}
-		$this->display("membercenter");
+		$this->display("habitus");
 	}
 	
-	
+	function habitus(){
+		$this->display();
+	}
 	
 	
 	

@@ -80,7 +80,7 @@
     <div class="touch_us">
         <div class="touch_us_01">
             <div class="tu_font">
-                在线支付功能正在紧急调试中，您还可以选择电话预订  
+             
                
             </div>
         </div>

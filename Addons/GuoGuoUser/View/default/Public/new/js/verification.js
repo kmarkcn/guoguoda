@@ -2,8 +2,8 @@
 //验证姓名，电话，地址
 $(function(){
 	//验证
-				var  up_ts = $('<div class="input_ts_father"><div class="input_ts"><span class="ts_guide"></span><div class="ts_content"><div class="ts_expression"></div><span class="ts_text">小主，不能为空哦</span></div></div></div>'),
-					up_ts_01 = $('<div class="input_ts_father"><div class="input_ts"><span class="ts_guide"></span><div class="ts_content"><div class="ts_expression"></div><span class="ts_text">小主，电话号码格式错误哦</span></div></div></div>');
+				var  up_ts = $('<div class="input_ts_father"><div class="input_ts"><span class="ts_guide"></span><div class="ts_content"><div class="ts_expression"></div><span class="ts_text">亲，不能为空哦</span></div></div></div>'),
+					up_ts_01 = $('<div class="input_ts_father"><div class="input_ts"><span class="ts_guide"></span><div class="ts_content"><div class="ts_expression"></div><span class="ts_text">亲，电话号码格式错误哦</span></div></div></div>');
 				var reg =  /^1[34589]\d{9}$/,       //电话号码验证
 					filter  = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;    //邮箱验证
 				var ts = $('.input_ts_father');
