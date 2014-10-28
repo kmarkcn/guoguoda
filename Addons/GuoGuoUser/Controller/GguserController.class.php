@@ -232,7 +232,7 @@ class GguserController extends AddonsController{
 			$huodong = M('gg_huodong');
 			$userid = GguserModel::getUidByOpenid();
 			$re = $huodong->where("userid = {$userid}")->select();
-			if(count($re)==0){
+			if(empty($re)){
 				echo 1;//可以参加
 			}else{
 				echo 4;//你已经参加
@@ -251,7 +251,7 @@ class GguserController extends AddonsController{
 			$huodong = M('gg_huodong');
 			$userid = GguserModel::getUidByOpenid();
 			$re = $huodong->where("userid = {$userid}")->select();
-			if(count($re)==0){
+			if(empty($re)){
 				echo 5;//亲，你没有参加此活动，无法享用半价购买,请关注果果哒精彩活动
 			}else{
 				if($re[0]['times']==1){
