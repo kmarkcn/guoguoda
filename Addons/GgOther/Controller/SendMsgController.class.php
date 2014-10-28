@@ -34,8 +34,10 @@ class SendMsgController extends AddonsController{
 		$opes = array();
 		foreach($re as $key=>$val){
 			$userid = $val['userid'];
-			$rs = $weixin->where("userid = {$userid}")->select();
-			$opes[] = $rs[0]['openid'];
+			if(date('y-m-d',$val['lastupdate'])==date('y-m-d',(time()-3600*24))){
+				$rs = $weixin->where("userid = {$userid}")->select();
+				$opes[] = $rs[0]['openid'];
+			}
 		}
 		return $opes;
 	} 
