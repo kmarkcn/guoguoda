@@ -1,0 +1,66 @@
+
+<extend name="Base/common" />
+<block name="body">
+  <div class="span9 page_message">
+    <section id="contents"> 
+      <include file="Addons/_nav" /> 
+      <!-- 数据列表 -->
+      <div class="data-table">
+        <div class="table-striped">
+        	<div class="fl">
+          		<empty name="model.extend"></empty>
+          		<div class="father">
+        		<link rel="stylesheet" type="text/css" href="{:ADDON_PUBLIC_PATH}/css/index.css">
+			       
+			       
+			       	消息模板:&nbsp;&nbsp;<select name="message1">
+			       				<option value="C2b2xdiOoOjSmaEIRYF0V_-_m0_plbo2b9ts1LnnjKY" class="message1">
+			       					活动参与成功通知
+			       				</option>
+			       		  </select><br/>
+			       		  
+			       		  
+			       	 <form  action="./index.php?s=/addon/GgOther/SendMsg/messageDo/" method="post" class="form-horizontal form-center">
+        			 <div class="message" id="message1">
+        			 		<input type="hidden" value="message1" name="type">
+        			 		发送用户:&nbsp;&nbsp;<select name="openid">
+				       				<option value="all" class="message1">
+			       					所有参加本次活动的用户
+				       				</option>
+			    		   		  </select></br>
+			       			活动名称:&nbsp;&nbsp;<select name="keyword1">
+				       				<option value="精品鲜果定制9.9包邮" class="message1">
+			       					精品鲜果定制9.9包邮
+				       				</option>
+			    		   		  </select></br>
+			    		   	标&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;题:&nbsp;&nbsp;<input type="text" name="first" /><br/>
+			       			开始时间:&nbsp;&nbsp;<input type="text" style="width:40px;" name='syear'>年
+			       				   <input type="text" style="width:40px;" name='smonth'>月
+			       				   <input type="text" style="width:40px;" name="sday">日<br/>
+			       			结束时间:&nbsp;&nbsp;<input type="text" style="width:40px;" name='eyear'>年
+			       				   <input type="text" style="width:40px;" name='emonth'>月
+			       				   <input type="text" style="width:40px;" name="eday">日<br/>	   
+							备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注:&nbsp;&nbsp;<textarea name="remark"></textarea>
+			       			<br/>
+            				<button class="btn submit-btn " id="submit" type="submit" onclick="return confirm('小主,你可得核实好信息,你点确定,我可是就给用户发咯,您确定么？');">确 定</button>	  
+			        		<hr/>
+			       			<div>
+			       				<p>示例说明:</p>
+			       				<img src="{:ADDON_PUBLIC_PATH}/img/message1-2.png" width="250">
+			       				<span style="color:red;position:relative;top:-120px;">====></span>
+			       				<img src="{:ADDON_PUBLIC_PATH}/img/message1-3.png" width="250">
+			       			</div>
+			       	</div>
+			       	<form>
+			        
+			        
+			        
+			        
+			    </div>
+       	</div>
+      </div>
+    </section>
+  </div>
+</block>
+
+    

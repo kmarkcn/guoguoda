@@ -1,0 +1,65 @@
+[ 2014-10-27T10:22:12+08:00 ] ::1 /guoguoda/
+NOTIC: [8] Undefined index: uid F:\wamp\www\guoguoda\ThinkPHP\Library\Think\Controller.class.php 第 123 行.
+NOTIC: [8] Undefined index: uid F:\wamp\www\guoguoda\ThinkPHP\Library\Think\Controller.class.php 第 127 行.
+
+[ 2014-10-27T10:22:12+08:00 ] ::1 /guoguoda/index.php?s=/home/index/main.html
+NOTIC: [8] Undefined index: uid F:\wamp\www\guoguoda\ThinkPHP\Library\Think\Controller.class.php 第 123 行.
+NOTIC: [8] Undefined index: uid F:\wamp\www\guoguoda\ThinkPHP\Library\Think\Controller.class.php 第 127 行.
+
+[ 2014-10-27T10:22:12+08:00 ] ::1 /guoguoda/index.php?s=/home/user/login.html
+NOTIC: [8] Undefined index: uid F:\wamp\www\guoguoda\ThinkPHP\Library\Think\Controller.class.php 第 123 行.
+NOTIC: [8] Undefined index: uid F:\wamp\www\guoguoda\ThinkPHP\Library\Think\Controller.class.php 第 127 行.
+INFO: [ view_begin ] --START--
+INFO: [ view_begin ] --END-- [ RunTime:0.000044s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000156s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000262s ]
+NOTIC: [8] Undefined index: _addons F:\wamp\www\guoguoda\Runtime\Cache\Home\b171d71961885d3bf0f7a9b2e0867b01.php 第 39 行.
+SQL: SHOW COLUMNS FROM `wp_addons` [ RunTime:0.012918s ]
+SQL: SELECT * FROM `wp_addons` WHERE ( `status` = 1 ) AND ( `type` = 1 )  [ RunTime:0.007677s ]
+SQL: SHOW COLUMNS FROM `wp_addons` [ RunTime:0.002170s ]
+SQL: SHOW COLUMNS FROM `wp_member_public` [ RunTime:0.010262s ]
+SQL: SELECT * FROM `wp_member_public` WHERE ( `token` = -1 ) LIMIT 1   [ RunTime:0.007943s ]
+SQL: SHOW COLUMNS FROM `wp_member_public_link` [ RunTime:0.024666s ]
+SQL: SELECT `addon_status` FROM `wp_member_public_link` WHERE ( `uid` = null ) AND ( `mp_id` = 107 ) LIMIT 1   [ RunTime:0.000252s ]
+NOTIC: [8] Undefined variable: addons F:\wamp\www\guoguoda\Application\Common\Common\function.php 第 429 行.
+NOTIC: [8] Undefined variable: addons F:\wamp\www\guoguoda\Application\Common\Common\function.php 第 429 行.
+NOTIC: [8] Undefined variable: addons F:\wamp\www\guoguoda\Application\Common\Common\function.php 第 429 行.
+NOTIC: [8] Undefined variable: addons F:\wamp\www\guoguoda\Application\Common\Common\function.php 第 429 行.
+NOTIC: [8] Undefined variable: addons F:\wamp\www\guoguoda\Application\Common\Common\function.php 第 429 行.
+NOTIC: [8] Undefined variable: addons F:\wamp\www\guoguoda\Application\Common\Common\function.php 第 429 行.
+NOTIC: [8] Undefined variable: addons F:\wamp\www\guoguoda\Application\Common\Common\function.php 第 429 行.
+NOTIC: [8] Undefined variable: addons F:\wamp\www\guoguoda\Application\Common\Common\function.php 第 429 行.
+NOTIC: [8] Undefined variable: addons F:\wamp\www\guoguoda\Application\Common\Common\function.php 第 429 行.
+NOTIC: [8] Undefined variable: addons F:\wamp\www\guoguoda\Application\Common\Common\function.php 第 429 行.
+NOTIC: [8] Undefined variable: addons F:\wamp\www\guoguoda\Application\Common\Common\function.php 第 429 行.
+NOTIC: [8] Undefined variable: addons F:\wamp\www\guoguoda\Application\Common\Common\function.php 第 429 行.
+NOTIC: [8] Undefined variable: addons F:\wamp\www\guoguoda\Application\Common\Common\function.php 第 429 行.
+NOTIC: [8] Undefined variable: addons F:\wamp\www\guoguoda\Application\Common\Common\function.php 第 429 行.
+NOTIC: [8] Undefined variable: addons F:\wamp\www\guoguoda\Application\Common\Common\function.php 第 429 行.
+NOTIC: [8] Undefined variable: addons F:\wamp\www\guoguoda\Application\Common\Common\function.php 第 429 行.
+NOTIC: [8] Undefined variable: addons F:\wamp\www\guoguoda\Application\Common\Common\function.php 第 429 行.
+NOTIC: [8] Undefined variable: addons F:\wamp\www\guoguoda\Application\Common\Common\function.php 第 429 行.
+NOTIC: [8] Undefined variable: addons F:\wamp\www\guoguoda\Application\Common\Common\function.php 第 429 行.
+NOTIC: [8] Undefined variable: addons F:\wamp\www\guoguoda\Application\Common\Common\function.php 第 429 行.
+NOTIC: [8] Undefined variable: addons F:\wamp\www\guoguoda\Application\Common\Common\function.php 第 429 行.
+NOTIC: [8] Undefined variable: addons F:\wamp\www\guoguoda\Application\Common\Common\function.php 第 429 行.
+NOTIC: [8] Undefined variable: addons F:\wamp\www\guoguoda\Application\Common\Common\function.php 第 429 行.
+INFO: [ pageFooter ] --START--
+SQL: SELECT `addon_config` FROM `wp_member_public` WHERE ( `token` = -1 ) LIMIT 1   [ RunTime:0.000231s ]
+SQL: SHOW COLUMNS FROM `wp_addons` [ RunTime:0.002043s ]
+SQL: SELECT `config` FROM `wp_addons` WHERE ( `name` = 'BaiduStatistics' ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.000203s ]
+INFO: Run BaiduStatistics [ RunTime:0.004706s ]
+INFO: [ pageFooter ] --END-- [ RunTime:0.004806s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.137314s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.137409s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000023s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000098s ]
+INFO: [ view_end ] --START--
+INFO: [ view_end ] --END-- [ RunTime:0.000035s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000063s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000138s ]
+

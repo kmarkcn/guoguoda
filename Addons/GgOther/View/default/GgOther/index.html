@@ -1,0 +1,37 @@
+<extend name="Base/common" />
+<block name="body">
+  <div class="span9 page_message">
+    <section id="contents"> 
+      <include file="Addons/_nav" /> 
+      <!-- 数据列表 -->
+      <div class="data-table">
+        <div class="table-striped">
+        	<div class="fl">
+          		<empty name="model.extend"></empty>
+          		<div class="father">
+        		<link rel="stylesheet" type="text/css" href="{:ADDON_PUBLIC_PATH}/css/index.css">
+			        
+			        <a href="./index.php?s=/addon/GgOther/GgOther/message/">
+			        <div class="div1">
+			            <img src="{:ADDON_PUBLIC_PATH}/img/message1-1.png">
+			            <p>发送模板消息</p>
+			        </div>
+			        </a>
+			        
+			        
+			        <a href="./index.php?s=/addon/GgOther/GgOther/logistic/">
+			        <div class="div1" style="background:#9bf;">
+			            <img src="{:ADDON_PUBLIC_PATH}/img/logistic.png">
+			            <p>物流天数操作</p>
+			        </div>
+			        </a>
+			        
+			        
+			    </div>
+       	</div>
+      </div>
+    </section>
+  </div>
+</block>
+
+    

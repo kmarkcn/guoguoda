@@ -1,4 +1,5 @@
 <?php
+session_start();
 /**
  * JS_API支付demo
  * ====================================================
@@ -8,7 +9,7 @@
  * 步骤2：使用统一支付接口，获取prepay_id
  * 步骤3：使用jsapi调起支付
 */
-	include_once("./WxPayPubHelper1/WxPayPubHelper.php");
+	include_once("./WxPayPubHelper2/WxPayPubHelper.php");
 	
 	//使用jsapi接口
 	$jsApi = new JsApi_pub();
@@ -40,12 +41,12 @@
 	//spbill_create_ip已填,商户无需重复填写
 	//sign已填,商户无需重复填写
 	$unifiedOrder->setParameter("openid","$openid");//商品描述
-	$unifiedOrder->setParameter("body","果果哒水果定制");//商品描述
+	$unifiedOrder->setParameter("body","果果哒水果预定活动半价");//商品描述
 	//自定义订单号，此处仅作举例
 	$timeStamp = time();
 	$out_trade_no = WxPayConf_pub::APPID."$timeStamp";
 	$unifiedOrder->setParameter("out_trade_no","$out_trade_no");//商户订单号 
-	$unifiedOrder->setParameter("total_fee","990");//总金额
+	$unifiedOrder->setParameter("total_fee","500");//总金额
 	$unifiedOrder->setParameter("notify_url",WxPayConf_pub::NOTIFY_URL);//通知地址 
 	$unifiedOrder->setParameter("trade_type","JSAPI");//交易类型
 	//非必填参数，商户可根据实际情况选填
@@ -66,17 +67,16 @@
 	//echo $jsApiParameters;
 ?>
 
-
 <!doctype html>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<title>果果哒</title>
 	<meta content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
- <!--以下是支付提示层-->
+<!--以下是支付提示层-->
     <div class="touch_us">
         <div class="touch_us_01">
             <div class="tu_font">
@@ -88,24 +88,31 @@
   <!--以上是支付提示层-->
 <div class="web-main">
 	<div class="web-content">
-		<div class="bgpic99">
-			<img src="images/bg_99.gif" alt="" style="margin:-10% 0 ;">
+		<div class="web-header">
+			<div class="top-back"></div>
+			<div class="top-title">活动半价</div>
 		</div>
-		<div class="bgbtn99 text-center">
-			<img src="images/bg_btn99.gif" alt="" class="active_btn" onclick="check();" style="position:relative;top:5px;width:80%;">
-			<input id="active_ts" type="hidden" value="1"/>
-			
-		</div>
-		<div class="bgdes99">
-			<h2><b>活动规则</b></h2>
-			<div class="height_10"></div>
-			<div>
-				<p>1. 此次活动仅限布鲁明顿广场写字楼用户，其他用户暂不参与此次活动。</p>
-				<p>2. 果果哒精品鲜果订制套餐单次9.9元包邮（送货上门）。购买此单次套餐的用户，可享次日订购半价5元。</p>
-				<p>3. 没有微信的就可以给现金，有微信没有绑定银行卡的就必须关注果果哒微信填写用户信息才有资格购买。也可以微信支付。</p>
-				<p>4. 每个微信ID限量购买一次，半价5元套餐仅限次日购买，逾期无效。</p>
-				<p>5. 购买成功后次日配送，半价套餐隔日配送，且不得修改地址。</p>
-			</div>
+		<div class="order-box">
+			<form action="">
+				<div class="identity">
+					<p><span class="gray">续费账号：</span><span><?php echo($_SESSION['gguser_nickname']) ?></span></p>
+					<p><span class="gray">当前身份：</span><span>VIP会员</span></p>
+				</div>
+				<div class="open-time clearfix">
+					<p class="gray">开通时间：</p>
+					<div class="height_8"></div>
+					<span data-time="1" data-amount="49" class="time-b on">五折抢鲜<i class="hot">HOT</i></span>
+
+					<input id="input-time" type="hidden" value="">
+				</div>
+				<div class="paly-amount gray">
+					应付金额：<span class="amount">5</span> 元
+					<input id="input-amount" type="hidden" value="">
+				</div>
+				<div class="btn-bar">
+					<button class="open-btn" onclick="check();" type="button">立即抢购</button>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>
@@ -113,33 +120,39 @@
 
 
 <script type="text/javascript">
-		function check(){
-			$.ajax({
-	             type: "GET",
-	             url: "http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/huodongCheck/",
-	             dataType: "json",
-	             success: function(data){
-	            	 switch(parseInt(data))
-		     			{
-		     				case 1:
-		     					callpay();
-		     					break;
-		     				case 2:
-			     				$('.tu_font').text('亲，活动还没开始!');
-			     				ab();setTimeout(abcd,2000);
-			     				break;
-		     				case 3:
-			     				$('.tu_font').text('亲，活动过期!');
-			     				ab();setTimeout(abcd,2000);
-			     				break;
-		     				case 4:
-			     				$('.tu_font').text('亲，你参加过啦!');
-			     				ab();setTimeout(abcd,2000);
-			     				break;
-		     		   }
-	             }
-	         })
-		}
+
+function check(){
+	$.ajax({
+        type: "GET",
+        url: "http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/huodongCheck2/",
+        dataType: "json",
+        success: function(data){
+       	 switch(parseInt(data))
+    			{
+    				case 1:
+    					callpay();
+    					break;
+    				case 2:
+	     				$('.tu_font').text('亲，活动还没开始!');
+	     				ab();setTimeout(abcd,4000);
+	     				break;
+    				case 3:
+	     				$('.tu_font').text('亲，活动过期!');
+	     				ab();setTimeout(abcd,4000);
+	     				break;
+    				case 4:
+	     				$('.tu_font').text('亲，你参加过半价购买,不能重复参加哟...');
+	     				ab();setTimeout(abcd,4000);
+	     				break;
+    				case 5:
+	     				$('.tu_font').text('亲，你没有参加此活动，无法享用半价购买,请先去果果哒微信下参加精彩活动');
+	     				ab();setTimeout(abcd,4000);
+	     				break;
+	     				
+    		   }
+        }
+    })
+}
 
 
 function abcd(){
@@ -153,7 +166,6 @@ function ab(){
 	
 
 
-		
 		//调用微信JS api 支付
 		function jsApiCall()
 		{

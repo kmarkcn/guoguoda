@@ -33,6 +33,8 @@ if (isset($_GET['code'])){
 		header('location:http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/membercenter/');
 	}else if($_GET['state']=='4'){
 		header("location:http://www.kmark.cn/gogoda/wxpay/js_api_call_huodong.php");
+	}else if($_GET['state']=='5'){
+		header("location:http://www.kmark.cn/gogoda/wxpay/js_api_call_huodong_banjia.php");
 	}
 	
 	

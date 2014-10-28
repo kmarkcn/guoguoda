@@ -244,7 +244,28 @@ class GguserController extends AddonsController{
 		}
 	}
 	
-	
+	function huodongCheck2(){
+		$time1 = strtotime("2014-10-27 00:00:00");
+		$time2 = strtotime("2014-10-31 24:00:00");
+		if(time()>=$time1 && time()<$time2){
+			$huodong = M('gg_huodong');
+			$userid = GguserModel::getUidByOpenid();
+			$re = $huodong->where("userid = {$userid}")->select();
+			if(count($re)==0){
+				echo 5;//亲，你没有参加此活动，无法享用半价购买,请关注果果哒精彩活动
+			}else{
+				if($re[0]['times']==1){
+					echo 1;//可以参加
+				}else{
+					echo 4;//你已经参加了半价活动，不能第二次购买哟.
+				}
+			}
+		}else if(time()<$time1){
+			echo 2;//活动还未开始
+		}else{
+			echo 3;//活动过期
+		} 
+	}
 	
 	
 	

@@ -6,13 +6,6 @@ use Addons\GuoGuoUser\Model\GuoGuoUserModel;
 
 
 class GuoGuoUserController extends AddonsController{
-
-	
-	/*
-	 * 用户中心后台控制器 by terry 
-	 */
-	
-	
 /*
  * 2014-10-11 by terry
  * 菜单栏目配置

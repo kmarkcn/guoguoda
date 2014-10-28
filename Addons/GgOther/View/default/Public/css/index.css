@@ -1,0 +1,31 @@
+
+            .div1{
+                float: left;
+                position: relative;
+                width: 240px;
+                height: 150px;;
+                background-color: #0da;
+                margin: 10px;
+                text-align: center;
+            }
+            .div1 img{
+                position: absolute;
+                top: 40%;
+                left: 50%;
+                width: 20%;
+                margin: -10%;
+            }
+            .div1 p{
+                position: absolute;
+                font-family: "微软雅黑", "黑体", "宋体";
+                font-size: 24px;
+                line-height: 60px;
+                text-indent: 1em;
+                text-align: center;
+                color: white;
+                margin-left: 1.5rem;
+                left: 0;
+                bottom: 0;
+            }
+            .clear{ clear: both}
+        

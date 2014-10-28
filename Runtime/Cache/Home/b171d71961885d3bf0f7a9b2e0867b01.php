@@ -6,28 +6,28 @@
 <meta content="weiphp 简洁强大开源的微信公众平台开发框架微信功能插件化开发,多公众号管理,配置简单" name="description"/>
 <link rel="shortcut icon" href="<?php echo SITE_URL;?>/favicon.ico">
 <title><?php echo empty($page_title) ? C('WEB_SITE_TITLE') : $page_title; ?></title>
-<link href="/gogodahub/Public/static/font-awesome/css/font-awesome.min.css?v=<?php echo SITE_VERSION;?>" rel="stylesheet">
-<link href="/gogodahub/Public/Home/css/base.css?v=<?php echo SITE_VERSION;?>" rel="stylesheet">
-<link href="/gogodahub/Public/Home/css/module.css?v=<?php echo SITE_VERSION;?>" rel="stylesheet">
-<link href="/gogodahub/Public/Home/css/weiphp.css?v=<?php echo SITE_VERSION;?>" rel="stylesheet">
+<link href="/guoguoda/Public/static/font-awesome/css/font-awesome.min.css?v=<?php echo SITE_VERSION;?>" rel="stylesheet">
+<link href="/guoguoda/Public/Home/css/base.css?v=<?php echo SITE_VERSION;?>" rel="stylesheet">
+<link href="/guoguoda/Public/Home/css/module.css?v=<?php echo SITE_VERSION;?>" rel="stylesheet">
+<link href="/guoguoda/Public/Home/css/weiphp.css?v=<?php echo SITE_VERSION;?>" rel="stylesheet">
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
-<script src="/gogodahub/Public/static/bootstrap/js/html5shiv.js?v=<?php echo SITE_VERSION;?>"></script>
+<script src="/guoguoda/Public/static/bootstrap/js/html5shiv.js?v=<?php echo SITE_VERSION;?>"></script>
 <![endif]-->
 
 <!--[if lt IE 9]>
-<script type="text/javascript" src="/gogodahub/Public/static/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/guoguoda/Public/static/jquery-1.10.2.min.js"></script>
 <![endif]-->
 <!--[if gte IE 9]><!-->
-<script type="text/javascript" src="/gogodahub/Public/static/jquery-2.0.3.min.js"></script>
-<script type="text/javascript" src="/gogodahub/Public/static/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/gogodahub/Public/static/uploadify/jquery.uploadify.min.js"></script>
-<script type="text/javascript" src="/gogodahub/Public/Home/js/dialog.js?v=<?php echo SITE_VERSION;?>"></script>
-<script type="text/javascript" src="/gogodahub/Public/Home/js/admin_common.js?v=<?php echo SITE_VERSION;?>"></script>
-<script type="text/javascript" src="/gogodahub/Public/Home/js/admin_image.js?v=<?php echo SITE_VERSION;?>"></script>
+<script type="text/javascript" src="/guoguoda/Public/static/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="/guoguoda/Public/static/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/guoguoda/Public/static/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="/guoguoda/Public/Home/js/dialog.js?v=<?php echo SITE_VERSION;?>"></script>
+<script type="text/javascript" src="/guoguoda/Public/Home/js/admin_common.js?v=<?php echo SITE_VERSION;?>"></script>
+<script type="text/javascript" src="/guoguoda/Public/Home/js/admin_image.js?v=<?php echo SITE_VERSION;?>"></script>
 <script type="text/javascript">
-var  STATIC = "/gogodahub/Public/static";
-var  ROOT = "/gogodahub";
+var  STATIC = "/guoguoda/Public/static";
+var  ROOT = "/guoguoda";
 </script>
 <!--<![endif]-->
 <!-- 页面header钩子，一般用于加载插件CSS文件和代码 -->
@@ -45,7 +45,7 @@ var  ROOT = "/gogodahub";
       <?php if(!C('SYSTEM_CLOSE_BBS')) { ?><a class="btn" href="http://bbs.weiphp.cn" target="_blank">官方论坛</a> <?php } ?>
 </div>
 <section class="login_box">
-	<form class="login-form" action="/gogodahub/index.php?s=/home/user/login.html" method="post">
+	<form class="login-form" action="/guoguoda/index.php?s=/home/user/login.html" method="post">
     	<a href="<?php echo SITE_URL;?>">
         <?php if(!C('SYSTEM_LOGO')) { ?>
        		<div class="logo_icon"></div>
@@ -127,9 +127,9 @@ var  ROOT = "/gogodahub";
 <script type="text/javascript">
 (function(){
 	var ThinkPHP = window.Think = {
-		"ROOT"   : "/gogodahub", //当前网站地址
-		"APP"    : "/gogodahub/index.php?s=", //当前项目地址
-		"PUBLIC" : "/gogodahub/Public", //项目公共目录地址
+		"ROOT"   : "/guoguoda", //当前网站地址
+		"APP"    : "/guoguoda/index.php?s=", //当前项目地址
+		"PUBLIC" : "/guoguoda/Public", //项目公共目录地址
 		"DEEP"   : "<?php echo C('URL_PATHINFO_DEPR');?>", //PATHINFO分割符
 		"MODEL"  : ["<?php echo C('URL_MODEL');?>", "<?php echo C('URL_CASE_INSENSITIVE');?>", "<?php echo C('URL_HTML_SUFFIX');?>"],
 		"VAR"    : ["<?php echo C('VAR_MODULE');?>", "<?php echo C('VAR_CONTROLLER');?>", "<?php echo C('VAR_ACTION');?>"]
