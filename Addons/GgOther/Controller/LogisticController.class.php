@@ -11,11 +11,15 @@ class LogisticController extends AddonsController{
 		$re = $logistic->select();
 		foreach($re as $key=>$val){
 			if($val['status']==1){
-				$data = array(
-					'start_date'=>$val['start_date']+(3600*24),
-					'quantity'=>$val['quantity']-1
-				);
-				$logistic->where("id = {$val['id']}")->save($data);
+				$today = date("y-m-d",time());
+				$start_date = date("y-m-d",$val['start_date']);
+				if($today == $start_date){
+					$data = array(
+							'start_date'=>$val['start_date']+(3600*24),
+							'quantity'=>$val['quantity']-1
+					);
+					$logistic->where("id = {$val['id']}")->save($data);
+				}
 			}
 			unset($data);
 		}
