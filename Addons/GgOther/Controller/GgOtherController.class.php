@@ -14,5 +14,9 @@ class GgOtherController extends AddonsController{
 		$this->display();
 	}
 	
+	public function logistic(){
+		$this->display();
+	}
+	
 	
 }

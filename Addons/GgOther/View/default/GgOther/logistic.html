@@ -1,0 +1,44 @@
+
+<extend name="Base/common" />
+<block name="body">
+  <div class="span9 page_message">
+    <section id="contents"> 
+      <include file="Addons/_nav" /> 
+      <!-- 数据列表 -->
+      <div class="data-table">
+        <div class="table-striped">
+        	<div class="fl">
+          		<empty name="model.extend"></empty>
+          		<div class="father">
+        		<link rel="stylesheet" type="text/css" href="{:ADDON_PUBLIC_PATH}/css/index.css">
+			       
+			       
+			       	<p style="color:red;font-size:20px;">
+			       		说明:<br/>
+			       			物流天数减1，是针对正常配送的所有用户，点击过后，所有正常配送会员的配送天数减少1，配送时间加1.<br/>
+			       			为保证此次操作成功,请在操作前后对比一个用户的物流信息<br/><br/>
+			       			<a  href="./index.php?s=/addon/GgOther/Logistic/desc1/" 
+			        			onclick="return confirm('小主,你点确定,我可是就减少用户的配送天数咯。您确定么？');">
+			       				<input type='button' value="物流天数减1" class="btn">
+			       			</a><br/><br/>
+			       			物流天数增1，是针对所有用户，点击过后，所有会员的配送天数增1，包括暂停配送会员.<br/>
+			       			为保证此次操作成功,请在操作前后对比一个用户的物流信息<br/><br/>
+			       				<a onclick="alert('该功能目前尚未开放')">
+			       					<input type='button' value="物流天数增1" class="btn">
+			       				</a>
+			       	</p>
+			       
+			       
+			       	
+			       
+			        
+			        
+			        
+			</div>
+       	</div>
+      </div>
+    </section>
+  </div>
+</block>
+
+    
