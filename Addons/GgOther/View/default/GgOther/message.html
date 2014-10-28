@@ -29,10 +29,12 @@
 				       				</option>
 			    		   		  </select></br>
 			       			活动名称:&nbsp;&nbsp;<select name="keyword1">
-				       				<option value="精品鲜果定制9.9包邮" class="message1">
-			       					精品鲜果定制9.9包邮
-				       				</option>
-			    		   		  </select></br>
+				       				<volist name="activity" id="vo">
+				       					<option value="{$vo.name}" class="message1">
+			       							{$vo.name}
+				       					</option>
+				       				</volist>
+				       				</select></br>
 			    		   	标&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;题:&nbsp;&nbsp;<input type="text" name="first" /><br/>
 			       			开始时间:&nbsp;&nbsp;<input type="text" style="width:40px;" name='syear'>年
 			       				   <input type="text" style="width:40px;" name='smonth'>月

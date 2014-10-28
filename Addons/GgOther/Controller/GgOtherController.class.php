@@ -11,6 +11,10 @@ class GgOtherController extends AddonsController{
 	
 	
 	public function message(){
+		//从活动中选取活动名字
+		$activity = M('gg_activity');
+		$re = $activity->select();
+		$this->assign("activity",$re);
 		$this->display();
 	}
 	

@@ -1,14 +1,14 @@
 <?php
         	
-namespace Addons\activity\Model;
+namespace Addons\Ggactivity\Model;
 use Home\Model\WeixinModel;
         	
 /**
- * activity的微信模型
+ * Ggactivity的微信模型
  */
 class WeixinAddonModel extends WeixinModel{
 	function reply($dataArr, $keywordArr = array()) {
-		$config = getAddonConfig ( 'activity' ); // 获取后台插件的配置参数	
+		$config = getAddonConfig ( 'Ggactivity' ); // 获取后台插件的配置参数	
 		//dump($config);
 
 	} 

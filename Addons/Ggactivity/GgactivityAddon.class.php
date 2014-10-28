@@ -1,6 +1,6 @@
 <?php
 
-namespace Addons\activity;
+namespace Addons\Ggactivity;
 use Common\Controller\Addon;
 
 /**
@@ -8,28 +8,28 @@ use Common\Controller\Addon;
  * @author terry
  */
 
-    class activityAddon extends Addon{
+    class GgactivityAddon extends Addon{
 
         public $info = array(
-            'name'=>'activity',
+            'name'=>'Ggactivity',
             'title'=>'果果活动',
             'description'=>'果果活动表',
             'status'=>1,
             'author'=>'terry',
-            'version'=>'1.0',
+            'version'=>'0.1',
             'has_adminlist'=>1,
             'type'=>1         
         );
 
 	public function install() {
-		$install_sql = './Addons/activity/install.sql';
+		$install_sql = './Addons/Ggactivity/install.sql';
 		if (file_exists ( $install_sql )) {
 			execute_sql_file ( $install_sql );
 		}
 		return true;
 	}
 	public function uninstall() {
-		$uninstall_sql = './Addons/activity/uninstall.sql';
+		$uninstall_sql = './Addons/Ggactivity/uninstall.sql';
 		if (file_exists ( $uninstall_sql )) {
 			execute_sql_file ( $uninstall_sql );
 		}
