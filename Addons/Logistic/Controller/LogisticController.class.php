@@ -23,8 +23,13 @@ class LogisticController extends AddonsController{
 			}else{
 				$list_data['list_data'][$key]['isChange'] = '';
 			}
+			
 			$list_data['list_data'][$key]['address'] = $re['address'];
 			$list_data['list_data'][$key]['mobile'] = $re['mobile'];
+			//这里去掉天数为0的用户
+			if($val['quantity']=='0'){
+				unset($list_data['list_data'][$key]);
+			}
 		}
 		$this->assign ( $list_data );
 		$this->display ( $model ['template_list'] );

@@ -14,9 +14,16 @@ class LogisticController extends AddonsController{
 				$today = date("y-m-d",time());
 				$start_date = date("y-m-d",$val['start_date']);
 				if($today == $start_date){
+					
+					if($val['quantity']==0){
+						$quantity = 0;
+					}else{
+						$quantity = $val['quantity']-1;
+					}
+					
 					$data = array(
 							'start_date'=>$val['start_date']+(3600*24),
-							'quantity'=>$val['quantity']-1,
+							'quantity'=>$quantity,
 							'isChange'=>0
 					);
 					$logistic->where("id = {$val['id']}")->save($data);
