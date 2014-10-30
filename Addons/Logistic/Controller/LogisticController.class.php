@@ -18,6 +18,11 @@ class LogisticController extends AddonsController{
 			}else{
 				$list_data['list_data'][$key]['status'] = '暂停配送';
 			}
+			if($val['isChange']=='1'){
+				$list_data['list_data'][$key]['isChange'] = "<span style='color:red;font-size:18px;'>*</span>";
+			}else{
+				$list_data['list_data'][$key]['isChange'] = '';
+			}
 			$list_data['list_data'][$key]['address'] = $re['address'];
 			$list_data['list_data'][$key]['mobile'] = $re['mobile'];
 		}

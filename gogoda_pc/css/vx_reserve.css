@@ -1,0 +1,61 @@
+@charset "utf-8";
+body{ font-family: "微软雅黑", "黑体", "宋体";}
+.vx_reserve{
+	position:relative;
+}
+.vxr_content{
+    position: relative;
+
+}
+
+.vxr_content img{
+    border: none;
+    width: 100%;
+    float: left;
+}
+.vxr_ul{
+    position: absolute;
+}
+.vxr_ul li{
+    font-size: 16px;
+    font-size: .8rem;
+    line-height: 25px;
+    line-height: 1.25rem;
+}
+.vxr_ul .vxr_li{
+    font-size: 25px;
+    font-size: 1.25rem;
+    line-height: 40px;
+    line-height: 2rem;
+}
+.vxr_ul_01
+,.vxr_ul_03
+,.vxr_ul_05{
+    left: 37%;
+}
+.vxr_ul_02
+,.vxr_ul_04{
+    right: 36%;
+}
+.vxr_ul_01{
+    top: 6.5%;
+    color: white;
+}
+.vxr_ul_02{
+    text-align: right;
+    top: 20%;
+    color: #000000;
+}
+.vxr_ul_03{
+    top: 42%;
+    color: white;
+}
+.vxr_ul_04{
+    text-align: right;
+    top: 56%;
+    color: white;
+}
+.vxr_ul_05{
+    top: 77%;
+    color: #000000;
+}

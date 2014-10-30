@@ -188,26 +188,33 @@ class GguserController extends AddonsController{
 	* 2014-10-20 by terry
 	* 支付返回处理函数
 	*/
-	function payResult(){
-		if($_GET['result']==1){
-			GguserModel::restorePayData("");
-			GguserModel::restoreLogistic("");
-		};
-		if($_GET['result']==2){
-			if(!GguserModel::checkOpenidExist()){
-				GguserModel::likeSubscribe();
-			}
-			GguserModel::restorePayData("huodong");
-			GguserModel::restoreLogistic("huodong");
-			GguserModel::restoreHuodong();
-		};
-		//改变用户type
-		GguserModel::changeType();
-		
-		//调出物流信息页面
-		$userData = GguserModel::getMemberMsg();
-		$this->assign('userData',$userData);
-		$this->display("logisticmsg");
+	function payResult($yb=null){
+		if(empty($yb)){
+			if($_GET['result']==1){
+				GguserModel::restorePayData("","");
+				GguserModel::restoreLogistic("","");
+			};
+			if($_GET['result']==2){
+				if(!GguserModel::checkOpenidExist()){
+					GguserModel::likeSubscribe();
+				}
+				GguserModel::restorePayData("huodong","");
+				GguserModel::restoreLogistic("huodong","");
+				GguserModel::restoreHuodong();
+			};
+			//改变用户type
+			GguserModel::changeType();
+			
+			//调出物流信息页面
+			$userData = GguserModel::getMemberMsg();
+			$this->assign('userData',$userData);
+			$this->display("logisticmsg");
+		}else{
+			//这里是异步的支付处理
+			GguserModel::restorePayData("",$yb);
+			GguserModel::restoreLogistic("",$yb);
+			GguserModel::changeType($yb);
+		}
 	}
 	
 	
@@ -266,6 +273,58 @@ class GguserController extends AddonsController{
 			echo 3;//活动过期
 		} 
 	}
+	
+	
+	
+/*=======================================================================================================
+ * 支付bug解决
+ * 2014-10-29 by terry
+ *======================================================================================================*/	
+	function  restorePayData(){
+		$gg_paydata = M('gg_paydata');
+		$userid = GguserModel::getUidByOpenid();
+		$out_trade_no = $_GET['out_trade_no'];
+		$data = array(
+			'userid'=>$userid,
+			'out_trade_no'=>$out_trade_no
+		);
+		if($gg_paydata->add($data)){
+			echo 1;
+		}else{
+			echo 0;
+		}
+	}
+	
+	
+	
+	function payResults(){
+		//查询订单是否已经
+		$out_trade_no = $_GET['out_trade_no'];
+		$order = M('gguser_order');
+		$re = $order->where("out_trade_no = '{$out_trade_no}'")->select();
+		if(count($re)){
+			echo 1;
+		}else{
+			GguserController::payResult($_GET);
+			echo 1;
+		}
+	}
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

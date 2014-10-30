@@ -47,6 +47,7 @@ $newMoney = $_SESSION['gguser_money']*100;
 	//自定义订单号，此处仅作举例
 	$timeStamp = time();
 	$out_trade_no = WxPayConf_pub::APPID."$timeStamp";
+	$_SESSION['out_trade_no'] = $out_trade_no;
 	$unifiedOrder->setParameter("out_trade_no","$out_trade_no");//商户订单号 
 	$unifiedOrder->setParameter("total_fee","{$newMoney}");//总金额
 	$unifiedOrder->setParameter("notify_url",WxPayConf_pub::NOTIFY_URL);//通知地址 
@@ -102,7 +103,7 @@ $newMoney = $_SESSION['gguser_money']*100;
                     本次交易金额:<br/>
                     <span class="pp_red"><?php echo($money); ?></span>元,是否确认支付?
                 </p>
-                <div class="pp_btn_pay" onclick="callpay();" style="background: url(./images/bg_top.png);padding:.5rem 3rem;">支付</div>
+                <div class="pp_btn_pay" onclick="restorePayData();" style="background: url(./images/bg_top.png);padding:.5rem 3rem;">支付</div>
             </div>
         </div>
 
@@ -115,7 +116,9 @@ $newMoney = $_SESSION['gguser_money']*100;
         <span>果果哒,最懂你的鲜果定制专家</span>
         </div>
     </div>
-
+	<div style='display:none;'>
+		<input type="hidden" id="out_trade_no" value="<?php  echo($out_trade_no); ?>">
+	</div>
 
    
 
@@ -123,8 +126,33 @@ $newMoney = $_SESSION['gguser_money']*100;
 </body>
 </html>
 
-
+<script src="js/jquery-2.0.3.min.js"></script>
 <script type="text/javascript">
+
+
+
+		function restorePayData(){
+				//var openid = $('#openid').val();
+				var out_trade_no = $("#out_trade_no").val();
+				$.ajax({
+					type: "GET",
+		            url: "http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/restorePayData/out_trade_no/",
+		            dataType: "html",
+		            data:'out_trade_no='+out_trade_no,
+		            success: function(data){
+							if(parseInt(data)==1){
+								callpay();
+							}else{
+								alert('系统繁忙，稍后再试!');
+							}
+			        },
+			        error:function(){
+							alert('系统繁忙，稍后再试!');
+				    }
+					
+				}) 
+				//alert($('#out_trade_no').val());
+		}
 
 		//调用微信JS api 支付
 		function jsApiCall()

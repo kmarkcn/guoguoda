@@ -2,6 +2,7 @@
 namespace Addons\GuoGuoUser\Model;
 use Think\Model;
 use Addons\Card\Model\WeixinAddonModel;
+use Addons\GuoGuoUser\Controller\GguserController;
 
 
 /*
@@ -374,6 +375,7 @@ class GguserModel extends Model{
    			'start_date'=>time(),
 			'money'=>$_SESSION['gguser_money'],
    			'quantity'=>GguserModel::moneyCheck($_SESSION['gguser_money']),
+   			'out_trade_no'=>$_SESSION['out_trade_no']
    		);
    		return $data;
    }
@@ -416,13 +418,19 @@ class GguserModel extends Model{
     * 将订单写入数据库
     */
    
-   function restorePayData($a){
+   function restorePayData($a,$b){
    			if(empty($a)){
    				session_start();
-   				$data = GguserModel::getPayData();
+   				if(empty($b)){
+   					$data = GguserModel::getPayData();
+   				}else{
+   					$data = GguserController::getPayDataYibu($b);
+   				}
    				$order = M('gguser_order');
    				if(GguserModel::isWeixinUser()){
    					if(isset($_SESSION['gguser_money'])){
+   						$order->add($data);
+   					}else if(!empty($b)){
    						$order->add($data);
    					}
    				}
@@ -440,13 +448,77 @@ class GguserModel extends Model{
    
    
    
+ /*===========================================*/
+//异步处理
+	function getPayDataYibu($arr){
+		$data = array(
+   			'userid' => GguserModel::getUserIdByYibu($arr['out_trade_no']),
+   			'start_date'=>time(),
+			'money'=>$arr['money'],
+   			'quantity'=>GguserModel::moneyCheck($arr['money']),
+   			'out_trade_no'=>$arr['out_trade_no']
+   		);
+		return $data;
+	} 
    
+
+	
+	
+	
+	function getUserIdByYibu($out_trade_no){
+		$gg_paydata = M('gg_paydata');
+		$re = $gg_paydata->where("out_trade_no = '{$out_trade_no}'")->select();
+		return $re[0]['userid'];
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+/*======================================================================*/	
+	
+	
    /*
     *2014-10-21 by terry
     *判断物流的存在
     */
-   function logisticExist(){
-   		$userid = GguserModel::getUidByOpenid();
+   function logisticExist($yibu=null){
+   		if(empty($yibu)){
+   			$userid = GguserModel::getUidByOpenid();
+   		}else{
+   			$userid = GguserModel::getUserIdByYibu($yibu['out_trade_no']);
+   		}
    		$logistic = M('gguser_logistics');
    		$re = $logistic->where("userid = {$userid}")->select();
    		if(count($re)>0){
@@ -461,8 +533,12 @@ class GguserModel extends Model{
     * 2014-10-21 by terry
     * 返回物流的数据集
     */
-   function returnLogisticData(){
-   		$userid = GguserModel::getUidByOpenid();
+   function returnLogisticData($yibu=null){
+   		if(empty($yibu)){
+   			$userid = GguserModel::getUidByOpenid();
+   		}else{
+   			$userid = GguserModel::getUserIdByYibu($yibu['out_trade_no']); 
+   		}
    		$logistic = M('gguser_logistics');
    		$re = $logistic->where("userid = {$userid}")->select();
    		return $re[0];
@@ -475,23 +551,38 @@ class GguserModel extends Model{
     * 2014-10-21 by terry
     * 实质的修改物流表
     */
-   function changeLogistic($type){
-   		$data = GguserModel::getPayData();
-   		$userid = GguserModel::getUidByOpenid();
+   function changeLogistic($type,$yibu=null){
+   		if(empty($yibu)){
+   			$data = GguserModel::getPayData();
+   			$userid = GguserModel::getUidByOpenid();
+   		}else{
+   			$data = GguserController::getPayDataYibu($yibu);
+   			$userid = GguserModel::getUserIdByYibu($yibu['out_trade_no']);
+   		}
    		$logistic = M('gguser_logistics');
    		if($type=='1'){
-   			$re = GguserModel::returnLogisticData();
+   			if(empty($yibu)){
+   				$re = GguserModel::returnLogisticData("");
+   			}else{
+   				$re = GguserModel::returnLogisticData($yibu);
+   			}
    			if($re['quantity']==0){
    				$data1 = array(
    						'start_date' => GguserModel::timeChange(),
-   						'quantity'   => $data['quantity']
+   						'quantity'   => $data['quantity'],
+   						'isChange'=>1
    				);
    				//echo "数据存在1";
    				$logistic->where("userid = {$userid}")->save($data1);
    			}else{
-   				$re = GguserModel::returnLogisticData();
+	   			if(empty($yibu)){
+	   				$re = GguserModel::returnLogisticData("");
+	   			}else{
+	   				$re = GguserModel::returnLogisticData($yibu);
+	   			}
    				$data1 = array(
-   						'quantity'=> $data['quantity']+$re['quantity']
+   						'quantity'=> $data['quantity']+$re['quantity'],
+   						'isChange'=>1
    				);
    				//print_r($data);
    				$logistic->where("userid = {$userid}")->save($data1);
@@ -502,7 +593,8 @@ class GguserModel extends Model{
    			$data1 = array(
    					'userid'=>$userid,
    					'start_date' => GguserModel::timeChange(),
-   					'quantity'   => $data['quantity']
+   					'quantity'   => $data['quantity'],
+   					'isChange'=>1
    			);
    			$logistic->add($data1); 
    		}else if($type=="3"){
@@ -510,14 +602,16 @@ class GguserModel extends Model{
    			if($re['quantity']==0){
    				$data1 = array(
    						'start_date' => GguserModel::timeChange(),
-   						'quantity'   => 1
+   						'quantity'   => 1,
+   						'isChange'=>1
    				);
    				//echo "数据存在1";
    				$logistic->where("userid = {$userid}")->save($data1);
    			}else{
    				$re = GguserModel::returnLogisticData();
    				$data1 = array(
-   						'quantity'=> 1+$re['quantity']
+   						'quantity'=> 1+$re['quantity'],
+   						'isChange'=>1
    				);
    				//print_r($data);
    				$logistic->where("userid = {$userid}")->save($data1);
@@ -526,7 +620,8 @@ class GguserModel extends Model{
    			$data1 = array(
    					'userid'=>$userid,
    					'start_date' => GguserModel::timeChange(),
-   					'quantity'   => 1
+   					'quantity'   => 1,
+   					'isChange'=>1
    			);
    			$logistic->add($data1);
    		}
@@ -538,8 +633,12 @@ class GguserModel extends Model{
     * 改变用户type
     */
    
-   function changeType(){
-   		$userid = GguserModel::getUidByOpenid();
+   function changeType($yibu=null){
+	   	if(empty($yibu)){
+	   		$userid = GguserModel::getUidByOpenid();
+	   	}else{
+	   		$userid = GguserModel::getUserIdByYibu($yibu['out_trade_no']);
+	   	}
    		$data = array(
    			'type'=>1
    		);
@@ -551,12 +650,21 @@ class GguserModel extends Model{
     * 2014-10-21 by terry
     * 订单过后要处理物流表，完成物流系统
     */
-   function restoreLogistic($a){
+   function restoreLogistic($a,$b){
    		if(empty($a)){
-   			if(GguserModel::logisticExist()){
-   				GguserModel::changeLogistic('1');
+   			if(empty($b)){
+   				if(GguserModel::logisticExist("")){
+   					GguserModel::changeLogistic('1');
+   				}else{
+   					GguserModel::changeLogistic('2');
+   				}	
    			}else{
-   				GguserModel::changeLogistic('2');
+   				//支付异步处理物流
+   				if(GguserModel::logisticExist($b)){
+   					GguserModel::changeLogistic('1');
+   				}else{
+   					GguserModel::changeLogistic('2');
+   				}
    			}
    		}else if($a=='huodong'){
    			if(GguserModel::logisticExist()){

@@ -1,0 +1,116 @@
+@charset "utf-8";
+.contact_way{
+    /*padding-left: 20%;*/
+    background-color: white;
+    font-family: "微软雅黑", "黑体", "宋体";
+}
+.contact_way .input_false{
+    border: 1px solid red;
+}
+.cw_content{
+    /*margin-left: 20%;*/
+    position: relative;
+    padding-left: 14%;
+    padding-top: 5% ;
+    padding-bottom: 2%;
+    background-color: #4bd7b3;
+}
+.cw_lxws p{
+    color: white;
+    line-height: 40px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+.cw_lxws_title{
+    background-color: #ff00c0;
+    color: white;
+    font-size: 30px;
+    font-size: 1.5rem;
+    line-height: 40px;
+    line-height: 2rem;
+    letter-spacing: 4px;
+    letter-spacing: .2rem;
+    padding: 0 10px;
+    padding:  0 .5rem;
+}
+.cw_zxly{
+    width: 34%;
+}
+.cw_input_tel
+,.cw_input_content{
+    padding: 0 10px;
+    width: 100%;
+    border: 1px solid transparent;
+    font-size: 16px;
+    letter-spacing: 2px;
+
+}
+.cw_input_tel{
+    margin-bottom: 10px;
+    height: 40px;
+    line-height: 40px;
+
+}
+.cw_input_content{
+    height: 150px;
+    line-height: 30px;
+
+}
+.cw_zxly p{
+    padding-bottom: 50px;
+    padding-top: 10px;
+    font-size: 26px;
+    color: white;
+    line-height: 40px;
+    letter-spacing: 5px;
+
+}
+
+.cw_btn_submit{
+    float: right;
+    margin-top: 8px;
+    padding: 0 20px;
+    height: 40px;
+    line-height: 34px;
+    font-size: 26px;
+    letter-spacing: 5px;
+    color: #4bd7b3;
+    text-align: center;
+    background-color: white;
+}
+.cw_vx{
+    width: 15%;
+    position: absolute;
+    left: 65%;
+    top: 12%;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+}
+.cw_vx img{
+    width: 100%;
+}
+.cw_map{
+    position: absolute;
+    left: 51%;
+    top: 55.5%;
+    height: 245px;
+	width:36%;
+}
+
+.cw_ts_text{
+	display: block;
+	padding: 0 10px 0 40px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	color: red;
+	background-repeat: no-repeat;
+}
+.cw_ts_false{	
+	background-image: url(../img/contact_way/ts_false.png);
+}
+.cw_ts_true{
+    color: white;
+	background-image: url(../img/contact_way/ts_true.png);
+}

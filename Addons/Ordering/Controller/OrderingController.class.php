@@ -19,7 +19,7 @@ class OrderingController extends AddonsController{
 		$model = $this->getModel ('gguser_order');
 		$list_data = $this->_get_model_list ( $model );
 		foreach($list_data['list_data'] as $key=>$val){
-			$list_data['list_data'][$key]['start_date'] = date("Y-m-d h:i:s",$val['start_date']);
+			$list_data['list_data'][$key]['start_date'] = date("Y-m-d H:i:s",$val['start_date']);
 			$list_data['list_data'][$key]['name'] = OrderingModel::getUserName($val['id']);
 		}
 		$this->assign ( $list_data );

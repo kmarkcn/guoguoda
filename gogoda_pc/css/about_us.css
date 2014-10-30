@@ -1,0 +1,46 @@
+@charset "utf-8";
+body{
+	font-family: "微软雅黑", "黑体", "宋体";
+}
+.au_head{
+    position: relative;
+    z-index: 3;
+}
+.au_img_01{
+    width: 100%;
+}
+.au_img_02{
+    position: absolute;
+    width: 36.66%;
+    left: 12%;
+    top: 0;
+}
+.au_body{
+    margin-top: -40%;
+    position: relative;
+    padding-top: 20%;
+    z-index: 2;
+    background-color: #43d6b2;
+}
+.au_b_content{
+    position: relative;
+    left: 52.4%;
+    width: 33.33%;
+
+}
+
+.au_b_content p{
+    text-indent: 24px;
+    text-indent: 1.2rem;
+    letter-spacing: 2px;
+    letter-spacing: .1rem;
+    font-size: 12px;
+    font-size: .6rem;
+    line-height: 20px;
+    line-height: 1rem;
+    color: white;
+}
+.au_b_content img{
+    margin:2% 0;
+    width: 100%;
+}
