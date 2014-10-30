@@ -419,21 +419,22 @@ class GguserModel extends Model{
     */
    
    function restorePayData($a,$b){
+   			$order = M('gguser_order');
    			if(empty($a)){
    				session_start();
    				if(empty($b)){
    					$data = GguserModel::getPayData();
-   				}else{
-   					$data = GguserController::getPayDataYibu($b);
-   				}
-   				$order = M('gguser_order');
-   				if(GguserModel::isWeixinUser()){
-   					if(isset($_SESSION['gguser_money'])){
-   						$order->add($data);
-   					}else if(!empty($b)){
-   						$order->add($data);
+   					if(GguserModel::isWeixinUser()){
+   						if(isset($_SESSION['gguser_money'])){
+   							$order->add($data);
+   						}
    					}
+   				}else{
+   					//addWeixinLog("订单写入",'terry');
+   					$data = GguserModel::getPayDataYibu($b);
+   					$order->add($data);
    				}
+   				
    			}else if($a=='huodong'){
    				$order = M('gguser_order');
    				$data = array(
@@ -451,6 +452,7 @@ class GguserModel extends Model{
  /*===========================================*/
 //异步处理
 	function getPayDataYibu($arr){
+		//addWeixinLog("开始构造data",'terry');
 		$data = array(
    			'userid' => GguserModel::getUserIdByYibu($arr['out_trade_no']),
    			'start_date'=>time(),
@@ -458,6 +460,7 @@ class GguserModel extends Model{
    			'quantity'=>GguserModel::moneyCheck($arr['money']),
    			'out_trade_no'=>$arr['out_trade_no']
    		);
+		addWeixinLog("返回data",$data['quantity']);
 		return $data;
 	} 
    
@@ -469,6 +472,7 @@ class GguserModel extends Model{
 		$gg_paydata = M('gg_paydata');
 		$re = $gg_paydata->where("out_trade_no = '{$out_trade_no}'")->select();
 		return $re[0]['userid'];
+		addWeixinLog("信息查找完毕",'terry');
 	}
 	
 	
@@ -556,7 +560,7 @@ class GguserModel extends Model{
    			$data = GguserModel::getPayData();
    			$userid = GguserModel::getUidByOpenid();
    		}else{
-   			$data = GguserController::getPayDataYibu($yibu);
+   			$data = GguserModel::getPayDataYibu($yibu);
    			$userid = GguserModel::getUserIdByYibu($yibu['out_trade_no']);
    		}
    		$logistic = M('gguser_logistics');
@@ -656,14 +660,14 @@ class GguserModel extends Model{
    				if(GguserModel::logisticExist("")){
    					GguserModel::changeLogistic('1');
    				}else{
-   					GguserModel::changeLogistic('2');
+   					GguserModel::changeLogistic('2','');
    				}	
    			}else{
    				//支付异步处理物流
    				if(GguserModel::logisticExist($b)){
    					GguserModel::changeLogistic('1');
    				}else{
-   					GguserModel::changeLogistic('2');
+   					GguserModel::changeLogistic('2',$b);
    				}
    			}
    		}else if($a=='huodong'){

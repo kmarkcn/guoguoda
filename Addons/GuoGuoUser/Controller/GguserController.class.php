@@ -211,6 +211,7 @@ class GguserController extends AddonsController{
 			$this->display("logisticmsg");
 		}else{
 			//这里是异步的支付处理
+			//addWeixinLog("支付的异步处理",$yb);
 			GguserModel::restorePayData("",$yb);
 			GguserModel::restoreLogistic("",$yb);
 			GguserModel::changeType($yb);
@@ -303,8 +304,10 @@ class GguserController extends AddonsController{
 		$order = M('gguser_order');
 		$re = $order->where("out_trade_no = '{$out_trade_no}'")->select();
 		if(count($re)){
+			//addWeixinLog("支付未异步处理","by terry");
 			echo 1;
 		}else{
+			//addWeixinLog("支付异步处理","by terry");
 			GguserController::payResult($_GET);
 			echo 1;
 		}

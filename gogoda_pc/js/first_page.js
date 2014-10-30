@@ -37,6 +37,7 @@ system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);
 if(system.win||system.mac||system.xll){
 
 	loadjscssfile("css/pc/pc_first_page.css","css");
+
 	//alert("PC访问请使用微信登陆");
 
 }else{
@@ -45,15 +46,23 @@ if(system.win||system.mac||system.xll){
 
 
 window.onload = function(){
+	$('.fp_nav').children('li').eq(0).addClass('fp_nav_click').next('li').addClass('fp_nav_next');
+	var fp_hgt1 = $(window).height(),
+		fp_hgt2 =  fp_hgt1 - $('#fp_img_13').height() - 10;     //中间的空白高度
 
+	$('.fp_b_top').height(fp_hgt2);
 	//加载图片
+
+};
+$(function(){
+	alert(111);
 	if(system.win||system.mac||system.xll){
 
-		document.getElementById('fp_img_02').src='img/first_page/pc_first_page_03.png';
-		document.getElementById('fp_img_04').src='img/first_page/pc_first_page_04.png';
-		document.getElementById('fp_img_05').src='img/first_page/pc_first_page_05.png';
-		document.getElementById('fp_img_06').src='img/first_page/pc_first_page_06.png';
-		document.getElementById('fp_img_07').src='img/first_page/pc_first_page_07.png';
+		 document.getElementById('fp_img_02').src='img/first_page/pc_first_page_03.png';
+		 document.getElementById('fp_img_04').src='img/first_page/pc_first_page_04.png';
+		 document.getElementById('fp_img_05').src='img/first_page/pc_first_page_05.png';
+		 document.getElementById('fp_img_06').src='img/first_page/pc_first_page_06.png';
+		 document.getElementById('fp_img_07').src='img/first_page/pc_first_page_07.png';
 		//alert("PC访问请使用微信登陆");
 
 	}else{
@@ -67,21 +76,8 @@ window.onload = function(){
 		document.getElementById('fp_img_11').src='img/first_page/m_first_page_11.png';
 		document.getElementById('fp_img_12').src='img/first_page/m_first_page_12.png';
 		document.getElementById('fp_img_13').src='img/first_page/m_first_page_13.png';
-
-
 		//alert("非PC访问");
 	}
 
 
-	$(function(){
-		$('.fp_nav').children('li').eq(0).addClass('fp_nav_click').next('li').addClass('fp_nav_next');
-		var fp_hgt1 = $(window).height(),
-			fp_hgt2 =  fp_hgt1 - $('#fp_img_13').height() - 10;     //中间的空白高度
-
-		$('.fp_b_top').height(fp_hgt2);
-
-
-
-	});
-
-};
+});
