@@ -116,6 +116,10 @@ class GuoGuoUserController extends AddonsController{
 	
 	
 	
+	
+
+	
+	
 
 	
     
