@@ -5,12 +5,17 @@
 	<title>果果哒</title>
 	<meta content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
 	<link rel="stylesheet" type="text/css" href="{:ADDON_PUBLIC_PATH}/new/css/style.css">
+	<script src="{:ADDON_PUBLIC_PATH}/new/js/jquery-2.0.3.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="{:ADDON_PUBLIC_PATH}/new/css/send_status.css">
+    <script src="{:ADDON_PUBLIC_PATH}/new/js/send_status.js"></script>
 </head>
+
 <body>
 <div class="web-main">
 	<div class="web-content">
 		<div class="web-header">
-			<div class="top-title">我的订单</div>
+            <div class="top-back"><a href="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/membercenter/"></a></div>
+            <div class="top-title ">我的订单</div>
 		</div>
 		<div class="height_10"></div>
 		<div class="b-box form">
@@ -26,13 +31,60 @@
 					{$userData['logistic']}天
 				</div>
 			</div>
+			
 		</div>
-		<div class="button-bar">
+		<div class="ps_status">
+            <div class="form-item">
+            	<a class="alink">
+                <label for="" class="input-label dark fl">
+                	<if condition="$userData['status'] eq 1">配送中...
+					<elseif condition="$userData['status'] eq 2" />配送状态
+					<else />暂停中...
+					</if>
+                </label>
+                <div class="text-right gray " id="mc_btn_stop">
+                    <if condition="$userData['status'] eq 1">暂停配送
+					<elseif condition="$userData['status'] eq 2" />
+					<else />恢复配送
+					</if>
+                   
+                </div>
+                </a>
+                <input id="send_status_val" type="hidden" value="{$userData['status']}">
+            </div>
+		</div>
+		<div class="ps_read">
+		            <h1>配送说明书</h1><br/>
+		            &nbsp;&nbsp;&nbsp;&nbsp;如果你在当日17:00点前选择暂停，将于明天开始暂停配送，若17:00-24：00点内选择暂停,将于后天才开始暂停配送。恢复配送一致.
+		</div>
+		
+		<!-- <div class="button-bar">
 			<a class="b-button" href="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/membercenter/">确 定</a>
-		</div>
+		</div> -->
 	</div>
 </div>
-<script src="{:ADDON_PUBLIC_PATH}/new/js/jquery-2.0.3.min.js"></script>
+
+<!--以下是配送暂停提示层-->
+<div class="mc_send_father">
+    <div class="mc_send_body">
+        <div class="mc_send">
+            <p class="mc_send_p">
+                
+            </p>
+            <div  class="btn_send_false" id="cancelBtn">取消</div>
+            <a href="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/changeSta/">
+                <div  class="btn_send_true">确定</div>
+            </a>
+        </div>
+    </div>
+</div>
+<script>
+$("#cancelBtn").click(function(){
+		$('.mc_send_father').hide();
+		$('.append_div').hide();	
+})
+</script>
+
 
 </body>
 </html>

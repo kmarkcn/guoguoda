@@ -88,8 +88,13 @@ class GguserModel extends Model{
     	 
     	//获取用户物流表
     	$logisticRe = $logistic->where("userid = '{$userid}'")->select();
-    	$userData['logistic'] = $logisticRe[0]['quantity'];
-    	$userData['status'] = $logisticRe[0]['status'];
+    	if(count($logisticRe) ==0){
+    		$userData['status'] = 2;
+    	}else{
+    		$userData['logistic'] = $logisticRe[0]['quantity'];
+    		$userData['status'] = $logisticRe[0]['status'];
+    	}
+    	
     	
     	
     	//获取用户订单表
