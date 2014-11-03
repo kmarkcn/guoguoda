@@ -22,7 +22,7 @@
 
 <div class="web-main">
 	<div class="web-content">
-	<form action="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/logisticDo/" method="post">
+	<form action="http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/logisticDoOff/" method="post">
 		<div class="web-header">
 			<div class="top-title">配送信息</div>
 		</div>
@@ -88,8 +88,9 @@ function check(){
 					if(address.indexOf('高新')>=0 ||address.indexOf('高薪')>=0||address.indexOf('高兴')>=0){
 						$('.tu_font').text('恭喜你,开通成功啦，静静等待我们给你配送吧...');
 						//alert(1)
-						ab();setTimeout(abcd,10000);
-						return true;
+						ab();
+						setTimeout(abcd,5000);
+						//setTimeout(retu,5000);
 					}else{
 						$('.tu_font').text('亲,我们目前只支持高新区的配送,如有疑问,致电02883389832');
 						//alert(1)
@@ -104,10 +105,12 @@ function check(){
 	
 }
 
+
+
 function abcd(){
 	$('.touch_us').hide();
 	$('.append_div').hide();
-	return true;
+	//return true;
 }
 function ab(){
 	$('.touch_us').show();

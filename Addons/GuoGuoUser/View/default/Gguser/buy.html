@@ -7,6 +7,20 @@
 	<link rel="stylesheet" type="text/css" href="{:ADDON_PUBLIC_PATH}/new/css/style.css">
 </head>
 <body>
+
+<!--以下是支付提示层-->
+    <div class="touch_us">
+        <div class="touch_us_01">
+            <div class="tu_font">
+                
+            </div>
+        </div>
+    </div>
+<!--以上是支付提示层-->
+
+
+
+
 <div class="web-main">
 	<div class="web-content">
 		<div class="web-header">
@@ -27,13 +41,22 @@
 					<span data-time="3" data-amount="570" class="time-b">三个月</span>
 					<input id="input-time" type="hidden" value="1" name="time">
 				</div>
+				
+				<div class="open-time clearfix">
+					<p class="gray">支付方式：</p>
+					<div class="height_8"></div>
+					<span data-time="1"  class="time-c on">微信支付</span>
+					<span data-time="2"  class="time-c" >货到付款</span>
+					<input type="hidden" value="onLine" name="payWay" id="payWay">
+				</div>
+				
 				<div class="paly-amount gray">
 					应付金额：<span class="amount">49</span> 元
 					<input id="input-amount" type="hidden" value="49" name="money">
 				</div>
 				<div class="btn-bar">
-					<button class="open-btn" type="submit">立即开通</button><br/>
-					<span style="margin-top:50px;font-size:12px;margin:20px 20%;">亲,我们目前只支持高新区的配送</span>
+					<button class="open-btn" type="submit" onclick="choseWay();">立即开通</button><br/>
+					<span style="margin-top:50px;font-size:12px;margin:20px 20%;">亲,我们目前只支持高新区的配送哟</span>
 				</div>
 			</form>
 		</div>
@@ -53,7 +76,43 @@
 				$("#input-amount").val(_amount);
 				$(".amount").text(_amount);
 		})
+		
+		
+		
+		
+		//选择支付方式
+		
+		$(".time-c").on("click",function(){
+				$(".time-c").removeClass("on");
+				$(this).addClass("on");
+				var payWay = $(this).text();
+				if(payWay == '微信支付'){
+					$('#payWay').val('onLine');	
+				}else{
+					$('#payWay').val('offLine');
+				}
+				/* alert($('#payWay').val()) */
+				
+		})
 	})
+	
+	function reminder(){
+			$('.tu_font').text('亲,该功能尚未开放,敬请期待....');
+			//alert(1)
+			ab();setTimeout(abcd,2000);
+			
+		}
+		function abcd(){
+			$('.touch_us').hide();
+			$('.append_div').hide();
+		}
+		function ab(){
+			$('.touch_us').show();
+			$('.append_div').show();
+		}
+	
+	
+	
 </script>
 </body>
 </html>

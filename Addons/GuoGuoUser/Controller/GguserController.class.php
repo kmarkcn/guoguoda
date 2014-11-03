@@ -180,25 +180,43 @@ class GguserController extends AddonsController{
 		$pay_money = $_POST['money'];
 		$_SESSION['gguser_money'] = $pay_money;
 		GguserModel::KeepPayData($_POST);
-		header("location:http://www.kmark.cn/gogoda/wxpay/js_api_call.php"); 
+		if($_POST['payWay']=='onLine'){
+			header("location:http://www.kmark.cn/gogoda/wxpay/js_api_call.php");
+		}else if($_POST['payWay']=='offLine'){
+			//完成线下支付流程
+			//GguserController::offLine();
+			$userData = GguserModel::getMemberMsg();
+			$this->assign('userData',$userData);
+			$this->display("logisticOffline");	
+		}
 	}
 	
+	
+	/*
+	 * 线下支付流程
+	 * by terry 2014-11-03
+	 */
+	function offLine(){
+		GguserModel::restorePayData("","","offLine");
+		GguserModel::restoreLogistic("","","offLine");
+		GguserModel::changeType();
+	}
 	
 	/*
 	* 2014-10-20 by terry
 	* 支付返回处理函数
 	*/
-	function payResult($yb=null){
+	function payResult($yb=null,$payWay=null){
 		if(empty($yb)){
 			if($_GET['result']==1){
-				GguserModel::restorePayData("","");
+				GguserModel::restorePayData("","","");
 				GguserModel::restoreLogistic("","");
 			};
 			if($_GET['result']==2){
 				if(!GguserModel::checkOpenidExist()){
 					GguserModel::likeSubscribe();
 				}
-				GguserModel::restorePayData("huodong","");
+				GguserModel::restorePayData("huodong","","");
 				GguserModel::restoreLogistic("huodong","");
 				GguserModel::restoreHuodong();
 			};
@@ -208,11 +226,13 @@ class GguserController extends AddonsController{
 			//调出物流信息页面
 			$userData = GguserModel::getMemberMsg();
 			$this->assign('userData',$userData);
+			$userData = GguserModel::getMemberMsg();
+			$this->assign('userData',$userData);
 			$this->display("logisticmsg");
 		}else{
 			//这里是异步的支付处理
 			//addWeixinLog("支付的异步处理",$yb);
-			GguserModel::restorePayData("",$yb);
+			GguserModel::restorePayData("",$yb,"");
 			GguserModel::restoreLogistic("",$yb);
 			GguserModel::changeType($yb);
 		}
@@ -228,6 +248,20 @@ class GguserController extends AddonsController{
 		);
 		$user = M('gguser');
 		$user->where("id = {$userid}")->save($data);
+		$this->display('membercenter');
+	}
+	
+	
+	function logisticDoOff(){
+		$userid = GguserModel::getUidByOpenid();
+		$data = array(
+				'name'=>$_POST['name'],
+				'mobile'=>$_POST['mobile'],
+				'address'=>$_POST['address']
+		);
+		$user = M('gguser');
+		$user->where("id = {$userid}")->save($data);
+		GguserController::offLine();
 		$this->display('membercenter');
 	}
 	

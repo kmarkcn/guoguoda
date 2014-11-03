@@ -368,15 +368,27 @@ class GguserModel extends Model{
     * 得到支付数据
     */
    
-   function getPayData(){
+   function getPayData($type=null){
    		session_start();
-   		$data = array(
-   			'userid' => GguserModel::getUidByOpenid(),
-   			'start_date'=>time(),
-			'money'=>$_SESSION['gguser_money'],
-   			'quantity'=>GguserModel::moneyCheck($_SESSION['gguser_money']),
-   			'out_trade_no'=>$_SESSION['out_trade_no']
-   		);
+   		if(empty($type)){
+   			$data = array(
+   					'userid' => GguserModel::getUidByOpenid(),
+   					'start_date'=>time(),
+   					'money'=>$_SESSION['gguser_money'],
+   					'quantity'=>GguserModel::moneyCheck($_SESSION['gguser_money']),
+   					'out_trade_no'=>$_SESSION['out_trade_no'],
+   					'type'=>1
+   			);
+   		}else if($type=="offLine"){
+   			$data = array(
+   					'userid' => GguserModel::getUidByOpenid(),
+   					'start_date'=>time(),
+   					'money'=>$_SESSION['gguser_money'],
+   					'quantity'=>GguserModel::moneyCheck($_SESSION['gguser_money']),
+   					'out_trade_no'=>"offLine".time(),
+   					'type'=>2
+   			);
+   		}
    		return $data;
    }
    
@@ -418,33 +430,40 @@ class GguserModel extends Model{
     * 将订单写入数据库
     */
    
-   function restorePayData($a,$b){
-   			$order = M('gguser_order');
-   			if(empty($a)){
-   				session_start();
-   				if(empty($b)){
-   					$data = GguserModel::getPayData();
-   					if(GguserModel::isWeixinUser()){
-   						if(isset($_SESSION['gguser_money'])){
-   							$order->add($data);
+   function restorePayData($a,$b,$c=null){
+   			if(empty($c)){
+   				$order = M('gguser_order');
+   				if(empty($a)){
+   					session_start();
+   					if(empty($b)){
+   						$data = GguserModel::getPayData("");
+   						if(GguserModel::isWeixinUser()){
+   							if(isset($_SESSION['gguser_money'])){
+   								$order->add($data);
+   							}
    						}
+   					}else{
+   						//addWeixinLog("订单写入",'terry');
+   						$data = GguserModel::getPayDataYibu($b);
+   						$order->add($data);
    					}
-   				}else{
-   					//addWeixinLog("订单写入",'terry');
-   					$data = GguserModel::getPayDataYibu($b);
+   						
+   				}else if($a=='huodong'){
+   					$order = M('gguser_order');
+   					$data = array(
+   							'userid' => GguserModel::getUidByOpenid(),
+   							'start_date'=>time(),
+   							'money'=>10,
+   							'quantity'=>1,
+   					);
    					$order->add($data);
    				}
-   				
-   			}else if($a=='huodong'){
+   			}else if($c=='offLine'){
    				$order = M('gguser_order');
-   				$data = array(
-   					'userid' => GguserModel::getUidByOpenid(),
-   					'start_date'=>time(),
-   					'money'=>10,
-   					'quantity'=>1,
-   				);
+   				$data = GguserModel::getPayData("offLine");
    				$order->add($data);
    			}
+   			
    }
    
    
@@ -458,7 +477,8 @@ class GguserModel extends Model{
    			'start_date'=>time(),
 			'money'=>$arr['money'],
    			'quantity'=>GguserModel::moneyCheck($arr['money']),
-   			'out_trade_no'=>$arr['out_trade_no']
+   			'out_trade_no'=>$arr['out_trade_no'],
+			'type'=>1
    		);
 		//addWeixinLog("返回data",$data['quantity']);
 		return $data;
@@ -628,6 +648,24 @@ class GguserModel extends Model{
    					'isChange'=>1
    			);
    			$logistic->add($data1);
+   		}else if($type=='7'){
+   			$re = GguserModel::returnLogisticData("");
+   			$data = GguserModel::getPayData("offLine");
+   			$data1 = array(
+   					'quantity'=> $data['quantity']+$re['quantity'],
+   					'isChange'=>1
+   			);
+   			//echo "数据存在1";
+   			$logistic->where("userid = {$userid}")->save($data1);
+   		}else if($type=='8'){
+   			$data = GguserModel::getPayData("offLine");
+   			$data1 = array(
+   					'userid'=>$userid,
+   					'start_date' => GguserModel::timeChange(),
+   					'quantity'   => $data['quantity'],
+   					'isChange'=>1
+   			);
+   			$logistic->add($data1); 
    		}
    		
    }
@@ -654,14 +692,15 @@ class GguserModel extends Model{
     * 2014-10-21 by terry
     * 订单过后要处理物流表，完成物流系统
     */
-   function restoreLogistic($a,$b){
+   function restoreLogistic($a,$b,$c){
+   	if(empty($c)){
    		if(empty($a)){
    			if(empty($b)){
    				if(GguserModel::logisticExist("")){
    					GguserModel::changeLogistic('1');
    				}else{
    					GguserModel::changeLogistic('2','');
-   				}	
+   				}
    			}else{
    				//支付异步处理物流
    				if(GguserModel::logisticExist($b)){
@@ -677,6 +716,14 @@ class GguserModel extends Model{
    				GguserModel::changeLogistic('4');
    			}
    		}
+   	}else if($c=='offLine'){
+   		if(GguserModel::logisticExist("")){
+   			GguserModel::changeLogistic('7');
+   		}else{
+   			GguserModel::changeLogistic('8');
+   		}
+   	}
+   		
    }
    
    
@@ -689,6 +736,8 @@ class GguserModel extends Model{
    function timeChange(){
    		if(date('w') == 6){
    			return time()+(3600*48);
+   		}else if(date('w') == 5){
+   			return time()+(3600*72);
    		}else{
    			if(date('H')>=18){
    				return time()+(3600*48);
