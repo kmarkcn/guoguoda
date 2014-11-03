@@ -89,8 +89,16 @@ session_start();
   <!--以上是支付提示层-->
 <div class="web-main">
 	<div class="web-content">
+		<!-- 
 		<div class="bgpic99">
 			<img src="images/bg_99.gif" alt="" style="margin:-10% 0 ;">
+		</div>
+		 -->
+		<div class="bgpic99" style="margin:-10% 0 ;">
+			<img src="images/bg_01.gif" style="width: 100%;float:left;" >
+			<img src="images/bg_02.gif" style="width: 100%;float:left;" >
+			<img src="images/bg_03.gif" style="width: 100%;float:left;" >
+			<div style="clear: both;"></div>
 		</div>
 		<div class="bgbtn99 text-center">
 			<img src="images/bg_btn99.gif" alt="" class="active_btn" onclick="check();" style="position:relative;top:5px;width:80%;">
