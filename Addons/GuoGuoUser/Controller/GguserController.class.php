@@ -269,7 +269,7 @@ class GguserController extends AddonsController{
 	
 	function huodongCheck(){
 		$time1 = strtotime("2014-10-27 00:00:00");
-		$time2 = strtotime("2014-10-31 24:00:00");
+		$time2 = strtotime("2014-12-30 24:00:00");
 		if(time()>=$time1 && time()<$time2){
 			$huodong = M('gg_huodong');
 			$userid = GguserModel::getUidByOpenid();
@@ -288,7 +288,7 @@ class GguserController extends AddonsController{
 	
 	function huodongCheck2(){
 		$time1 = strtotime("2014-10-27 00:00:00");
-		$time2 = strtotime("2014-10-31 24:00:00");
+		$time2 = strtotime("2014-12-30 24:00:00");
 		if(time()>=$time1 && time()<$time2){
 			$huodong = M('gg_huodong');
 			$userid = GguserModel::getUidByOpenid();
