@@ -79,7 +79,7 @@ class WeixinModel extends Model {
 		$str = $xml->asXML ();
 		
 		// 记录日志
-		addWeixinLog ( $str, '_replyData' );
+		//addWeixinLog ( $str, '_replyData' );
 		
 		echo ( $str );
 	}

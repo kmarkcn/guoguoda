@@ -32,6 +32,7 @@ class WeixinAddonModel extends WeixinModel{
 		 * 微信用户关注公众号事件
 		 */
 		
+		addWeixinLog("这里是微信关注事件的操作","by terry");
 		//增加用户表
 		$gguser = M('gguser');
     	$data1 = array(

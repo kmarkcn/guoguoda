@@ -460,7 +460,7 @@ class GguserModel extends Model{
    			'quantity'=>GguserModel::moneyCheck($arr['money']),
    			'out_trade_no'=>$arr['out_trade_no']
    		);
-		addWeixinLog("返回data",$data['quantity']);
+		//addWeixinLog("返回data",$data['quantity']);
 		return $data;
 	} 
    
@@ -472,7 +472,7 @@ class GguserModel extends Model{
 		$gg_paydata = M('gg_paydata');
 		$re = $gg_paydata->where("out_trade_no = '{$out_trade_no}'")->select();
 		return $re[0]['userid'];
-		addWeixinLog("信息查找完毕",'terry');
+		//addWeixinLog("信息查找完毕",'terry');
 	}
 	
 	
