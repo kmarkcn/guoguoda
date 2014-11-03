@@ -311,6 +311,24 @@ class GguserController extends AddonsController{
 	
 	
 	
+/*
+ * 暂停操作
+ */	
+	
+	function changeSta(){
+		GguserModel::change_status(GguserModel::check_status());
+		$this->display('membercenter');
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 /*=======================================================================================================
  * 支付bug解决
  * 2014-10-29 by terry
