@@ -766,7 +766,7 @@ class GguserModel extends Model{
    
    /*
     * 2014-10-24 by terry
-    * 添加本人到活动表
+    * 添加到活动表
     */
    function restoreHuodong(){
    		$huodong = M('gg_huodong');
