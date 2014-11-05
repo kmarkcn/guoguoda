@@ -4,6 +4,7 @@
 
 <body id="scratch">
 
+<div class="bg_gray"></div>
 <!--以下是支付提示层-->
 <div class="touch_us">
     <div class="touch_us_01">
@@ -32,7 +33,7 @@
     <div class="block_inner">
         <h6>活动说明</h6>
         <p>1. 此次活动仅限高新区写字楼,并且微信关注果果哒用户,每个微信号每天有一次刮奖机会</p>
-        <p>2. 一等奖,免费体验果果哒水果一月;二等奖,免费体验果果哒水果一周;三等奖,免费体验果果哒水果一天,中奖率80%</p>
+        <p>2. 一等奖,免费体验果果哒水果一月;二等奖,免费体验果果哒水果一周;三等奖,免费体验果果哒水果二天</p>
         <p>3. 中奖后，前去领奖，需要正确填写你的配送地址，方便配送人员给你配送,地址仅在我们配送范围内有效</p>
         <p>4. 本活动长期有效,如有疑问，咨询02883389832</p>
     </div>
@@ -69,7 +70,7 @@
                 		</tr>
 					 <else /> 
 					 	<tr>
-		                    <td class="ggk_td_01"><span>果果哒水果体验一天</span></td>
+		                    <td class="ggk_td_01"><span>果果哒水果体验二天</span></td>
 		                    <if condition="$vo.isGet eq 1 "><td class="ggk_td_02">已领奖</td>
     						<else /> 
     								<td class="ggk_td_02">
@@ -82,37 +83,43 @@
                 
             </table>
         </div>
-       <!--  <button class="ggk_btn_more ggk_btn">查看所有中奖纪录</button> -->
+       <div class="ggk_div_center">
+            <button class="ggk_btn_more ggk_btn">查看所有中奖纪录</button>
+            <!-- <button class="ggk_btn_share ggk_btn" onclick="">晒分享</button> -->
+        </div>
     </div>
 </div>
 <input type="hidden" value="{$myPrize}" id="myPrize">
 
 <script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/js/jquery.min.js"></script>
 <script>
+var body_hgt = $('body').height(),
+	body_wid = $('body').width();
+
 function check1(){
     $('.tu_font').text('亲,你还没关注我们,暂时不能参加此活动哟...');
     //alert(1)
-    ab();setTimeout(abcd,3000);
+    ab();setTimeout(abcd,2000);
 
 }
 function  check2(){
-    $('.tu_font').text('亲,你今天已经抽奖了,明天再来哟...');
+    $('.tu_font').text('亲,你今天已经刮奖了,明天再来哟...');
     //alert(1)
-    ab();setTimeout(abcd,3000);
+    ab();setTimeout(abcd,2000);
 }
 
 function  prize2(){
-    $('.tu_font').html("亲,运气真好,你中了二等奖,免费体验果果哒水果一周体验哟！&nbsp;&nbsp;<a href='http://www.kmark.cn/gogoda/index.php?s=addon/Guaguaka/Guaguaka/logistic/prizeid/{$prizeid}/'>前去领奖</a></br><button onclick='ggk_close()' class='ggk_btn_close ggk_btn'>暂不领奖</button>");
+    $('.tu_font').html("亲,运气真好,你中了二等奖,免费体验果果哒水果一周哟！&nbsp;&nbsp;<a href='http://www.kmark.cn/gogoda/index.php?s=addon/Guaguaka/Guaguaka/logistic/prizeid/{$prizeid}/'>前去领奖</a></br><a href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx84ecbf099434ca1d&redirect_uri=http%3A%2F%2Fwww.kmark.cn%2Foauth0.php&response_type=code&scope=snsapi_base&state=6#wechat_redirect' ><button  class='ggk_btn_close ggk_btn'>暂不领奖</button></a>");
     //alert(1)
     ab();//setTimeout(abcd,3000);
 }
 function  prize1(){
-    $('.tu_font').html("亲,运气真好,你中了一等奖,免费体验果果哒水果一个月体验哟!&nbsp;&nbsp;<a href='http://www.kmark.cn/gogoda/index.php?s=addon/Guaguaka/Guaguaka/logistic/prizeid/{$prizeid}/'>前去领奖</a></br><button onclick='ggk_close()' class='ggk_btn_close ggk_btn'>暂不领奖</button>");
+    $('.tu_font').html("亲,运气真好,你中了一等奖,免费体验果果哒水果一个月哟!&nbsp;&nbsp;<a href='http://www.kmark.cn/gogoda/index.php?s=addon/Guaguaka/Guaguaka/logistic/prizeid/{$prizeid}/'>前去领奖</a></br><a href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx84ecbf099434ca1d&redirect_uri=http%3A%2F%2Fwww.kmark.cn%2Foauth0.php&response_type=code&scope=snsapi_base&state=6#wechat_redirect' ><button  class='ggk_btn_close ggk_btn'>暂不领奖</button></a>");
     //alert(1)
     ab();//setTimeout(abcd,3000);
 }
 function  prize3(){
-    $('.tu_font').html("亲,运气真好,你中了三等奖,免费体验果果哒水果一天体验哟!&nbsp;&nbsp;<a href='http://www.kmark.cn/gogoda/index.php?s=addon/Guaguaka/Guaguaka/logistic/prizeid/{$prizeid}/'>前去领奖</a></br><button onclick='ggk_close()' class='ggk_btn_close ggk_btn'>暂不领奖</button>");
+    $('.tu_font').html("亲,运气真好,你中了三等奖,免费体验果果哒水果二天哟!&nbsp;&nbsp;<a href='http://www.kmark.cn/gogoda/index.php?s=addon/Guaguaka/Guaguaka/logistic/prizeid/{$prizeid}/'>前去领奖</a></br><a href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx84ecbf099434ca1d&redirect_uri=http%3A%2F%2Fwww.kmark.cn%2Foauth0.php&response_type=code&scope=snsapi_base&state=6#wechat_redirect' ><button  class='ggk_btn_close ggk_btn'>暂不领奖</button></a>");
     //alert(1)
     ab();//setTimeout(abcd,3000);
 }
@@ -120,19 +127,59 @@ function  prize0(){
     $('.tu_font').html("亲,还差一点,再接再厉,明天再来吧!<br/>");
     //alert(1)
     ab();
-    setTimeout(abcd,3000);
+    setTimeout(abcd,2000);
 }
 function abcd(){
     $('.touch_us').hide();
     $('.append_div').hide();
+    $('.bg_gray').hide();
 }
 function ab(){
     $('.touch_us').show();
     $('.append_div').show();
+    ggk_bg();
 }
 function ggk_close(){
 	abcd();
 }
+function ggk_bg(){
+	$('.bg_gray').width(body_wid).height(body_hgt).show();
+}
+function getPri(){
+	//alert(1)
+	var myPrize = document.getElementById('myPrize').value;
+	 //动态添加ajax
+    $.ajax({
+    	type: "GET",
+        	url: "http://www.kmark.cn/gogoda/index.php?s=addon/Guaguaka/Guaguaka/changeKill/",
+        	dataType: "json",
+        	success: function(data){
+        		if(parseInt(data)==1){
+            		if(myPrize==3){
+                    prize1();
+                }else if(myPrize==4){
+                    prize2();
+                }else if(myPrize==5){
+                    prize3();
+                }else if(myPrize==2){
+                    prize0();
+                }
+        		}
+        	}
+       	 
+    })
+}
+
+$(function(){
+
+	$('.ggk_btn_more').click(function(){
+		$('.ggk_table_father').css({
+			'height':'auto',
+			'overflow':'auto'
+		})
+	})
+
+});
 </script>
 
 <script>
@@ -154,8 +201,7 @@ function ggk_close(){
                 /*var w = img.width,
                  h = img.height;*/
                 var w = 200,
-                    h = 80,
-                    times = 0;
+                    h = 80;
 
                 var offsetX = canvas.offsetLeft,
                     offsetY = canvas.offsetTop;
@@ -167,38 +213,17 @@ function ggk_close(){
                 }
 
                 function eventDown(e){
-                    e.preventDefault ();
+                	setTimeout(getPri,7000);
+                	e.preventDefault ();
                     mousedown = true;
+                    
 
                 }
 
                 function eventUp (e) {
                     e.preventDefault ();
                     mousedown = false;
-                    if(times == 1){
-                        //动态添加ajax
-                        $.ajax({
-                        	type: "GET",
-           	             	url: "http://www.kmark.cn/gogoda/index.php?s=addon/Guaguaka/Guaguaka/changeKill/",
-           	             	dataType: "json",
-           	             	success: function(data){
-           	             		if(parseInt(data)==1){
-	           	             		if(myPrize==3){
-	                                    prize1();
-	                                }else if(myPrize==4){
-	                                    prize2();
-	                                }else if(myPrize==5){
-	                                    prize3();
-	                                }else if(myPrize==2){
-	                                    prize0();
-	                                }
-           	             		}
-           	             	}
-           	            	 
-                        })
-                    	
-                    }
-                    times ++;
+                    
                 }
 
                 function eventMove (e) {
@@ -220,7 +245,7 @@ function ggk_close(){
                         with (ctx) {
                             beginPath ();
                             //这里限制挂的大小
-                            arc (x, y, 16, 0, Math.PI * 2);
+                            arc (x, y, 7, 0, Math.PI * 2);
                             fill ();
                         }
                     }

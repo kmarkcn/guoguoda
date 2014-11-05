@@ -145,16 +145,11 @@ h6{
     width: 30%;
 }
 
-.block_inner p{
-    letter-spacing: 1px;
-    font-size: 12px;
-    line-height: 20px;
-    padding-bottom: 10px;
-}
-.ggk_btn{
 
-    display: block;
-    margin: 10px auto;
+
+.ggk_btn{
+    display:inline-block;
+    margin: 10px;
     height: 30px;
     font-weight: bold;
     border: none;
@@ -172,14 +167,30 @@ h6{
     margin: 0;
 }
 
-.ggk_btn_more{
+.ggk_btn_more
+,.ggk_btn_share{
     font-size: 12px;
     line-height: 16px;
     height: 18px;
 }
+.ggk_div_center{
+    text-align: center;
+}
 
 
-
+.bg_gray{
+    display: none;
+    background-color: gray;
+    opacity: .5;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1888;
+}
+.ggk_btn_close{
+    display: block;
+    margin: 10px auto;
+}
 
 
 .web-main { margin: 0 auto; max-width: 640px; background: #EAEAE8}

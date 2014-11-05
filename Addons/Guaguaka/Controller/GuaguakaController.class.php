@@ -40,11 +40,16 @@ class GuaguakaController extends AddonsController{
     			 * 未中奖   29.9%
     			 */
     			 
-    			//3天之类不能中奖
-    			$r1 = GuaguakaController::getPrize1();
-    			$r2 = GuaguakaController::getPrize2();
-    			if($r1 || $r2){
-    				$myPrize = 2;
+    			//有过中奖记录的就不能中奖
+    			$rrs = GuaguakaController::getPris();
+    			$getPrize = 0;
+    			foreach ($rrs as $key=>$val){
+    				if($val['prize'] ==3 || $val['prize'] ==4 || $val['prize'] == 5){
+    					$getPrize = 1;//证明已经中过奖了
+    				}
+    			}
+    			if($getPrize){
+    				$myPrize = 2;//未中奖
     			}else{
     				//这里是要中奖的结果
     				$rand1 = rand(0,9);
@@ -175,7 +180,7 @@ class GuaguakaController extends AddonsController{
 				$logistic->add($data1);
 			}
 			//跳到会员中心页面
-			header("location:http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/membermsg/"); 
+			header("location:http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/membercenter/"); 
 	}
 	
 	
@@ -197,7 +202,7 @@ class GuaguakaController extends AddonsController{
 				return 5;
 				break;
 			case 5:
-				return 1;
+				return 2;
 				break;
 		}
 	}
@@ -293,7 +298,13 @@ class GuaguakaController extends AddonsController{
 		}
 	}
 	
+	//从奖品表中获取所有用户中奖数据
 	
-	
+	function getPris(){
+		$userid = GuaguakaController::getUidByOpenid();
+		$prize = M('guaguaka');
+		$re = $prize->where("userid = {$userid}")->select();
+		return $re;
+	}
 	
 }
