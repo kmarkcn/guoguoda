@@ -14,16 +14,21 @@ class GuaguakaController extends AddonsController{
 		$gguser_weixin = M('gguser_weixin_relation');
     	$openid = $_SESSION['gguser_openid'];
     	$res = $gguser_weixin->where("openid = '{$openid}'")->select();
-    	
+    	//print_r($res);
     	if(count($res)==0){
     		$myPrize = 0;
     	}else{
 	    	//是微信用户
 	    	//判断今天是否已经抽奖	
     		$re = GuaguakaController::getPrize();
-    		if(count($re)==1 && $re['isKill']==1){
-    			$myPrize = 1;//今天你已经抽奖了
-    		}else{
+    		if(count($re)==1){
+    			if($re[0]['isKill']==1){
+    				$myPrize = 1;//今天你已经抽奖了
+    			}else{
+    				$myPrize = $re[0]['prize'];
+    			}
+    			
+    		}else{ 
     			//满足抽奖的规则
     			//算出抽奖的概率
     			/*
@@ -55,7 +60,8 @@ class GuaguakaController extends AddonsController{
     					$myPrize = 5;//3等奖
     				}
     			}
-    		}}
+    		}}  
+    		//$myPrize = 2;
 /*===========================================================================================*/
 //写入数据库表
     if(count($re) == 0){
@@ -68,8 +74,8 @@ class GuaguakaController extends AddonsController{
     		'isGet'=> 0,
     		'isKill'=> 0	
     	);
-    	$prize->add($data);
-    }
+    	$prizeid = $prize->add($data);
+    } 
     
 
 //获取用户中奖记录
@@ -78,16 +84,14 @@ class GuaguakaController extends AddonsController{
     
 //获取用户中奖并且没有领取记录
 
-    $prizen = GuaguaKaController::getPrizen();
+   // $prizen = GuaguaKaController::getPrizen();
     
 /*===========================================================================================*/
-    
+    $this->assign("prizeid",$prizeid);
     $this->assign("myPrize",$myPrize);
     $this->assign("prizes",$prizes);
-    $this->assign("prizen",$prizen);
-    $this->display("show");
-
-    
+    $this->display();
+    //print_r($prizes);
     
 	}
 	
@@ -99,7 +103,7 @@ class GuaguakaController extends AddonsController{
 		$prize = M('guaguaka');
 		$data = array('isKill'=>1);
 		$date = date('y-m-d',time());
-		$prize->where("userid = {$userid} and date = '{$date}'")->save();
+		$prize->where("userid = {$userid} and date = '{$date}'")->save($data);
 		echo 1;
 	}
 	
@@ -113,9 +117,10 @@ class GuaguakaController extends AddonsController{
 		$userData['mobile'] = $userData1[0]['mobile'];
 		$userData['address'] = $userData1[0]['address'];
 		$this->assign('userData',$userData);
-		$prizeId = $_GET['prizeId'];
-		$this->assign("prizeId".$prizeId);
-		$this->assign("logistic");
+		$prizeid = $_GET['prizeid'];
+		$this->assign("prizeid",$prizeid);
+		//echo $prizeid;
+		$this->display();
 	}
 	
 	function logisticDo(){
@@ -128,8 +133,9 @@ class GuaguakaController extends AddonsController{
 		);
 		$user = M('gguser');
 		$user->where("id = {$userid}")->save($data);
+		
 		//改变领奖状态
-		$prizeId = $_POST['prizeId'];
+		$prizeId = $_POST['prizeid'];
 		$prize = M('guaguaka');
 		$data = array('isGet'=>1);
 		$prize->where("id = {$prizeId}")->save($data);
@@ -169,7 +175,7 @@ class GuaguakaController extends AddonsController{
 				$logistic->add($data1);
 			}
 			//跳到会员中心页面
-			header("location:http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/membermsg/");
+			header("location:http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/membermsg/"); 
 	}
 	
 	
@@ -220,9 +226,9 @@ class GuaguakaController extends AddonsController{
 		$userid = GuaguakaController::getUidByOpenid();
 		//$date = date('y-m-d',time());
 		$prize = M('guaguaka');
-		$res = $prize->where("userid = {$userid}")->select();
+		$res = $prize->where("userid = {$userid} and isKill = 1")->select();
 		foreach($res as $key=>$val){
-			if($val['prize']==0){
+			if($val['prize']==0 || $val['prize']==2){
 				unset($res[$key]);
 			}
 		}
@@ -261,7 +267,7 @@ class GuaguakaController extends AddonsController{
 		$date = date('y-m-d',time());
 		$prize = M('guaguaka');
 		$re = $prize->where("userid = {$userid} and date = '{$date}'")->select();
-		return $re[0];
+		return $re;
 	}
 	
 	

@@ -35,6 +35,8 @@ if (isset($_GET['code'])){
 		header("location:http://www.kmark.cn/gogoda/wxpay/js_api_call_huodong.php");
 	}else if($_GET['state']=='5'){
 		header("location:http://www.kmark.cn/gogoda/wxpay/js_api_call_huodong_banjia.php");
+	}else if($_GET['state']=='6'){
+		header('location:http://www.kmark.cn/gogoda/index.php?s=addon/Guaguaka/Guaguaka/show/');
 	}
 	
 	
