@@ -33,7 +33,7 @@ class GuaguakaController extends AddonsController{
     			//算出抽奖的概率
     			/*
     			 * 中奖说明:
-    			 * 3日之类不可中奖
+    			 * 中奖之后不可重复中奖
     			 * 1个月 	0.1%
     			 * 1个周 	10%
     			 * 1个天 	60%
@@ -45,7 +45,7 @@ class GuaguakaController extends AddonsController{
     			$getPrize = 0;
     			foreach ($rrs as $key=>$val){
     				if($val['prize'] ==3 || $val['prize'] ==4 || $val['prize'] == 5){
-    					$getPrize = 1;//证明已经中过奖了
+    					$getPrize = 1;//证明已经中过奖了，则不能重复中奖
     				}
     			}
     			if($getPrize){
