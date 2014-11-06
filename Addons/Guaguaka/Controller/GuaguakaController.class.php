@@ -159,13 +159,15 @@ class GuaguakaController extends AddonsController{
 					$data1 = array(
 							'start_date' => GuaguakaController::timeChange(),
 							'quantity'   => $quantity,
-							'isChange'=>1
+							'isChange'=>1,
+							'payType'=> 3
 					);
 					$logistic->where("userid = {$userid}")->save($data1);
 				}else{
 					$data1 = array(
 							'quantity'   => $quantity + $log['quantity'],
-							'isChange'=>1
+							'isChange'=>1,
+							'payType'=> 3
 					);
 					$logistic->where("userid = {$userid}")->save($data1);
 				}
@@ -175,7 +177,8 @@ class GuaguakaController extends AddonsController{
 						'userid'=>$userid,
 						'start_date' => GuaguakaController::timeChange(),
 						'quantity'   => $quantity,
-						'isChange'=>1
+						'isChange'=>1,
+						'payType'=> 3
 				);
 				$logistic->add($data1);
 			}

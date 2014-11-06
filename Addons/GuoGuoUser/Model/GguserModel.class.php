@@ -460,6 +460,7 @@ class GguserModel extends Model{
    							'start_date'=>time(),
    							'money'=>10,
    							'quantity'=>1,
+   							'type'=>1
    					);
    					$order->add($data);
    				}
@@ -599,7 +600,8 @@ class GguserModel extends Model{
    				$data1 = array(
    						'start_date' => GguserModel::timeChange(),
    						'quantity'   => $data['quantity'],
-   						'isChange'=>1
+   						'isChange'=>1,
+   						'payType'=> 1
    				);
    				//echo "数据存在1";
    				$logistic->where("userid = {$userid}")->save($data1);
@@ -611,7 +613,8 @@ class GguserModel extends Model{
 	   			}
    				$data1 = array(
    						'quantity'=> $data['quantity']+$re['quantity'],
-   						'isChange'=>1
+   						'isChange'=>1,
+   						'payType'=> 1
    				);
    				//print_r($data);
    				$logistic->where("userid = {$userid}")->save($data1);
@@ -623,7 +626,8 @@ class GguserModel extends Model{
    					'userid'=>$userid,
    					'start_date' => GguserModel::timeChange(),
    					'quantity'   => $data['quantity'],
-   					'isChange'=>1
+   					'isChange'=>1,
+   					'payType'=> 1
    			);
    			$logistic->add($data1); 
    		}else if($type=="3"){
@@ -632,7 +636,8 @@ class GguserModel extends Model{
    				$data1 = array(
    						'start_date' => GguserModel::timeChange(),
    						'quantity'   => 1,
-   						'isChange'=>1
+   						'isChange'=>1,
+   						'payType'=> 1
    				);
    				//echo "数据存在1";
    				$logistic->where("userid = {$userid}")->save($data1);
@@ -640,7 +645,8 @@ class GguserModel extends Model{
    				$re = GguserModel::returnLogisticData();
    				$data1 = array(
    						'quantity'=> 1+$re['quantity'],
-   						'isChange'=>1
+   						'isChange'=>1,
+   						'payType'=> 1
    				);
    				//print_r($data);
    				$logistic->where("userid = {$userid}")->save($data1);
@@ -650,7 +656,8 @@ class GguserModel extends Model{
    					'userid'=>$userid,
    					'start_date' => GguserModel::timeChange(),
    					'quantity'   => 1,
-   					'isChange'=>1
+   					'isChange'=>1,
+   					'payType'=> 1
    			);
    			$logistic->add($data1);
    		}else if($type=='7'){
@@ -658,7 +665,8 @@ class GguserModel extends Model{
    			$data = GguserModel::getPayData("offLine");
    			$data1 = array(
    					'quantity'=> $data['quantity']+$re['quantity'],
-   					'isChange'=>1
+   					'isChange'=>1,
+   					'payType'=> 2
    			);
    			//echo "数据存在1";
    			$logistic->where("userid = {$userid}")->save($data1);
@@ -668,7 +676,8 @@ class GguserModel extends Model{
    					'userid'=>$userid,
    					'start_date' => GguserModel::timeChange(),
    					'quantity'   => $data['quantity'],
-   					'isChange'=>1
+   					'isChange'=>1,
+   					'payType'=> 2
    			);
    			$logistic->add($data1); 
    		}

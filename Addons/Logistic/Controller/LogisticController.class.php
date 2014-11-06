@@ -18,6 +18,13 @@ class LogisticController extends AddonsController{
 			}else{
 				$list_data['list_data'][$key]['status'] = '暂停配送';
 			}
+			if($val['payType']=='1'){
+				$list_data['list_data'][$key]['payType'] = '微信支付';
+			}else if($val['payType']=='2'){
+				$list_data['list_data'][$key]['payType'] = "<span style='color:red;'>货到付款</span>";
+			}else{
+				$list_data['list_data'][$key]['payType'] = '免费赠送';
+			}
 			if($val['isChange']=='1'){
 				$list_data['list_data'][$key]['isChange'] = "<span style='color:red;font-size:18px;'>*</span>";
 			}else{
