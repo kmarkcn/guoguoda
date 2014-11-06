@@ -59,7 +59,7 @@ class GuaguakaController extends AddonsController{
     					$myPrize = 3;//1等奖
     				}else if($rand1==8 || $rand2 ==8 || $rand3 ==8){
     					$myPrize = 4;//2等奖
-    				}else if($rand1==1 || $rand2 ==1 || $rand3 ==1 ){
+    				}else if(($rand1==1 && $rand2 ==1) || $rand3 ==1 ){
     					$myPrize = 2;//未中奖
     				}else{
     					$myPrize = 5;//3等奖
@@ -139,13 +139,16 @@ class GuaguakaController extends AddonsController{
 		$user = M('gguser');
 		$user->where("id = {$userid}")->save($data);
 		
-		//改变领奖状态
-		$prizeId = $_POST['prizeid'];
-		$prize = M('guaguaka');
-		$data = array('isGet'=>1);
-		$prize->where("id = {$prizeId}")->save($data);
-		//改变物流
 		
+		//先确定这条中奖信息是否已经领取
+		$prize = M('guaguaka');
+		$prizeId = $_POST['prizeid'];
+		$rs = $prize->where("id = {$prizeId}")->select();
+		if($rs[0]['isGet']==0){
+			//改变领奖状态
+			$data = array('isGet'=>1);
+			$prize->where("id = {$prizeId}")->save($data);
+			//改变物流
 			//先判断物流是否存在
 			$logistic = M('gguser_logistics');
 			$re = $logistic->where("userid = {$userid}")->select();
@@ -182,6 +185,8 @@ class GuaguakaController extends AddonsController{
 				);
 				$logistic->add($data1);
 			}
+			
+		}
 			//跳到会员中心页面
 			header("location:http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/membercenter/"); 
 	}

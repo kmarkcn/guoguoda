@@ -229,3 +229,4 @@ h6{
 
 .button-bar { padding: 25px 15px; text-align: center;}
 .button-bar .b-button { display: inline-block; margin: 0 5%; width: 38%;font-size:16px; height: 36px; line-height: 36px; background:#dc2804; border: none; color: #fff;}
+a{text-decoration:none;}

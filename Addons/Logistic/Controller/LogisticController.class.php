@@ -16,7 +16,7 @@ class LogisticController extends AddonsController{
 			if($val['status']=='1'){
 				$list_data['list_data'][$key]['status'] = '正常配送';
 			}else{
-				$list_data['list_data'][$key]['status'] = '暂停配送';
+				$list_data['list_data'][$key]['status'] = "<span style='color:red;'>暂停配送</span>";
 			}
 			if($val['payType']=='1'){
 				$list_data['list_data'][$key]['payType'] = '微信支付';
