@@ -317,7 +317,8 @@ class GguserController extends AddonsController{
 	
 	function changeSta(){
 		GguserModel::change_status(GguserModel::check_status());
-		$this->display('membercenter');
+		//$this->display('membercenter');
+		header('location:http://www.kmark.cn/gogoda/index.php?s=addon/GuoGuoUser/Gguser/logistic/');
 	}
 	
 	

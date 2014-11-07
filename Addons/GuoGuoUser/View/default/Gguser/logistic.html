@@ -20,6 +20,12 @@
 		<div class="height_10"></div>
 		<div class="b-box form">
 			<div class="form-item">
+				<label for="input-name" class="input-label dark fl">配送时间</label>
+				<div class="text-right gray">
+					{$userData['start_logistic']}
+				</div>
+			</div>
+			<div class="form-item">
 				<label for="input-name" class="input-label dark fl">已使用次数</label>
 				<div class="text-right gray">
 					{$userData['accountQuantity']}天
@@ -55,7 +61,8 @@
 		</div>
 		<div class="ps_read">
 		            <h1>配送说明</h1><br/>
-		            &nbsp;&nbsp;&nbsp;&nbsp;如果你在当日17:00点前选择暂停，将于明天开始暂停配送，若17:00-24：00点内选择暂停,将于后天才开始暂停配送。恢复配送一致.
+		            1.每次购买根据购买时间决定配送日期。当日18点之前购买次日开始配送，18点以后隔日配送，并且跳过周末。配送依次往后顺延.<br/><br/>
+		            2.如果你在当日17点前选择暂停，将于明天开始暂停配送，若17后选择暂停,将于后天才开始暂停配送。恢复配送一致.
 		</div>
 		
 		<!-- <div class="button-bar">

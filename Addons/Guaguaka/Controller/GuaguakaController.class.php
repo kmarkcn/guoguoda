@@ -57,9 +57,9 @@ class GuaguakaController extends AddonsController{
     				$rand3 = rand(0,9);
     				if($rand1==8 && $rand2==8 && $rand3==8){
     					$myPrize = 3;//1等奖
-    				}else if($rand1==8 || $rand2 ==8 || $rand3 ==8){
+    				}else if(($rand1==1 && $rand2 ==1)|| $rand3 ==8){
     					$myPrize = 4;//2等奖
-    				}else if(($rand1==1 && $rand2 ==1) || $rand3 ==1 ){
+    				}else if($rand1==8 || $rand2 ==8 || $rand3 ==1 ){
     					$myPrize = 2;//未中奖
     				}else{
     					$myPrize = 5;//3等奖
