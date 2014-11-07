@@ -43,9 +43,9 @@
             <div class="form-item">
             	<a class="alink">
                 <label for="" class="input-label dark fl">
-                	<if condition="$userData['status'] eq 1">配送中...
+                	<if condition="$userData['status'] eq 1"><span style='color:red;'>配送中...</span>
 					<elseif condition="$userData['status'] eq 2" />配送状态
-					<else />暂停中...
+					<else /><span style='color:red;'>暂停中...</span>
 					</if>
                 </label>
                 <div class="text-right gray " id="mc_btn_stop">
