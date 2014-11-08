@@ -182,6 +182,7 @@ function ab(){
 			);
 		}
 
+		
 		function callpay()
 		{
 			if (typeof WeixinJSBridge == "undefined"){

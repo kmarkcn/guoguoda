@@ -21,8 +21,17 @@ class LogisticController extends AddonsController{
 						$quantity = $val['quantity']-1;
 					}
 					
+					if(date('w') == 6){
+						$startDate =  time()+(3600*48);
+					}else if(date('w') == 5){
+						$startDate = time()+(3600*72);
+					}else{
+						$startDate = time()+(3600*24);
+					}
+				
+					
 					$data = array(
-							'start_date'=>$val['start_date']+(3600*24),
+							'start_date'=>$startDate,
 							'quantity'=>$quantity,
 							'isChange'=>0
 					);
