@@ -172,8 +172,8 @@ class GguserController extends AddonsController{
 	
 	/*
 	 * 2014-10-23 by terry
-	* 调用用户支付信息界面出发支付
-	*/
+	 * 调用用户支付信息界面出发支付
+	 */
 	
 	function buyDo(){
 		session_start();
@@ -203,9 +203,9 @@ class GguserController extends AddonsController{
 	}
 	
 	/*
-	* 2014-10-20 by terry
-	* 支付返回处理函数
-	*/
+	 * 2014-10-20 by terry
+	 * 支付返回处理函数
+	 */
 	function payResult($yb=null,$payWay=null){
 		if(empty($yb)){
 			if($_GET['result']==1){
