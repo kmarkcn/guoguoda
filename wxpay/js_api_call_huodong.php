@@ -160,10 +160,7 @@ function ab(){
 	$('.append_div').show();
 }
 	
-
-
-		
-		//调用微信JS api 支付
+//调用微信JS api 支付
 		function jsApiCall()
 		{
 			WeixinJSBridge.invoke(
