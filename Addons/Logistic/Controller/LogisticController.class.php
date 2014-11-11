@@ -38,7 +38,7 @@ class LogisticController extends AddonsController{
 				unset($list_data['list_data'][$key]);
 			}
 		}
-		LogisticModel::printLogisticData($list_data);
+		//LogisticModel::printLogisticData($list_data);
 		$this->assign ( $list_data );
 		$this->display ( $model ['template_list'] );
 	}

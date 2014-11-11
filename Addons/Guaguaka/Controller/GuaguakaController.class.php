@@ -16,9 +16,11 @@ class GuaguakaController extends AddonsController{
     	$res = $gguser_weixin->where("openid = '{$openid}'")->select();
     	//print_r($res);
     	if(count($res)==0){
-    		$myPrize = 0;
-    	}else{
-	    	//是微信用户
+    		//$myPrize = 0;
+    		//这里做插入处理
+    		GuaguakaController::addUser();
+    	}
+	    
 	    	//判断今天是否已经抽奖	
     		$re = GuaguakaController::getPrize();
     		if(count($re)==1){
@@ -62,13 +64,14 @@ class GuaguakaController extends AddonsController{
     				if(($rand1==8 && $rand2==8)||($rand3==8 && $rand4==8 )){
     					$myPrize = 4;//2等奖 200/10000
     				}
-    				if($rand1==0 || $rand1 ==1 || $rand1 ==2 || $rand1==3 || $rand2 ==0  || $rand2 ==1 || $rand2 ==2 ){
+    				if($rand1==0 || $rand1 ==1 || $rand1 ==2 || $rand1==3 || $rand1==4 || $rand1==5 || $rand1==6 ||
+    					$rand2 ==0  || $rand2 ==1 || $rand2 ==2 || $rand2==3 || $rand2==4 || $rand2==5 ){
     					$myPrize = 2;//未中奖 7000/10000
     				}else{
     					$myPrize = 5;//3等奖  2800/10000
     				}
     			}
-    		}}  
+    		}
     		//$myPrize = 2;
 /*===========================================================================================*/
 //写入数据库表
@@ -89,7 +92,7 @@ class GuaguakaController extends AddonsController{
 //获取用户中奖记录
     
     $prizes = GuaguakaController::getPrizes();
-    
+    $prize_num = count($prizes);
 //获取用户中奖并且没有领取记录
 
    // $prizen = GuaguaKaController::getPrizen();
@@ -98,6 +101,7 @@ class GuaguakaController extends AddonsController{
     $this->assign("prizeid",$prizeid);
     $this->assign("myPrize",$myPrize);
     $this->assign("prizes",$prizes);
+    $this->assign("prize_num",$prize_num);
     $this->display();
     //print_r($prizes);
     
@@ -318,4 +322,95 @@ class GuaguakaController extends AddonsController{
 		return $re;
 	}
 	
+	
+	
+	
+	//这里是列表展示页面
+	function lists(){
+		//获取模型信息
+		$model = $this->getModel ('guaguaka');
+		$list_data = $this->_get_model_list ( $model );
+		foreach($list_data['list_data'] as $key=>$val){
+			$re = GuaguakaController::getUser($val['id']);
+			$list_data['list_data'][$key]['name'] = $re['name'];
+			
+			if($val['prize']=='3'){
+				$list_data['list_data'][$key]['prize'] = "<span style='color:red;font-size:18px;'>一等奖</span>";
+			}else if($val['prize']=='4'){
+				$list_data['list_data'][$key]['prize'] = "<span style='color:red;font-size:18px;'>二等奖</span>";
+			}else if($val['prize']=='5'){
+				$list_data['list_data'][$key]['prize'] = "<span style='color:red;font-size:18px;'>三等奖</span>";
+			}else{
+				$list_data['list_data'][$key]['prize'] = '未中奖';
+			}
+			
+			if($val['isGet']=='1'){
+				$list_data['list_data'][$key]['isGet'] = "<span style='color:red;'>已领奖</span>";
+			}else{
+				$list_data['list_data'][$key]['isGet'] = '未领奖';
+			}
+				
+		}
+		//LogisticModel::printLogisticData($list_data);
+		$this->assign ( $list_data );
+		$this->display ( $model ['template_list'] );
+	}
+	
+	
+	function getUser($id){
+		$order = M('guaguaka');
+		$re = $order->where("id = $id")->select();
+		$userid = $re[0]['userid'];
+		$user = M('gguser');
+		$re = $user->where("id = {$userid}")->select();
+		return $re[0];
+	}
+	
+	
+	function addUser(){
+		session_start();
+		//增加用户表
+		$gguser = M('gguser');
+		$data1 = array(
+				'name' =>'',
+				'gender'=>'',
+				'mobile'=>'',
+				'address'=>'',
+				'type'=>'2',
+				'status'=>'1',
+				'lastupdate'=>time()
+		);
+		$userid = $gguser->add($data1);
+		 
+		 
+		//增加体制表
+		$physic = M('gguser_physicque');
+		$data3 = array(
+				'userid'=>$userid,
+				'physicque'=>'4',
+				'last_test'=>''
+		);
+		$physic->add($data3);
+		 
+		 
+		//增加喜好表
+		$hobby = M('gguser_hobby');
+		$data4 = array(
+				'userid'=>$userid,
+				'like'=>'',
+				'dislike'=>''
+		);
+		$hobby->add($data4);
+		 
+		 
+		//增加微信用户关联表(包括头像)
+		$gguser_weixin = M('gguser_weixin_relation');
+		$data2 = array(
+				'userid'=>$userid,
+				'openid'=> $_SESSION['gguser_openid'],
+				'headimgurl'=>''
+		);
+		 
+		$gguser_weixin->add($data2);
+	}
 }

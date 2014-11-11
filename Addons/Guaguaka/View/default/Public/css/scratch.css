@@ -230,3 +230,50 @@ h6{
 .button-bar { padding: 25px 15px; text-align: center;}
 .button-bar .b-button { display: inline-block; margin: 0 5%; width: 38%;font-size:16px; height: 36px; line-height: 36px; background:#dc2804; border: none; color: #fff;}
 a{text-decoration:none;}
+/*beautify*/
+.bg_gray{
+	min-width: 320px;
+}
+.block_inner h6{
+	background: url(../img/h_bg.jpg);
+	border-radius: 0;
+	line-height: 40px;
+	font-size: 18px;
+	letter-spacing: 4px;
+	margin: 5px 0 10px;
+}
+.block_inner{
+	border: none;
+}
+.block_out_bg
+,.block_out{
+	background: #02404d;
+}
+.block_out{
+	margin: 0 10px 10px;
+}
+.block_out_bg{
+	padding: 1px 0 8px;
+}
+.tu_font{
+	padding:20px;
+	left:0;
+	margin: -60px 20px;
+}
+.block_inner p
+,.ggk_table td{
+	font-size: 12px;
+	line-height: 18px;
+}
+.ggk_table_father{
+	height: 40px;
+}
+.tu_font{
+	text-indent: 0;
+}
+.tu_font h1{
+	font-size: 16px;
+	text-align: left;
+	line-height: 30px;
+	margin: 5px;
+}

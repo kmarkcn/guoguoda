@@ -1,3 +1,4 @@
+<title>全民双11——越刮越开心！</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
 <link href="{:ADDON_PUBLIC_PATH}/css/scratch.css" rel="stylesheet" type="text/css">
@@ -29,6 +30,7 @@
     </div>
 
 </div>
+<div class="block_out_bg">
 <div class="block_out">
     <div class="block_inner">
         <h6>活动详情</h6>
@@ -37,9 +39,9 @@
            <b style="font-size:14px;line-height:16px;">二等奖</b>：免费体验果果哒水果套餐<i>1</i>周<br/>
            <b style="font-size:14px;line-height:16px;">三等奖</b>：免费体验果果哒水果套餐<i>2</i>天</p>
         <p><b>活动说明</b></p>   
-        <p style="line-height:10px;margin-top:-6px;">1. 此次活动仅限高新区内用户,每个微信号每天有一次刮奖机会;</p>
-        <p style="line-height:10px;margin-top:-6px;">2. 领奖时，请正确填写您的配送地址，配送地址仅限高新区;</p>
-        <p style="line-height:10px;margin-top:-6px;">3. 活动时间：2014-11-10至2014-11-13,如有疑问，请致电028-83389832。</p>
+        <p style="line-height:16px;margin-top:-6px;">1. 本活动仅限高新区内用户,每个微信号每天有一次刮奖机会;</p>
+        <p style="line-height:16px;margin-top:-6px;">2. 领奖时，请正确填写您的配送地址，配送地址仅限高新区;</p>
+        <p style="line-height:16px;margin-top:-6px;">3. 活动时间：2014-11-10至2014-11-15,如有疑问，请致电028-83389832。</p>
     </div>
 </div>
 <!--中将记录 -->
@@ -50,7 +52,12 @@
         <div class="ggk_table_father">
             <table class="ggk_table" cellpadding="0" cellspacing="0">
                
-                <volist name="prizes" id="vo"> 
+               <if condition="$prize_num  eq 0" > 
+               			<tr>
+		                    <td class="ggk_td_01"><span>暂无中奖记录</span></td>
+		                </tr>    
+               		<else /> 
+               			<volist name="prizes" id="vo"> 
                 	<if condition="$vo.prize eq 3" > 
                 		<tr>
 		                    <td class="ggk_td_01"><span>果果哒水果体验一月</span></td>
@@ -60,7 +67,7 @@
     								<a href="http://www.kmark.cn/gogoda/index.php?s=addon/Guaguaka/Guaguaka/logistic/prizeid/{$vo.id}/">去领奖</a>
     								</td>
  							</if>
-		                    
+		                   
                 		</tr>
 					 <elseif condition="$vo.prize eq 4"/>
 					 	<tr>
@@ -84,18 +91,24 @@
                 		</tr>
 					 </if>
                 </volist> 
+               </if>
+               
+                
                 
             </table>
         </div>
        
     </div>
 </div>
+
+</div>
+
 <input type="hidden" value="{$myPrize}" id="myPrize">
 
 <script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/js/jquery.min.js"></script>
 <script>
 var body_hgt = $('body').height(),
-	body_wid = $('body').width();
+	body_wid = $('html').width();
 
 function check1(){
     $('.tu_font').text('亲,您还没关注我们,暂时不能参加此活动哟,先去關注我們果果嗒吧');
@@ -110,17 +123,17 @@ function  check2(){
 }
 
 function  prize2(){
-    $('.tu_font').html("恭喜你!<br/>&nbsp;&nbsp;&nbsp;&nbsp;亲,运气真好,你中了<span style='color:red'>二等奖</span>,免费体验果果哒水果一周哟！&nbsp;&nbsp;<br/><a href='http://www.kmark.cn/gogoda/index.php?s=addon/Guaguaka/Guaguaka/logistic/prizeid/{$prizeid}/'>前去领奖</a></br><a href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx84ecbf099434ca1d&redirect_uri=http%3A%2F%2Fwww.kmark.cn%2Foauth0.php&response_type=code&scope=snsapi_base&state=6#wechat_redirect' ><button  class='ggk_btn_close ggk_btn'>暂不领奖</button></a>");
+    $('.tu_font').html("<h1>恭喜你!</h1>&nbsp;&nbsp;&nbsp;&nbsp;亲,运气真好,你中了<span style='color:red'>二等奖</span>,免费体验果果哒水果一周哟！&nbsp;&nbsp;<br/><a href='http://www.kmark.cn/gogoda/index.php?s=addon/Guaguaka/Guaguaka/logistic/prizeid/{$prizeid}/'>前去领奖</a></br><a href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx84ecbf099434ca1d&redirect_uri=http%3A%2F%2Fwww.kmark.cn%2Foauth0.php&response_type=code&scope=snsapi_base&state=6#wechat_redirect' ><button  class='ggk_btn_close ggk_btn'>暂不领奖</button></a>");
     //alert(1)
     ab();//setTimeout(abcd,3000);
 }
 function  prize1(){
-    $('.tu_font').html("恭喜你!<br/>&nbsp;&nbsp;&nbsp;&nbsp;亲,运气真好,你中了<span style='color:red'>一等奖</span>,免费体验果果哒水果一个月哟!&nbsp;&nbsp;<br/><a href='http://www.kmark.cn/gogoda/index.php?s=addon/Guaguaka/Guaguaka/logistic/prizeid/{$prizeid}/'>前去领奖</a></br><a href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx84ecbf099434ca1d&redirect_uri=http%3A%2F%2Fwww.kmark.cn%2Foauth0.php&response_type=code&scope=snsapi_base&state=6#wechat_redirect' ><button  class='ggk_btn_close ggk_btn'>暂不领奖</button></a>");
+    $('.tu_font').html("<h1>恭喜你!</h1>&nbsp;&nbsp;&nbsp;&nbsp;亲,运气真好,你中了<span style='color:red'>一等奖</span>,免费体验果果哒水果一个月哟!&nbsp;&nbsp;<br/><a href='http://www.kmark.cn/gogoda/index.php?s=addon/Guaguaka/Guaguaka/logistic/prizeid/{$prizeid}/'>前去领奖</a></br><a href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx84ecbf099434ca1d&redirect_uri=http%3A%2F%2Fwww.kmark.cn%2Foauth0.php&response_type=code&scope=snsapi_base&state=6#wechat_redirect' ><button  class='ggk_btn_close ggk_btn'>暂不领奖</button></a>");
     //alert(1)
     ab();//setTimeout(abcd,3000);
 }
 function  prize3(){
-    $('.tu_font').html("恭喜你!<br/>&nbsp;&nbsp;&nbsp;&nbsp;亲,运气真好,你中了<span style='color:red'>三等奖</span>,免费体验果果哒水果二天哟!&nbsp;&nbsp;<br/><a href='http://www.kmark.cn/gogoda/index.php?s=addon/Guaguaka/Guaguaka/logistic/prizeid/{$prizeid}/'>前去领奖</a></br><a href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx84ecbf099434ca1d&redirect_uri=http%3A%2F%2Fwww.kmark.cn%2Foauth0.php&response_type=code&scope=snsapi_base&state=6#wechat_redirect' ><button  class='ggk_btn_close ggk_btn'>暂不领奖</button></a>");
+    $('.tu_font').html("<h1>恭喜你!</h1>&nbsp;&nbsp;&nbsp;&nbsp;亲,运气真好,你中了<span style='color:red'>三等奖</span>,免费体验果果哒水果二天哟!&nbsp;&nbsp;<br/><a href='http://www.kmark.cn/gogoda/index.php?s=addon/Guaguaka/Guaguaka/logistic/prizeid/{$prizeid}/'>前去领奖</a></br><a href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx84ecbf099434ca1d&redirect_uri=http%3A%2F%2Fwww.kmark.cn%2Foauth0.php&response_type=code&scope=snsapi_base&state=6#wechat_redirect' ><button  class='ggk_btn_close ggk_btn'>暂不领奖</button></a>");
     //alert(1)
     ab();//setTimeout(abcd,3000);
 }
