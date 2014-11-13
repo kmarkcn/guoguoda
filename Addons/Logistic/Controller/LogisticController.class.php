@@ -38,6 +38,26 @@ class LogisticController extends AddonsController{
 				unset($list_data['list_data'][$key]);
 			}
 		}
+	
+		
+		/*
+		 这里是对物流信息进行排序
+		 */
+		
+		foreach ($list_data['list_data'] as $key=>$value){
+			$price[$key] = $value['isChange'];
+		}
+		
+		array_multisort($price,SORT_NUMERIC,SORT_ASC,$list_data['list_data']);
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		//LogisticModel::printLogisticData($list_data);
 		$this->assign ( $list_data );
 		$this->display ( $model ['template_list'] );
